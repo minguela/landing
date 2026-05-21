@@ -9,27 +9,27 @@ defineProps<{
 </script>
 
 <template>
-  <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+  <div class="grid gap-3 sm:gap-4 md:grid-cols-2 xl:grid-cols-3">
     <a
       v-for="item in items"
       :key="item.label"
       :href="item.href"
       :target="item.external ? '_blank' : undefined"
       :rel="item.external ? 'noreferrer' : undefined"
-      class="soft-card group flex h-full flex-col justify-between p-5 sm:p-6 hover:border-white/20 hover:bg-white/[0.045]"
+      class="soft-card group flex h-full flex-col justify-between p-4 sm:p-5 hover:border-white/22 hover:bg-white/[0.05]"
     >
       <div>
-        <p class="text-xs uppercase tracking-[0.26em] text-slate-500">{{ linkLabel }}</p>
+        <p class="text-[11px] uppercase tracking-[0.2em] text-slate-500">{{ linkLabel }}</p>
         <p
-          class="mt-3 text-lg font-semibold text-white"
-          :class="item.monospace ? 'font-mono text-base sm:text-lg' : 'tracking-[-0.03em]'"
+          class="mt-2.5 text-base font-semibold text-white sm:text-lg"
+          :class="item.monospace ? 'font-mono' : 'tracking-[-0.02em]'"
         >
           {{ item.label }}
         </p>
-        <p class="mt-3 text-sm leading-6 text-slate-300">{{ item.description }}</p>
+        <p class="mt-2.5 text-sm leading-6 text-slate-300">{{ item.description }}</p>
       </div>
 
-      <span class="mt-6 inline-flex items-center text-sm font-medium text-slate-200 group-hover:text-white">
+      <span class="mt-5 inline-flex items-center text-sm font-medium text-slate-200 group-hover:text-white">
         {{ openDestinationLabel }}
       </span>
     </a>

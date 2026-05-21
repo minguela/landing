@@ -11,6 +11,7 @@ const githubUrl = config.public.githubUrl
 const linkedinUrl = config.public.linkedinUrl
 const email = config.public.email
 const emailHref = `mailto:${email}`
+const cvHref = '/cv/david-minguela-cv.pdf'
 
 const externalLinks = computed(() => [
   ...content.value.appEndpoints,
@@ -25,6 +26,13 @@ const externalLinks = computed(() => [
     href: linkedinUrl || emailHref,
     description: content.value.copy.links.linkedinDescription,
     external: !!linkedinUrl
+  },
+  {
+    label: locale.value === 'es' ? 'CV (PDF)' : 'CV (PDF)',
+    href: cvHref,
+    description: content.value.copy.links.cvDescription,
+    external: true,
+    monospace: true
   },
   {
     label: email,
@@ -71,20 +79,21 @@ useSeoMeta(() => ({
       :github-url="githubUrl"
       :linkedin-url="linkedinUrl"
       :email-href="emailHref"
+      :cv-href="cvHref"
       :email-label="email"
       :hero-signals="content.heroSignals"
       :copy="content.copy.hero"
       :live-apps="content.appEndpoints"
     />
 
-    <section id="projects" class="shell section-space pt-4">
+    <section id="projects" class="shell section-space pt-2 sm:pt-4">
       <SectionHeading
         :eyebrow="content.copy.sections.projects.eyebrow"
         :title="content.copy.sections.projects.title"
         :description="content.copy.sections.projects.description"
       />
 
-      <div class="mt-10 grid gap-4 lg:grid-cols-2">
+      <div class="mt-7 grid gap-3 sm:mt-9 sm:gap-4 lg:grid-cols-2">
         <ProjectCard
           v-for="project in content.projects"
           :key="project.name"
@@ -103,7 +112,7 @@ useSeoMeta(() => ({
         :description="content.copy.sections.stack.description"
       />
 
-      <div class="mt-10">
+      <div class="mt-7 sm:mt-9">
         <StackCloud :groups="content.stackGroups" />
       </div>
     </section>
@@ -115,7 +124,7 @@ useSeoMeta(() => ({
         :description="content.copy.sections.apps.description"
       />
 
-      <div class="mt-10">
+      <div class="mt-7 sm:mt-9">
         <LinksGrid
           :items="externalLinks"
           :link-label="content.copy.links.label"
@@ -131,7 +140,7 @@ useSeoMeta(() => ({
         :description="content.copy.sections.focus.description"
       />
 
-      <div class="mt-10">
+      <div class="mt-7 sm:mt-9">
         <FocusPanel :items="content.currentFocus" :label="content.copy.focusLabel" />
       </div>
     </section>
