@@ -3,6 +3,7 @@ import { siteContent } from '~~/data/site'
 
 const config = useRuntimeConfig()
 const { locale, localeMeta, toggleLocale } = useSiteI18n()
+const analytics = useAnalytics()
 
 const content = computed(() => siteContent[locale.value])
 
@@ -28,7 +29,7 @@ const externalLinks = computed(() => [
     external: !!linkedinUrl
   },
   {
-    label: locale.value === 'es' ? 'CV (PDF)' : 'CV (PDF)',
+    label: 'CV (PDF)',
     href: cvHref,
     description: content.value.copy.links.cvDescription,
     external: true,
@@ -42,6 +43,17 @@ const externalLinks = computed(() => [
     monospace: true
   }
 ])
+
+const onToggleLocale = () => {
+  const from = locale.value
+  const to = from === 'en' ? 'es' : 'en'
+  analytics.trackLocaleSwitch(from, to)
+  toggleLocale()
+}
+
+onMounted(() => {
+  analytics.trackPageView(locale.value, '/')
+})
 
 useHead(() => ({
   htmlAttrs: {
@@ -72,7 +84,7 @@ useSeoMeta(() => ({
       :locale-flag="localeMeta.flag"
       :locale-label="localeMeta.code"
       :locale-switch-label="localeMeta.switchLabel"
-      @toggle-locale="toggleLocale"
+      @toggle-locale="onToggleLocale"
     />
 
     <HeroSection
@@ -80,6 +92,7 @@ useSeoMeta(() => ({
       :linkedin-url="linkedinUrl"
       :email-href="emailHref"
       :cv-href="cvHref"
+      :locale="locale"
       :email-label="email"
       :hero-signals="content.heroSignals"
       :copy="content.copy.hero"
@@ -101,6 +114,7 @@ useSeoMeta(() => ({
           :project-label="content.copy.projectCard.label"
           :footer-label="content.copy.projectCard.footer"
           :view-destination-label="content.copy.projectCard.viewDestination"
+          :locale="locale"
         />
       </div>
     </section>
@@ -129,6 +143,7 @@ useSeoMeta(() => ({
           :items="externalLinks"
           :link-label="content.copy.links.label"
           :open-destination-label="content.copy.links.openDestination"
+          :locale="locale"
         />
       </div>
     </section>

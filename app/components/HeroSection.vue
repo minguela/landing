@@ -1,9 +1,10 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   githubUrl: string
   linkedinUrl: string
   emailHref: string
   cvHref: string
+  locale: 'en' | 'es'
   emailLabel: string
   heroSignals: string[]
   copy: {
@@ -25,6 +26,28 @@ defineProps<{
   }
   liveApps: Array<{ label: string, description: string }>
 }>()
+
+const analytics = useAnalytics()
+
+const onHeroProjects = () => {
+  analytics.trackHeroCta('hero_projects', props.copy.ctaProjects, '#projects', props.locale)
+}
+
+const onHeroGithub = () => {
+  analytics.trackProfileClick('github', props.githubUrl, props.locale, 'hero')
+}
+
+const onHeroLinkedinOrEmail = () => {
+  if (props.linkedinUrl) {
+    analytics.trackProfileClick('linkedin', props.linkedinUrl, props.locale, 'hero')
+    return
+  }
+  analytics.trackProfileClick('email', props.emailHref, props.locale, 'hero')
+}
+
+const onHeroCv = () => {
+  analytics.trackCvDownload(props.locale, 'hero')
+}
 </script>
 
 <template>
@@ -62,6 +85,7 @@ defineProps<{
             <a
               href="#projects"
               class="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-slate-950 hover:translate-y-[-1px] hover:bg-slate-100"
+              @click="onHeroProjects"
             >
               {{ copy.ctaProjects }}
             </a>
@@ -70,6 +94,7 @@ defineProps<{
               target="_blank"
               rel="noreferrer"
               class="inline-flex min-h-11 items-center justify-center rounded-full border border-white/14 bg-white/6 px-5 py-2.5 text-sm font-semibold text-white hover:border-white/24 hover:bg-white/10"
+              @click="onHeroGithub"
             >
               {{ copy.ctaGithub }}
             </a>
@@ -78,6 +103,7 @@ defineProps<{
               :target="linkedinUrl ? '_blank' : undefined"
               :rel="linkedinUrl ? 'noreferrer' : undefined"
               class="inline-flex min-h-11 items-center justify-center rounded-full border border-white/14 bg-transparent px-5 py-2.5 text-sm font-semibold text-slate-200 hover:border-white/24 hover:bg-white/6 hover:text-white"
+              @click="onHeroLinkedinOrEmail"
             >
               {{ linkedinUrl ? copy.ctaLinkedin : copy.ctaEmail }}
             </a>
@@ -86,6 +112,7 @@ defineProps<{
               target="_blank"
               rel="noreferrer"
               class="inline-flex min-h-11 items-center justify-center rounded-full border border-white/14 bg-transparent px-5 py-2.5 text-sm font-semibold text-slate-200 hover:border-white/24 hover:bg-white/6 hover:text-white"
+              @click="onHeroCv"
             >
               {{ copy.ctaCv }}
             </a>

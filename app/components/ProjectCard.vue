@@ -1,13 +1,21 @@
 <script setup lang="ts">
 import type { ProjectItem } from '~~/data/site'
 
-defineProps<{
+const props = defineProps<{
   project: ProjectItem
   featured?: boolean
   projectLabel: string
   footerLabel: string
   viewDestinationLabel: string
+  locale: 'en' | 'es'
 }>()
+
+const analytics = useAnalytics()
+
+const onProjectClick = () => {
+  const appId = props.project.href.includes('menu-planner') ? 'menu_planner' : 'renovaciones'
+  analytics.trackAppClick(appId, props.project.href, props.locale, 'projects')
+}
 </script>
 
 <template>
@@ -46,6 +54,7 @@ defineProps<{
         target="_blank"
         rel="noreferrer"
         class="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-white/14 bg-white/6 px-4 py-2 text-sm font-semibold text-white hover:border-white/24 hover:bg-white/10"
+        @click="onProjectClick"
       >
         {{ viewDestinationLabel }}
       </a>

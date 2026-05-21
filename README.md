@@ -32,7 +32,7 @@ Si `NUXT_PUBLIC_LINKEDIN_URL` no está definida, la landing mostrará una varian
 
 - `app/pages/index.vue` → composición de la landing
 - `app/components/*` → bloques UI reutilizables
-- `app/data/site.ts` → contenido data-driven
+- `data/site.ts` → contenido data-driven
 - `app/assets/css/main.css` → tema y utilidades visuales
 - `public/favicon.svg` → favicon placeholder
 - `public/og-image.svg` → imagen Open Graph
@@ -55,3 +55,18 @@ pnpm preview
 ## Deploy recomendado
 
 Vercel es la opción principal. También queda documentado un handoff para correrlo en servidor propio con PM2 o Docker.
+
+## Analytics (Fase 1)
+
+Se ha activado instrumentación base con Vercel Analytics:
+
+- Tráfico/páginas en dashboard de Vercel.
+- Eventos custom para:
+  - `page_view`
+  - `locale_switch`
+  - `cta_click` (hero)
+  - `app_link_click` (Menu Planner / Renovaciones)
+  - `profile_link_click` (GitHub / LinkedIn / Email)
+  - `cv_download_click`
+
+No requiere variables extra para Fase 1 (usa integración de Vercel).
