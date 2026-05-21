@@ -109,9 +109,9 @@ export const siteContent: Record<Locale, SiteContent> = {
       {
         name: 'Menu Planner',
         slug: '01',
-        tagline: 'Nutrition planning app with OCR, AI and resilient delivery flows',
+        tagline: 'Nutrition planning app shaped around OCR, AI and reliable delivery flows',
         description:
-          'A nutrition planning product that connects self-hosted OCR, AI workflows, Supabase and Vercel with automatic fallback to keep the user experience stable end to end.',
+          'A nutrition planning product that ties together self-hosted OCR, AI workflows, Supabase and Vercel, with automatic fallback in the places where reliability matters most.',
         highlights: ['OCR + AI', 'Supabase', 'Vercel', 'Docker fallback'],
         status: 'Product + infrastructure',
         href: 'https://menu-planner.dminguela.es'
@@ -119,9 +119,9 @@ export const siteContent: Record<Locale, SiteContent> = {
       {
         name: 'Renovaciones App',
         slug: '02',
-        tagline: 'Planning workflows for renovation and execution-heavy projects',
+        tagline: 'Planning workflows for renovation projects with a clear operational layer',
         description:
-          'An app focused on renovation planning, operational clarity and product structure for workflows that need to stay practical, understandable and scalable.',
+          'An app for renovation planning that keeps scope, decisions and execution visible without turning the workflow into a mess.',
         highlights: ['Product UX', 'Planning', 'Frontend workflows', 'Operations'],
         status: 'App in evolution',
         href: 'https://renovaciones.dminguela.es'
@@ -148,33 +148,33 @@ export const siteContent: Record<Locale, SiteContent> = {
     currentFocus: [
       {
         title: 'AI-assisted workflows',
-        text: 'Designing interfaces and systems where AI reduces friction, supports decisions and fits cleanly into real product workflows.'
+        text: 'Designing interfaces and systems where AI helps with the real work instead of feeling bolted on top of it.'
       },
       {
         title: 'OCR pipelines',
-        text: 'Building OCR flows with fallback, observability and practical delivery so documents become usable product inputs.'
+        text: 'Building OCR flows with fallback and observability so documents can move through a product without becoming an operational headache.'
       },
       {
         title: 'Self-hosted automation',
-        text: 'Exploring controllable, efficient infrastructure for automation that benefits from owning the operational layer.'
+        text: 'Exploring self-hosted automation when owning the stack gives more control, better visibility and fewer moving parts.'
       },
       {
         title: 'Product-oriented frontend architecture',
-        text: 'Creating frontend systems that scale in clarity, speed, maintainability and developer experience as products evolve.'
+        text: 'Building frontend systems that stay clear, fast and maintainable as the product gets bigger and the team moves faster.'
       }
     ],
     appEndpoints: [
       {
         label: 'menu-planner.dminguela.es',
         href: 'https://menu-planner.dminguela.es',
-        description: 'Nutrition planning product with OCR and AI-assisted flows.',
+        description: 'Nutrition planning app with OCR, AI-assisted flows and a delivery layer built to hold up in practice.',
         external: true,
         monospace: true
       },
       {
         label: 'renovaciones.dminguela.es',
         href: 'https://renovaciones.dminguela.es',
-        description: 'Entry point for renovation planning and execution workflows.',
+        description: 'Entry point for renovation planning, operational clarity and execution-facing workflows.',
         external: true,
         monospace: true
       }
@@ -190,8 +190,8 @@ export const siteContent: Record<Locale, SiteContent> = {
       hero: {
         chip: 'Senior frontend developer · product-minded builder',
         title: 'David Minguela',
-        lead: 'Senior Frontend Developer. Product-minded builder. Designing polished web apps, modular frontend systems and AI-enabled workflows with real product intent.',
-        body: 'Built on a background of Vue and Nuxt architecture, large-scale migrations, product definition and technical leadership, with current focus on homelab experimentation, OCR pipelines and self-hosted automation.',
+        lead: 'Senior Frontend Developer building polished web products, strong frontend systems and AI-assisted workflows that solve real operational problems.',
+        body: 'My background is in Vue and Nuxt architecture, large migrations, product definition and technical leadership. Lately I have been spending most of my time around OCR pipelines, automation and the systems behind them.',
         ctaProjects: 'View projects',
         ctaGithub: 'GitHub',
         ctaLinkedin: 'LinkedIn',
@@ -200,42 +200,42 @@ export const siteContent: Record<Locale, SiteContent> = {
         structureTitle: 'dminguela.es ecosystem',
         structureStatus: 'ready for deployment',
         structureRootLabel: 'root',
-        structureRootDescription: 'Main entry point for portfolio, product direction and app discovery.',
+        structureRootDescription: 'Main entry point for portfolio, product context and the apps that are already live.',
         contactEyebrow: 'contact'
       },
       sections: {
         projects: {
           eyebrow: 'Selected projects',
-          title: 'Apps built with product intent and technical depth',
-          description: 'A focused selection of products that show how product thinking, frontend craft and practical infrastructure can live in the same ecosystem.'
+          title: 'Products with clear product thinking and real technical depth',
+          description: 'A tight selection of products that shows how frontend craft, product judgment and practical infrastructure can reinforce each other.'
         },
         stack: {
           eyebrow: 'Technical stack',
-          title: 'Nuxt-first frontend, automation-aware infrastructure',
-          description: 'The site makes a frontend-first impression, while still signalling platform judgment around deployment, automation and developer experience.'
+          title: 'Nuxt-first frontend with a strong sense of systems behind it',
+          description: 'The frontend is the visible layer, but the work also reflects judgment around deployment, automation and how products behave once they are live.'
         },
         apps: {
           eyebrow: 'Apps and links',
-          title: 'A clean hub for the apps that are already live',
-          description: 'Only the currently available products are surfaced here, alongside the core professional links.'
+          title: 'A clean hub for the apps that are already public',
+          description: 'Only the products that are actually live are surfaced here, together with the core professional links.'
         },
         focus: {
           eyebrow: 'Current focus',
-          title: 'Building practical systems around AI, OCR and maintainable frontend architecture',
-          description: 'Frontend work here is connected to automation, document pipelines, modern deployment and product decisions that need to hold up in the real world.'
+          title: 'Current work around AI, OCR and frontend systems that age well',
+          description: 'The frontend work is tied to automation, document pipelines and product decisions that still need to make sense once the project leaves the prototype stage.'
         }
       },
       projectCard: {
         label: 'Project',
-        footer: 'Part of a broader ecosystem across product, frontend and infrastructure.',
+        footer: 'Part of a broader product and frontend ecosystem built around clarity, reliability and execution.',
         viewDestination: 'View destination'
       },
       links: {
         label: 'link',
         openDestination: 'Open destination',
-        githubDescription: 'Code, experiments and published projects from the main GitHub account.',
-        linkedinDescription: 'Professional profile for network and additional context.',
-        emailDescription: 'Direct channel for professional contact and collaborations.'
+        githubDescription: 'Code, experiments and public work from the main GitHub account.',
+        linkedinDescription: 'Professional profile with background, experience and context.',
+        emailDescription: 'Direct contact for product, frontend or collaboration conversations.'
       },
       focusLabel: 'current focus',
       footer: {
@@ -244,7 +244,7 @@ export const siteContent: Record<Locale, SiteContent> = {
       },
       seo: {
         title: 'Portfolio · Senior Frontend Developer',
-        description: 'Portfolio and technical hub of David Minguela: senior frontend developer focused on Vue/Nuxt, product architecture, OCR pipelines, automation and self-hosting.'
+        description: 'Portfolio and technical hub of David Minguela, a senior frontend developer focused on Vue, Nuxt, product architecture, OCR workflows and automation.'
       }
     }
   },
@@ -260,9 +260,9 @@ export const siteContent: Record<Locale, SiteContent> = {
       {
         name: 'Menu Planner',
         slug: '01',
-        tagline: 'Aplicación de planificación nutricional con OCR, IA y flujos resilientes',
+        tagline: 'Aplicación de planificación nutricional pensada alrededor de OCR, IA y flujos fiables',
         description:
-          'Un producto de planificación nutricional que conecta OCR self-hosted, flujos con IA, Supabase y Vercel con fallback automático para mantener estable la experiencia de usuario.',
+          'Un producto de planificación nutricional que conecta OCR self-hosted, flujos con IA, Supabase y Vercel, con fallback automático justo en los puntos donde la fiabilidad importa de verdad.',
         highlights: ['OCR + IA', 'Supabase', 'Vercel', 'Fallback Docker'],
         status: 'Producto + infraestructura',
         href: 'https://menu-planner.dminguela.es'
@@ -270,9 +270,9 @@ export const siteContent: Record<Locale, SiteContent> = {
       {
         name: 'Renovaciones App',
         slug: '02',
-        tagline: 'Flujos de planificación para reformas y proyectos de ejecución',
+        tagline: 'Flujos de planificación para reformas con una capa operativa clara',
         description:
-          'Una app centrada en planificación de reformas, claridad operativa y estructura de producto para flujos que deben seguir siendo prácticos, entendibles y escalables.',
+          'Una app para planificación de reformas que mantiene alcance, decisiones y ejecución visibles sin convertir el flujo en algo confuso.',
         highlights: ['Product UX', 'Planificación', 'Flujos frontend', 'Operaciones'],
         status: 'App en evolución',
         href: 'https://renovaciones.dminguela.es'
@@ -299,33 +299,33 @@ export const siteContent: Record<Locale, SiteContent> = {
     currentFocus: [
       {
         title: 'Workflows asistidos por IA',
-        text: 'Diseñando interfaces y sistemas donde la IA reduce fricción, ayuda a decidir y encaja bien dentro de flujos de producto reales.'
+        text: 'Diseñando interfaces y sistemas donde la IA ayuda con el trabajo real, no como una capa añadida porque sí.'
       },
       {
         title: 'Pipelines OCR',
-        text: 'Construyendo flujos OCR con fallback, observabilidad y entrega práctica para convertir documentos en entradas útiles de producto.'
+        text: 'Construyendo flujos OCR con fallback y observabilidad para que los documentos entren en el producto sin convertirse en un problema operativo.'
       },
       {
         title: 'Automatización self-hosted',
-        text: 'Explorando infraestructura controlable y eficiente para automatizaciones que se benefician de poseer la capa operativa.'
+        text: 'Explorando automatización self-hosted cuando tener el control del stack aporta más visibilidad, más control y menos dependencias innecesarias.'
       },
       {
         title: 'Arquitectura frontend orientada a producto',
-        text: 'Creando sistemas frontend que escalan en claridad, velocidad, mantenibilidad y experiencia de desarrollo a medida que evoluciona el producto.'
+        text: 'Construyendo sistemas frontend que siguen siendo claros, rápidos y mantenibles cuando el producto crece y el equipo necesita moverse con más velocidad.'
       }
     ],
     appEndpoints: [
       {
         label: 'menu-planner.dminguela.es',
         href: 'https://menu-planner.dminguela.es',
-        description: 'Producto de planificación nutricional con OCR y flujos asistidos por IA.',
+        description: 'Aplicación de planificación nutricional con OCR, flujos asistidos por IA y una capa de entrega pensada para aguantar en producción.',
         external: true,
         monospace: true
       },
       {
         label: 'renovaciones.dminguela.es',
         href: 'https://renovaciones.dminguela.es',
-        description: 'Punto de entrada para planificación de reformas y flujos de ejecución.',
+        description: 'Punto de entrada para planificación de reformas, claridad operativa y flujos orientados a ejecución.',
         external: true,
         monospace: true
       }
@@ -341,8 +341,8 @@ export const siteContent: Record<Locale, SiteContent> = {
       hero: {
         chip: 'Senior frontend developer · product-minded builder',
         title: 'David Minguela',
-        lead: 'Senior Frontend Developer. Product-minded builder. Diseñando apps web pulidas, sistemas frontend modulares y workflows con IA con una intención real de producto.',
-        body: 'Con experiencia en arquitectura Vue y Nuxt, migraciones de gran escala, definición de producto y liderazgo técnico, y con foco actual en homelab, pipelines OCR y automatización self-hosted.',
+        lead: 'Senior Frontend Developer centrado en productos web bien resueltos, sistemas frontend sólidos y workflows asistidos por IA que atacan problemas reales de operación.',
+        body: 'Vengo de arquitectura en Vue y Nuxt, migraciones de gran escala, definición de producto y liderazgo técnico. Últimamente estoy muy metido en pipelines OCR, automatización y en los sistemas que los sostienen.',
         ctaProjects: 'Ver proyectos',
         ctaGithub: 'GitHub',
         ctaLinkedin: 'LinkedIn',
@@ -351,42 +351,42 @@ export const siteContent: Record<Locale, SiteContent> = {
         structureTitle: 'ecosistema dminguela.es',
         structureStatus: 'listo para desplegar',
         structureRootLabel: 'root',
-        structureRootDescription: 'Punto de entrada principal para portfolio, dirección de producto y descubrimiento de apps.',
+        structureRootDescription: 'Punto de entrada principal para el portfolio, el contexto de producto y las apps que ya están publicadas.',
         contactEyebrow: 'contacto'
       },
       sections: {
         projects: {
           eyebrow: 'Proyectos seleccionados',
-          title: 'Apps construidas con intención de producto y profundidad técnica',
-          description: 'Una selección enfocada de productos que muestra cómo el pensamiento de producto, el oficio frontend y la infraestructura práctica pueden convivir en el mismo ecosistema.'
+          title: 'Productos con criterio de producto y profundidad técnica real',
+          description: 'Una selección corta de productos que deja ver cómo se refuerzan entre sí el oficio frontend, el criterio de producto y una infraestructura práctica.'
         },
         stack: {
           eyebrow: 'Stack técnico',
-          title: 'Frontend Nuxt-first con sensibilidad por automatización e infraestructura',
-          description: 'La web transmite una impresión claramente frontend, manteniendo criterio de plataforma en despliegue, automatización y developer experience.'
+          title: 'Frontend Nuxt-first con una capa de sistemas bien pensada detrás',
+          description: 'El frontend es la parte visible, pero el trabajo también refleja criterio sobre despliegue, automatización y cómo se comporta el producto cuando ya está vivo.'
         },
         apps: {
           eyebrow: 'Apps y enlaces',
-          title: 'Un hub limpio para las aplicaciones que ya están activas',
-          description: 'Aquí solo se muestran los productos actualmente disponibles junto con los enlaces profesionales principales.'
+          title: 'Un hub limpio para las aplicaciones que ya son públicas',
+          description: 'Aquí solo aparecen los productos que están realmente activos, junto con los enlaces profesionales principales.'
         },
         focus: {
           eyebrow: 'Foco actual',
-          title: 'Construyendo sistemas prácticos alrededor de IA, OCR y arquitectura frontend mantenible',
-          description: 'El trabajo frontend aquí se conecta con automatización, pipelines documentales, despliegue moderno y decisiones de producto que deben sostenerse en el mundo real.'
+          title: 'Trabajo actual alrededor de IA, OCR y sistemas frontend que envejecen bien',
+          description: 'El trabajo frontend se cruza aquí con automatización, pipelines documentales y decisiones de producto que tienen que seguir teniendo sentido después del prototipo.'
         }
       },
       projectCard: {
         label: 'Proyecto',
-        footer: 'Parte de un ecosistema más amplio entre producto, frontend e infraestructura.',
+        footer: 'Parte de un ecosistema más amplio construido alrededor de claridad, fiabilidad y ejecución.',
         viewDestination: 'Ver destino'
       },
       links: {
         label: 'enlace',
         openDestination: 'Abrir destino',
-        githubDescription: 'Código, experimentos y proyectos publicados desde la cuenta principal de GitHub.',
-        linkedinDescription: 'Perfil profesional para networking y contexto adicional.',
-        emailDescription: 'Canal directo para contacto profesional y colaboraciones.'
+        githubDescription: 'Código, experimentos y trabajo público desde la cuenta principal de GitHub.',
+        linkedinDescription: 'Perfil profesional con experiencia, recorrido y contexto adicional.',
+        emailDescription: 'Contacto directo para hablar de producto, frontend o colaboraciones.'
       },
       focusLabel: 'foco actual',
       footer: {
@@ -400,3 +400,4 @@ export const siteContent: Record<Locale, SiteContent> = {
     }
   }
 }
+
