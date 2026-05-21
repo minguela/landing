@@ -70,3 +70,18 @@ Se ha activado instrumentación base con Vercel Analytics:
   - `cv_download_click`
 
 No requiere variables extra para Fase 1 (usa integración de Vercel).
+
+## Analytics (Fase 2)
+
+Añadido sobre Fase 1:
+
+- `section_view` con `IntersectionObserver` para medir alcance real por secciones (`projects`, `stack`, `apps`, `focus`).
+- `page_view` enriquecido con adquisición:
+  - `referrer_domain`
+  - `utm_source`
+  - `utm_medium`
+  - `utm_campaign`
+
+Con esto ya puedes montar en Vercel Analytics:
+- funnel básico: `page_view` -> `cta_click(hero_projects)` -> `app_link_click`
+- cortes por idioma (`locale`) y por campaña UTM.

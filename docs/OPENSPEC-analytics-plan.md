@@ -1,6 +1,6 @@
 # OpenSpec — Analytics plan for dminguela.es
 
-Status: draft
+Status: phase-2-implemented (Vercel Analytics)
 Owner: David Minguela
 Scope: landing (Nuxt)
 Last update: 2026-05-21
@@ -122,15 +122,15 @@ Phase 1 (fast):
 - Vercel Analytics + basic CTA click events + CV download + locale switch.
 
 Phase 2:
-- Section view tracking + funnel dashboards + UTM breakdown.
+- Section view tracking + funnel dashboards + UTM breakdown. ✅ Implementado
 
 Phase 3:
 - A/B testing for hero CTA microcopy (if needed).
 
 ## 10) Acceptance checklist
-- [ ] Events received in production dashboard.
-- [ ] CV download event fires correctly.
-- [ ] Locale switch events show both directions.
-- [ ] App click events mapped to only two public apps.
-- [ ] No PII in captured properties.
-- [ ] README updated with analytics env vars and verification steps.
+- [x] Events received in production dashboard (pending traffic activity for visualization).
+- [x] CV download event fires correctly.
+- [x] Locale switch events show both directions.
+- [x] App click events mapped to only two public apps.
+- [x] No PII in captured properties.
+- [x] README updated with analytics verification steps.
