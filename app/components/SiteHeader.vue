@@ -3,13 +3,27 @@ const props = defineProps<{
   githubUrl: string
   linkedinUrl: string
   emailHref: string
+  nav: {
+    projects: string
+    stack: string
+    apps: string
+    focus: string
+    contact: string
+  }
+  localeFlag: string
+  localeLabel: string
+  localeSwitchLabel: string
+}>()
+
+const emit = defineEmits<{
+  toggleLocale: []
 }>()
 
 const links = computed(() => [
-  { label: 'Projects', href: '#projects' },
-  { label: 'Stack', href: '#stack' },
-  { label: 'Apps', href: '#apps' },
-  { label: 'Focus', href: '#focus' },
+  { label: props.nav.projects, href: '#projects' },
+  { label: props.nav.stack, href: '#stack' },
+  { label: props.nav.apps, href: '#apps' },
+  { label: props.nav.focus, href: '#focus' },
   { label: 'GitHub', href: props.githubUrl, external: true },
   ...(props.linkedinUrl ? [{ label: 'LinkedIn', href: props.linkedinUrl, external: true }] : [])
 ])
@@ -41,12 +55,25 @@ const links = computed(() => [
         </a>
       </nav>
 
-      <a
-        :href="emailHref"
-        class="hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white hover:border-white/20 hover:bg-white/8 sm:inline-flex"
-      >
-        Contact
-      </a>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button
+          type="button"
+          :aria-label="localeSwitchLabel"
+          :title="localeSwitchLabel"
+          class="inline-flex h-11 min-w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 px-3 text-base text-white hover:border-white/20 hover:bg-white/8"
+          @click="emit('toggleLocale')"
+        >
+          <span aria-hidden="true">{{ localeFlag }}</span>
+          <span class="ml-2 hidden text-xs font-semibold uppercase tracking-[0.22em] text-slate-300 sm:inline">{{ localeLabel }}</span>
+        </button>
+
+        <a
+          :href="emailHref"
+          class="hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white hover:border-white/20 hover:bg-white/8 sm:inline-flex"
+        >
+          {{ nav.contact }}
+        </a>
+      </div>
     </div>
   </header>
 </template>

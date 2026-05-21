@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { appEndpoints, currentFocus, heroSignals, projects, stackGroups } from '~/data/site'
+import { siteContent } from '~~/data/site'
 
 const config = useRuntimeConfig()
+const { locale, localeMeta, toggleLocale } = useSiteI18n()
+
+const content = computed(() => siteContent[locale.value])
 
 const siteUrl = config.public.siteUrl
 const githubUrl = config.public.githubUrl
@@ -10,107 +13,136 @@ const email = config.public.email
 const emailHref = `mailto:${email}`
 
 const externalLinks = computed(() => [
-  ...appEndpoints,
+  ...content.value.appEndpoints,
   {
     label: 'GitHub',
     href: githubUrl,
-    description: 'Code, experiments and published projects from the main GitHub account.',
+    description: content.value.copy.links.githubDescription,
     external: true
   },
   {
-    label: linkedinUrl ? 'LinkedIn' : 'LinkedIn (configurable)',
+    label: 'LinkedIn',
     href: linkedinUrl || emailHref,
-    description: linkedinUrl
-      ? 'Professional profile for network and additional context.'
-      : 'Add your LinkedIn URL in .env if you want to surface it in production.',
+    description: content.value.copy.links.linkedinDescription,
     external: !!linkedinUrl
   },
   {
     label: email,
     href: emailHref,
-    description: 'Direct channel for professional contact and collaborations.',
+    description: content.value.copy.links.emailDescription,
     external: false,
     monospace: true
   }
 ])
 
-useSeoMeta({
-  title: 'Portfolio · Senior Frontend Developer',
-  description: config.public.siteDescription,
+useHead(() => ({
+  htmlAttrs: {
+    lang: localeMeta.value.htmlLang
+  }
+}))
+
+useSeoMeta(() => ({
+  title: content.value.copy.seo.title,
+  description: content.value.copy.seo.description,
   ogTitle: config.public.siteName,
-  ogDescription: config.public.siteDescription,
+  ogDescription: content.value.copy.seo.description,
   ogUrl: siteUrl,
   ogImage: `${siteUrl}/og-image.svg`,
   twitterTitle: config.public.siteName,
-  twitterDescription: config.public.siteDescription,
+  twitterDescription: content.value.copy.seo.description,
   twitterImage: `${siteUrl}/og-image.svg`
-})
+}))
 </script>
 
 <template>
   <main>
-    <SiteHeader :github-url="githubUrl" :linkedin-url="linkedinUrl" :email-href="emailHref" />
+    <SiteHeader
+      :github-url="githubUrl"
+      :linkedin-url="linkedinUrl"
+      :email-href="emailHref"
+      :nav="content.copy.nav"
+      :locale-flag="localeMeta.flag"
+      :locale-label="localeMeta.code"
+      :locale-switch-label="localeMeta.switchLabel"
+      @toggle-locale="toggleLocale"
+    />
 
     <HeroSection
       :github-url="githubUrl"
       :linkedin-url="linkedinUrl"
       :email-href="emailHref"
       :email-label="email"
-      :hero-signals="heroSignals"
+      :hero-signals="content.heroSignals"
+      :copy="content.copy.hero"
+      :live-apps="content.appEndpoints"
     />
 
     <section id="projects" class="shell section-space pt-4">
       <SectionHeading
-        eyebrow="Selected projects"
-        title="Apps and systems built with product intent and technical depth"
-        description="A focused selection of projects that show how product thinking, frontend craft and practical infrastructure can live in the same ecosystem."
+        :eyebrow="content.copy.sections.projects.eyebrow"
+        :title="content.copy.sections.projects.title"
+        :description="content.copy.sections.projects.description"
       />
 
-      <div class="mt-10 grid gap-4 lg:grid-cols-3">
+      <div class="mt-10 grid gap-4 lg:grid-cols-2">
         <ProjectCard
-          v-for="project in projects"
+          v-for="project in content.projects"
           :key="project.name"
           :project="project"
+          :project-label="content.copy.projectCard.label"
+          :footer-label="content.copy.projectCard.footer"
+          :view-destination-label="content.copy.projectCard.viewDestination"
         />
       </div>
     </section>
 
     <section id="stack" class="shell section-space pt-0">
       <SectionHeading
-        eyebrow="Technical stack"
-        title="Nuxt-first frontend, automation-aware infrastructure"
-        description="The site makes a frontend-first impression, while still signalling platform judgment around deployment, automation, observability and developer experience."
+        :eyebrow="content.copy.sections.stack.eyebrow"
+        :title="content.copy.sections.stack.title"
+        :description="content.copy.sections.stack.description"
       />
 
       <div class="mt-10">
-        <StackCloud :groups="stackGroups" />
+        <StackCloud :groups="content.stackGroups" />
       </div>
     </section>
 
     <section id="apps" class="shell section-space pt-0">
       <SectionHeading
-        eyebrow="Apps and links"
-        title="A central entry point for portfolio, products and future subdomains"
-        description="Structured as a clean hub for current apps, planned endpoints and professional links, without feeling overloaded or generic."
+        :eyebrow="content.copy.sections.apps.eyebrow"
+        :title="content.copy.sections.apps.title"
+        :description="content.copy.sections.apps.description"
       />
 
       <div class="mt-10">
-        <LinksGrid :items="externalLinks" />
+        <LinksGrid
+          :items="externalLinks"
+          :link-label="content.copy.links.label"
+          :open-destination-label="content.copy.links.openDestination"
+        />
       </div>
     </section>
 
     <section id="focus" class="shell section-space pt-0">
       <SectionHeading
-        eyebrow="Current focus"
-        title="Building practical systems around AI, OCR and maintainable frontend architecture"
-        description="Frontend work here is connected to automation, document pipelines, modern deployment and product decisions that need to hold up in the real world."
+        :eyebrow="content.copy.sections.focus.eyebrow"
+        :title="content.copy.sections.focus.title"
+        :description="content.copy.sections.focus.description"
       />
 
       <div class="mt-10">
-        <FocusPanel :items="currentFocus" />
+        <FocusPanel :items="content.currentFocus" :label="content.copy.focusLabel" />
       </div>
     </section>
 
-    <SiteFooter :github-url="githubUrl" :linkedin-url="linkedinUrl" :email-href="emailHref" />
+    <SiteFooter
+      :github-url="githubUrl"
+      :linkedin-url="linkedinUrl"
+      :email-href="emailHref"
+      :nav="{ projects: content.copy.nav.projects, apps: content.copy.nav.apps }"
+      :built-with-label="content.copy.footer.builtWith"
+      :email-label="content.copy.footer.email"
+    />
   </main>
 </template>

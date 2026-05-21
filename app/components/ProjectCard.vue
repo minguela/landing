@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import type { ProjectItem } from '~/data/site'
+import type { ProjectItem } from '~~/data/site'
 
 defineProps<{
   project: ProjectItem
   featured?: boolean
+  projectLabel: string
+  footerLabel: string
+  viewDestinationLabel: string
 }>()
 </script>
 
@@ -14,7 +17,7 @@ defineProps<{
   >
     <div class="flex items-start justify-between gap-4">
       <div>
-        <p class="font-mono text-xs uppercase tracking-[0.28em] text-slate-500">Project {{ project.slug }}</p>
+        <p class="font-mono text-xs uppercase tracking-[0.28em] text-slate-500">{{ projectLabel }} {{ project.slug }}</p>
         <h3 class="mt-3 text-2xl font-semibold tracking-[-0.05em] text-white sm:text-3xl">
           {{ project.name }}
         </h3>
@@ -40,14 +43,14 @@ defineProps<{
     </div>
 
     <div class="mt-8 flex items-center justify-between gap-4 border-t border-white/8 pt-5">
-      <p class="text-sm text-slate-400">Part of a broader ecosystem across product, frontend and infrastructure.</p>
+      <p class="text-sm text-slate-400">{{ footerLabel }}</p>
       <a
         :href="project.href"
         target="_blank"
         rel="noreferrer"
         class="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-2 text-sm font-semibold text-white hover:border-white/20 hover:bg-white/8"
       >
-        View destination
+        {{ viewDestinationLabel }}
       </a>
     </div>
   </article>

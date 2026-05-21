@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import type { LinkItem } from '~/data/site'
+import type { LinkItem } from '~~/data/site'
 
 defineProps<{
   items: LinkItem[]
+  linkLabel: string
+  openDestinationLabel: string
 }>()
 </script>
 
@@ -17,7 +19,7 @@ defineProps<{
       class="soft-card group flex h-full flex-col justify-between p-5 sm:p-6 hover:border-white/20 hover:bg-white/[0.045]"
     >
       <div>
-        <p class="text-xs uppercase tracking-[0.26em] text-slate-500">link</p>
+        <p class="text-xs uppercase tracking-[0.26em] text-slate-500">{{ linkLabel }}</p>
         <p
           class="mt-3 text-lg font-semibold text-white"
           :class="item.monospace ? 'font-mono text-base sm:text-lg' : 'tracking-[-0.03em]'"
@@ -28,7 +30,7 @@ defineProps<{
       </div>
 
       <span class="mt-6 inline-flex items-center text-sm font-medium text-slate-200 group-hover:text-white">
-        Open destination
+        {{ openDestinationLabel }}
       </span>
     </a>
   </div>

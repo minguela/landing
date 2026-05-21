@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { StackGroup } from '~/data/site'
+import type { StackGroup } from '~~/data/site'
 
 defineProps<{
   groups: StackGroup[]
