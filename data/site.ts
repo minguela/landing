@@ -23,6 +23,7 @@ export type LinkItem = {
 
 export const heroSignals = [
   'Frontend architecture',
+  'Vue / Nuxt migrations',
   'AI-assisted workflows',
   'OCR pipelines',
   'Self-hosted automation'
@@ -68,11 +69,15 @@ export const stackGroups: StackGroup[] = [
   },
   {
     title: 'Product + platform',
-    items: ['Supabase', 'Vercel', 'GitHub Actions', 'OpenAI']
+    items: ['Supabase', 'Vercel', 'GitHub Actions', 'OpenAI', 'AWS', 'CloudFront']
   },
   {
     title: 'Infra + automation',
     items: ['Docker', 'Traefik', 'Cloudflare', 'n8n']
+  },
+  {
+    title: 'Engineering practice',
+    items: ['Unit testing', 'Integration testing', 'Product definition', 'Technical leadership']
   }
 ]
 

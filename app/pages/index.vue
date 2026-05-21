@@ -35,7 +35,7 @@ const externalLinks = computed(() => [
 ])
 
 useSeoMeta({
-  title: 'Portfolio · Frontend Developer',
+  title: 'Portfolio · Senior Frontend Developer',
   description: config.public.siteDescription,
   ogTitle: config.public.siteName,
   ogDescription: config.public.siteDescription,

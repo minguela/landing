@@ -14,18 +14,18 @@ defineProps<{
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,140,255,0.16),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(77,226,197,0.12),transparent_26%)]" />
       <div class="relative grid gap-12 lg:grid-cols-[minmax(0,1.45fr)_minmax(340px,0.9fr)] lg:items-end">
         <div>
-          <div class="chip">Frontend developer · product-minded builder</div>
+          <div class="chip">Senior frontend developer · product-minded builder</div>
 
           <h1 class="mt-7 max-w-4xl text-5xl font-semibold tracking-[-0.08em] text-white sm:text-6xl lg:text-7xl">
             David Minguela
           </h1>
 
           <p class="mt-5 max-w-3xl text-xl font-medium tracking-[-0.03em] text-slate-100 sm:text-2xl">
-            Frontend Developer. Product-minded builder. Designing polished web apps, AI-enabled workflows and technical systems with real product intent.
+            Senior Frontend Developer. Product-minded builder. Designing polished web apps, modular frontend systems and AI-enabled workflows with real product intent.
           </p>
 
           <p class="mt-6 max-w-3xl text-base leading-8 text-slate-300 sm:text-lg">
-            A modern portfolio and app hub focused on frontend architecture, homelab experimentation, OCR pipelines and self-hosted automation.
+            Built on a background of Vue and Nuxt architecture, large-scale migrations, product definition and technical leadership, with current focus on homelab experimentation, OCR pipelines and self-hosted automation.
           </p>
 
           <div class="mt-8 flex flex-wrap gap-3">

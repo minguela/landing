@@ -2,8 +2,8 @@ import process from 'node:process'
 import tailwindcss from '@tailwindcss/vite'
 
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://dminguela.es'
-const siteName = 'David Minguela — Frontend Developer'
-const siteDescription = 'Portfolio y hub técnico de David Minguela: frontend product-minded, apps web, OCR pipelines, self-hosting y automatización.'
+const siteName = 'David Minguela — Senior Frontend Developer'
+const siteDescription = 'Portfolio y hub técnico de David Minguela: senior frontend developer especializado en Vue/Nuxt, arquitectura de producto, OCR pipelines, automatización y self-hosting.'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -18,7 +18,7 @@ export default defineNuxtConfig({
       siteName,
       siteDescription,
       githubUrl: process.env.NUXT_PUBLIC_GITHUB_URL || 'https://github.com/minguela',
-      linkedinUrl: process.env.NUXT_PUBLIC_LINKEDIN_URL || '',
+      linkedinUrl: process.env.NUXT_PUBLIC_LINKEDIN_URL || 'https://www.linkedin.com/in/david-minguela-7167bb98/',
       email: process.env.NUXT_PUBLIC_EMAIL || 'minguela9109@gmail.com'
     }
   },
