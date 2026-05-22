@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#050713"/>
+  <circle cx="980" cy="110" r="220" fill="#7C8CFF" fill-opacity="0.18"/>
+  <circle cx="260" cy="520" r="240" fill="#4DE2C5" fill-opacity="0.12"/>
+  <circle cx="620" cy="150" r="180" fill="#B98CFF" fill-opacity="0.10"/>
+  <rect x="72" y="72" width="1056" height="486" rx="36" fill="#0B1020" fill-opacity="0.82" stroke="#334155" stroke-opacity="0.45"/>
+  <text x="120" y="190" fill="#94A3B8" font-size="24" font-family="Inter, Arial, sans-serif" letter-spacing="6">DMINGUELA.ES</text>
+  <text x="120" y="290" fill="#F8FAFC" font-size="72" font-weight="700" font-family="Inter, Arial, sans-serif">David Minguela</text>
+  <text x="120" y="360" fill="#DCE6F6" font-size="34" font-weight="500" font-family="Inter, Arial, sans-serif">Frontend Developer · Product-minded builder</text>
+  <text x="120" y="430" fill="#9FB0CC" font-size="26" font-family="Inter, Arial, sans-serif">Nuxt · Vue · TypeScript · OCR pipelines · self-hosted automation</text>
+  <rect x="120" y="470" width="340" height="46" rx="23" fill="#F8FAFC"/>
+  <text x="150" y="500" fill="#0B1020" font-size="22" font-weight="700" font-family="Inter, Arial, sans-serif">Portfolio / apps / technical hub</text>
+</svg>
