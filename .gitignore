@@ -1,7 +1,13 @@
 # Ignore dot-prefixed files/directories everywhere by default
 .*
 */.*
+
+# Keep only the repo ignore file versioned; all other dotfiles stay local-only
 !/.gitignore
+!**/.gitkeep
+
+# Canonical non-dot env template to share required defaults
+!/env.example
 
 # Build outputs and dependencies
 node_modules
