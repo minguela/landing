@@ -21,10 +21,10 @@ const analytics = useAnalytics()
         <h2 class="text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">{{ copy.title }}</h2>
         <p class="mt-4 max-w-2xl text-base leading-7 text-slate-200 sm:text-lg">{{ copy.description }}</p>
       </div>
-      <div class="mt-7 grid gap-2.5 sm:flex lg:mt-0">
+      <div class="cta-actions mt-7 grid gap-2.5 sm:flex lg:mt-0">
         <a
           :href="emailHref"
-          class="button-primary"
+          class="button-primary cta-primary"
           @click="analytics.trackProfileClick('email', emailHref, locale, 'final_cta')"
         >
           {{ copy.contact }}
@@ -33,7 +33,7 @@ const analytics = useAnalytics()
           :href="cvHref"
           target="_blank"
           rel="noreferrer"
-          class="button-secondary"
+          class="button-secondary cta-secondary"
           @click="analytics.trackCvDownload(locale, 'final_cta')"
         >
           {{ copy.cv }}

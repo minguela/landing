@@ -208,6 +208,46 @@ body {
     @apply rounded-2xl;
   }
 
+  .cta-actions {
+    @apply items-stretch sm:items-center;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    min-width: 11rem;
+    min-height: 3.7rem;
+    border-radius: 1.1rem;
+    letter-spacing: 0.01em;
+  }
+
+  .cta-primary {
+    box-shadow:
+      0 16px 34px rgba(142, 231, 255, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  }
+
+  .cta-secondary {
+    border-color: rgba(180, 205, 226, 0.3);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+    color: rgba(238, 246, 255, 0.96);
+  }
+
+  .cta-secondary:hover {
+    border-color: rgba(142, 231, 255, 0.55);
+    background: linear-gradient(180deg, rgba(142, 231, 255, 0.19), rgba(142, 231, 255, 0.09));
+    color: #ffffff;
+  }
+
+  @media (max-width: 639px) {
+    .cta-primary,
+    .cta-secondary {
+      width: 100%;
+      min-width: 0;
+      min-height: 3.35rem;
+      border-radius: 0.95rem;
+    }
+  }
+
   .footer-link {
     @apply rounded-full border border-white/8 px-4 py-2 hover:bg-white/5 hover:text-white;
   }
