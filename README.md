@@ -19,7 +19,7 @@ Landing/portfolio personal moderna de David Minguela para dminguela.es.
 
 ## Variables opcionales
 
-Copia `.env.example` a `.env` si quieres personalizar enlaces públicos sin tocar el código:
+Copia `env.example` a `.env` si quieres personalizar enlaces públicos sin tocar el código:
 
 - `NUXT_PUBLIC_SITE_URL`
 - `NUXT_PUBLIC_GITHUB_URL`
