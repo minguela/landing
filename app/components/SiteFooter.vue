@@ -3,9 +3,11 @@ defineProps<{
   githubUrl: string
   linkedinUrl: string
   emailHref: string
+  cvHref: string
   nav: {
     projects: string
-    apps: string
+    work: string
+    stack: string
   }
   builtWithLabel: string
   emailLabel: string
@@ -24,11 +26,13 @@ const year = new Date().getFullYear()
         </div>
 
         <div class="flex flex-wrap items-center gap-3 text-sm text-slate-300">
-          <a href="#projects" class="rounded-full border border-white/8 px-4 py-2 hover:bg-white/5 hover:text-white">{{ nav.projects }}</a>
-          <a href="#apps" class="rounded-full border border-white/8 px-4 py-2 hover:bg-white/5 hover:text-white">{{ nav.apps }}</a>
-          <a :href="githubUrl" target="_blank" rel="noreferrer" class="rounded-full border border-white/8 px-4 py-2 hover:bg-white/5 hover:text-white">GitHub</a>
-          <a v-if="linkedinUrl" :href="linkedinUrl" target="_blank" rel="noreferrer" class="rounded-full border border-white/8 px-4 py-2 hover:bg-white/5 hover:text-white">LinkedIn</a>
-          <a :href="emailHref" class="rounded-full border border-white/8 px-4 py-2 hover:bg-white/5 hover:text-white">{{ emailLabel }}</a>
+          <a href="#projects" class="footer-link">{{ nav.projects }}</a>
+          <a href="#work" class="footer-link">{{ nav.work }}</a>
+          <a href="#stack" class="footer-link">{{ nav.stack }}</a>
+          <a :href="githubUrl" target="_blank" rel="noreferrer" class="footer-link">GitHub</a>
+          <a v-if="linkedinUrl" :href="linkedinUrl" target="_blank" rel="noreferrer" class="footer-link">LinkedIn</a>
+          <a :href="cvHref" target="_blank" rel="noreferrer" class="footer-link">CV</a>
+          <a :href="emailHref" class="footer-link">{{ emailLabel }}</a>
         </div>
       </div>
     </div>

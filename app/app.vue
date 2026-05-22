@@ -1,7 +1,6 @@
 <template>
   <div class="relative min-h-screen overflow-x-hidden">
-    <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[42rem] bg-[radial-gradient(circle_at_top,rgba(124,140,255,0.2),transparent_45%)]" />
-    <div class="pointer-events-none absolute inset-x-0 top-48 -z-10 h-[34rem] bg-[radial-gradient(circle_at_center,rgba(77,226,197,0.12),transparent_44%)]" />
+    <div class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(148,163,184,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.035)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:linear-gradient(to_bottom,black,transparent_68%)]" />
     <NuxtRouteAnnouncer />
     <NuxtPage />
   </div>

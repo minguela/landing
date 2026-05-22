@@ -49,10 +49,10 @@ const onLinkClick = (item: LinkItem) => {
       @click="onLinkClick(item)"
     >
       <div>
-        <p class="text-[11px] uppercase tracking-[0.2em] text-slate-500">{{ linkLabel }}</p>
+        <p class="text-[11px] uppercase text-slate-500">{{ linkLabel }}</p>
         <p
           class="mt-2.5 text-base font-semibold text-white sm:text-lg"
-          :class="item.monospace ? 'font-mono' : 'tracking-[-0.02em]'"
+          :class="item.monospace ? 'font-mono' : ''"
         >
           {{ item.label }}
         </p>

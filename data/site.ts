@@ -1,18 +1,23 @@
 export type Locale = 'en' | 'es'
 
 export type ProjectItem = {
-name: string
-slug: string
-tagline: string
-description: string
-highlights: string[]
-status: string
-href: string
+  name: string
+  slug: string
+  tagline: string
+  description: string
+  problem: string
+  role: string
+  decision: string
+  technologies: string[]
+  status: string
+  href: string
+  cta: string
 }
 
 export type StackGroup = {
-title: string
-items: string[]
+  title: string
+  description: string
+  items: string[]
 }
 
 export type LinkItem = {
@@ -24,8 +29,13 @@ monospace?: boolean
 }
 
 export type FocusItem = {
-title: string
-text: string
+  title: string
+  text: string
+}
+
+export type WorkItem = {
+  title: string
+  text: string
 }
 
 export type CopySection = {
@@ -37,13 +47,11 @@ description: string
 export type SiteCopy = {
 nav: {
 projects: string
+work: string
 stack: string
-apps: string
-focus: string
 contact: string
 }
 hero: {
-chip: string
 title: string
 lead: string
 body: string
@@ -52,23 +60,22 @@ ctaGithub: string
 ctaLinkedin: string
 ctaEmail: string
 ctaCv: string
-structureEyebrow: string
-structureTitle: string
-structureStatus: string
-structureRootLabel: string
-structureRootDescription: string
-contactEyebrow: string
+previewLabel: string
+previewTitle: string
 }
 sections: {
 projects: CopySection
+work: CopySection
 stack: CopySection
-apps: CopySection
 focus: CopySection
 }
 projectCard: {
 label: string
-footer: string
-viewDestination: string
+problem: string
+role: string
+decision: string
+stack: string
+preview: string
 }
 links: {
 label: string
@@ -79,6 +86,13 @@ emailDescription: string
 cvDescription: string
 }
 focusLabel: string
+credibilityLabel: string
+finalCta: {
+title: string
+description: string
+contact: string
+cv: string
+}
 footer: {
 builtWith: string
 email: string
@@ -90,12 +104,14 @@ description: string
 }
 
 export type SiteContent = {
-heroSignals: string[]
-projects: ProjectItem[]
-stackGroups: StackGroup[]
-currentFocus: FocusItem[]
-appEndpoints: LinkItem[]
-copy: SiteCopy
+  heroSignals: string[]
+  credibility: string[]
+  projects: ProjectItem[]
+  workValues: WorkItem[]
+  stackGroups: StackGroup[]
+  currentFocus: FocusItem[]
+  appEndpoints: LinkItem[]
+  copy: SiteCopy
 }
 
 export const siteContent: Record<Locale, SiteContent> = {
@@ -107,43 +123,76 @@ heroSignals: [
 'OCR pipelines',
 'Self-hosted automation'
 ],
+credibility: [
+'Frontend architecture',
+'Vue / Nuxt migrations',
+'Applied AI',
+'Automation',
+'Technical leadership'
+],
 projects: [
 {
 name: 'Menu Planner',
 slug: '01',
-tagline: 'Nutrition planning app shaped around OCR, AI and reliable delivery flows',
+tagline: 'Nutrition planning shaped around OCR, AI and reliable delivery flows.',
 description:
-'A nutrition planning product that ties together self-hosted OCR, AI workflows, Supabase and Vercel, with automatic fallback in the places where reliability matters most.',
-highlights: ['OCR + AI', 'Supabase', 'Vercel', 'Docker fallback'],
+'A product that connects document intake, AI-assisted planning and a delivery layer that stays practical once it leaves the prototype stage.',
+problem: 'Turn document-heavy nutrition inputs into a clearer planning workflow.',
+role: 'Product frontend, OCR and AI workflow integration, and reliability choices around the delivery path.',
+decision: 'Use automation where it removes friction while keeping fallback in the parts of the flow where confidence matters.',
+technologies: ['OCR + AI', 'Supabase', 'Vercel', 'Docker fallback'],
 status: 'Product + infrastructure',
-href: 'https://menu-planner.dminguela.es'
+href: 'https://menu-planner.dminguela.es',
+cta: 'Open Menu Planner'
 },
 {
 name: 'Renovaciones App',
 slug: '02',
-tagline: 'Planning workflows for renovation projects with a clear operational layer',
+tagline: 'Renovation planning with a clearer operational layer.',
 description:
-'An app for renovation planning that keeps scope, decisions and execution visible without turning the workflow into a mess.',
-highlights: ['Product UX', 'Planning', 'Frontend workflows', 'Operations'],
+'An app designed to keep scope, decisions and execution visible when a project has many moving parts.',
+problem: 'Keep renovation planning legible instead of scattering decisions across disconnected notes and tasks.',
+role: 'Frontend workflows and product clarity for an execution-facing planning experience.',
+decision: 'Prioritize visible state and operational reading before adding ornamental complexity.',
+technologies: ['Product UX', 'Planning', 'Frontend workflows', 'Operations'],
 status: 'App in evolution',
-href: 'https://renovaciones.dminguela.es'
+href: 'https://renovaciones.dminguela.es',
+cta: 'View Renovaciones App'
+}
+],
+workValues: [
+{
+title: 'Make the problem legible',
+text: 'The interface should expose the decisions people need to make, not hide them behind decorative complexity.'
+},
+{
+title: 'Design for change',
+text: 'Frontend architecture has to keep pace with migrations, new flows and product learning without becoming brittle.'
+},
+{
+title: 'Connect the visible and the operational',
+text: 'Automation, OCR and deployment choices matter when they change reliability and the user experience.'
 }
 ],
 stackGroups: [
 {
 title: 'Frontend core',
+description: 'Vue, Nuxt and TypeScript for product interfaces that stay clear while their workflows grow.',
 items: ['Nuxt', 'Vue', 'TypeScript', 'Tailwind']
 },
 {
 title: 'Product + platform',
+description: 'Delivery and data choices that support real product behavior after launch.',
 items: ['Supabase', 'Vercel', 'GitHub Actions', 'OpenAI', 'AWS', 'CloudFront']
 },
 {
 title: 'Infra + automation',
+description: 'Infrastructure when control, fallback and visibility improve day-to-day operation.',
 items: ['Docker', 'Traefik', 'Cloudflare']
 },
 {
 title: 'Engineering practice',
+description: 'The working habits that keep speed, risk and product definition in balance.',
 items: ['Unit testing', 'Integration testing', 'Product definition', 'Technical leadership']
 }
 ],
@@ -184,54 +233,51 @@ monospace: true
 copy: {
 nav: {
 projects: 'Projects',
+work: 'How I work',
 stack: 'Stack',
-apps: 'Apps',
-focus: 'Focus',
 contact: 'Contact'
 },
 hero: {
-chip: 'Senior frontend developer · product-minded builder',
-title: 'David Minguela',
-lead: 'Senior Frontend Developer building polished web products, strong frontend systems and AI-assisted workflows that solve real operational problems.',
-body: 'My background is in Vue and Nuxt architecture, large migrations, product definition and technical leadership. Lately I have been spending most of my time around OCR pipelines, automation and the systems behind them.',
+title: 'Senior frontend for complex products with clarity, speed and reliability.',
+lead: 'I design and build web experiences with Vue and Nuxt, connecting frontend architecture, product judgment and applied AI to solve real operational problems.',
+body: 'David Minguela works across migrations, automation, OCR and frontend systems that need to remain maintainable as the product gets bigger.',
 ctaProjects: 'View projects',
 ctaGithub: 'GitHub',
 ctaLinkedin: 'LinkedIn',
 ctaEmail: 'Email',
 ctaCv: 'Download CV',
-structureEyebrow: 'Live structure',
-structureTitle: 'dminguela.es ecosystem',
-structureStatus: 'ready for deployment',
-structureRootLabel: 'root',
-structureRootDescription: 'Main entry point for portfolio, product context and the apps that are already live.',
-contactEyebrow: 'contact'
+previewLabel: 'Product evidence',
+previewTitle: 'Live work across planning, OCR and frontend systems'
 },
 sections: {
 projects: {
 eyebrow: 'Selected projects',
-title: 'Products with clear product thinking and real technical depth',
-description: 'A tight selection of products that shows how frontend craft, product judgment and practical infrastructure can reinforce each other.'
+title: 'Products where product clarity and technical depth reinforce each other',
+description: 'A tight selection, with the problem, role and decisions visible before a long stack inventory.'
+},
+work: {
+eyebrow: 'How I work',
+title: 'Frontend with product judgment and a systems view',
+description: 'I do not stop at implementing screens. I work to make the interface readable, the architecture resilient and the delivery dependable.'
 },
 stack: {
 eyebrow: 'Technical stack',
-title: 'Nuxt-first frontend with a strong sense of systems behind it',
-description: 'The frontend is the visible layer, but the work also reflects judgment around deployment, automation and how products behave once they are live.'
-},
-apps: {
-eyebrow: 'Apps and links',
-title: 'A clean hub for the apps that are already public',
-description: 'Only the products that are actually live are surfaced here, together with the core professional links.'
+title: 'Technology grouped by the work it enables',
+description: 'The stack stays compact here: enough detail to show depth, with context for why each capability matters.'
 },
 focus: {
 eyebrow: 'Current focus',
-title: 'Current work around AI, OCR and frontend systems that age well',
-description: 'The frontend work is tied to automation, document pipelines and product decisions that still need to make sense once the project leaves the prototype stage.'
+title: 'Now: applied AI, OCR and useful automation',
+description: 'Current work sits where frontend flows, document pipelines and product decisions meet.'
 }
 },
 projectCard: {
 label: 'Project',
-footer: 'Part of a broader product and frontend ecosystem built around clarity, reliability and execution.',
-viewDestination: 'View destination'
+problem: 'Problem',
+role: 'David handled',
+decision: 'Decision',
+stack: 'Key technologies',
+preview: 'Product preview'
 },
 links: {
 label: 'link',
@@ -242,13 +288,20 @@ emailDescription: 'Direct contact for product, frontend or collaboration convers
 cvDescription: "Download David Minguela's CV in PDF format."
 },
 focusLabel: 'current focus',
+credibilityLabel: 'Experience signals',
+finalCta: {
+title: 'Building a complex product that needs frontend clarity and dependable execution?',
+description: 'Let us talk about product, architecture and the interface that makes the work easier to use.',
+contact: 'Contact',
+cv: 'Download CV'
+},
 footer: {
 builtWith: 'Built with Nuxt + Tailwind',
 email: 'Email'
 },
 seo: {
-title: 'Portfolio · Senior Frontend Developer',
-description: 'Portfolio and technical hub of David Minguela, a senior frontend developer focused on Vue, Nuxt, product architecture, OCR workflows and automation.'
+title: 'David Minguela · Senior Frontend Developer for complex products',
+description: 'Senior frontend portfolio of David Minguela: Vue and Nuxt architecture, product-minded interfaces, OCR workflows, applied AI and automation.'
 }
 }
 },
@@ -256,62 +309,95 @@ es: {
 heroSignals: [
 'Arquitectura frontend',
 'Migraciones Vue / Nuxt',
-'Workflows asistidos por IA',
+'Flujos asistidos por IA',
 'Pipelines OCR',
-'Automatización self-hosted'
+'Automatización con control de infraestructura'
+],
+credibility: [
+'Arquitectura frontend',
+'Migraciones Vue / Nuxt',
+'IA aplicada',
+'Automatización',
+'Liderazgo técnico'
 ],
 projects: [
 {
 name: 'Menu Planner',
 slug: '01',
-tagline: 'Aplicación de planificación nutricional pensada alrededor de OCR, IA y flujos fiables',
+tagline: 'Planificación nutricional con OCR, IA y flujos de entrega fiables.',
 description:
-'Un producto de planificación nutricional que conecta OCR self-hosted, flujos con IA, Supabase y Vercel, con fallback automático justo en los puntos donde la fiabilidad importa de verdad.',
-highlights: ['OCR + IA', 'Supabase', 'Vercel', 'Fallback Docker'],
+'Un producto que conecta entrada documental, planificación asistida por IA y una capa de entrega práctica cuando deja de ser un prototipo.',
+problem: 'Convertir entradas nutricionales basadas en documentos en un flujo de planificación más claro.',
+role: 'Frontend de producto, integración de flujos OCR e IA y decisiones de fiabilidad en la ruta de entrega.',
+decision: 'Usar automatización donde reduce fricción y conservar una ruta alternativa donde la confianza del flujo importa.',
+technologies: ['OCR + IA', 'Supabase', 'Vercel', 'Respaldo Docker'],
 status: 'Producto + infraestructura',
-href: 'https://menu-planner.dminguela.es'
+href: 'https://menu-planner.dminguela.es',
+cta: 'Abrir Menu Planner'
 },
 {
 name: 'Renovaciones App',
 slug: '02',
-tagline: 'Flujos de planificación para reformas con una capa operativa clara',
+tagline: 'Planificación de reformas con una capa operativa más clara.',
 description:
-'Una app para planificación de reformas que mantiene alcance, decisiones y ejecución visibles sin convertir el flujo en algo confuso.',
-highlights: ['Product UX', 'Planificación', 'Flujos frontend', 'Operaciones'],
+'Una app pensada para mantener alcance, decisiones y ejecución visibles cuando el proyecto tiene muchas piezas en movimiento.',
+problem: 'Mantener legible la planificación de una reforma sin dispersar decisiones entre notas y tareas aisladas.',
+role: 'Flujos frontend y claridad de producto para una experiencia orientada a ejecución.',
+decision: 'Priorizar estado visible y lectura operativa antes que complejidad decorativa.',
+technologies: ['UX de producto', 'Planificación', 'Flujos frontend', 'Operaciones'],
 status: 'App en evolución',
-href: 'https://renovaciones.dminguela.es'
+href: 'https://renovaciones.dminguela.es',
+cta: 'Ver Renovaciones App'
+}
+],
+workValues: [
+{
+title: 'Hacer legible el problema',
+text: 'La interfaz debe exponer las decisiones que importan, no esconderlas detrás de complejidad decorativa.'
+},
+{
+title: 'Diseñar para el cambio',
+text: 'La arquitectura frontend tiene que aguantar migraciones, nuevos flujos y aprendizaje de producto sin volverse frágil.'
+},
+{
+title: 'Conectar interfaz y operación',
+text: 'Automatización, OCR y despliegue importan cuando cambian fiabilidad y experiencia de uso.'
 }
 ],
 stackGroups: [
 {
 title: 'Núcleo frontend',
+description: 'Vue, Nuxt y TypeScript para interfaces de producto que siguen claras cuando el flujo crece.',
 items: ['Nuxt', 'Vue', 'TypeScript', 'Tailwind']
 },
 {
 title: 'Producto + plataforma',
+description: 'Datos y entrega para sostener el comportamiento real del producto tras el lanzamiento.',
 items: ['Supabase', 'Vercel', 'GitHub Actions', 'OpenAI', 'AWS', 'CloudFront']
 },
 {
 title: 'Infraestructura + automatización',
+description: 'Infraestructura cuando control, rutas alternativas y visibilidad mejoran la operación diaria.',
 items: ['Docker', 'Traefik', 'Cloudflare']
 },
 {
 title: 'Práctica de ingeniería',
-items: ['Unit testing', 'Integration testing', 'Definición de producto', 'Liderazgo técnico']
+description: 'Hábitos para equilibrar velocidad, riesgo y definición de producto.',
+items: ['Tests unitarios', 'Tests de integración', 'Definición de producto', 'Liderazgo técnico']
 }
 ],
 currentFocus: [
 {
-title: 'Workflows asistidos por IA',
+title: 'Flujos asistidos por IA',
 text: 'Diseñando interfaces y sistemas donde la IA ayuda con el trabajo real, no como una capa añadida porque sí.'
 },
 {
-title: 'Pipelines OCR',
-text: 'Construyendo flujos OCR con fallback y observabilidad para que los documentos entren en el producto sin convertirse en un problema operativo.'
+title: 'Flujos OCR',
+text: 'Construyendo flujos OCR con rutas alternativas y observabilidad para que los documentos entren en el producto sin convertirse en un problema operativo.'
 },
 {
-title: 'Automatización self-hosted',
-text: 'Explorando automatización self-hosted cuando tener el control del stack aporta más visibilidad, más control y menos dependencias innecesarias.'
+title: 'Automatización con infraestructura propia',
+text: 'Explorando automatización con infraestructura propia cuando controlar el sistema aporta más visibilidad y menos dependencias innecesarias.'
 },
 {
 title: 'Arquitectura frontend orientada a producto',
@@ -337,54 +423,51 @@ monospace: true
 copy: {
 nav: {
 projects: 'Proyectos',
-stack: 'Stack',
-apps: 'Apps',
-focus: 'Focus',
+work: 'Cómo trabajo',
+stack: 'Tecnología',
 contact: 'Contacto'
 },
 hero: {
-chip: 'Senior frontend developer · product-minded builder',
-title: 'David Minguela',
-lead: 'Senior Frontend Developer centrado en productos web bien resueltos, sistemas frontend sólidos y workflows asistidos por IA que atacan problemas reales de operación.',
-body: 'Vengo de arquitectura en Vue y Nuxt, migraciones de gran escala, definición de producto y liderazgo técnico. Últimamente estoy muy metido en pipelines OCR, automatización y en los sistemas que los sostienen.',
+title: 'Frontend senior para productos complejos que necesitan claridad, velocidad y fiabilidad.',
+lead: 'Diseño y construyo experiencias web con Vue y Nuxt, conectando arquitectura frontend, criterio de producto e IA aplicada para resolver problemas reales de operación.',
+body: 'David Minguela trabaja en migraciones, automatización, OCR y sistemas frontend que deben seguir siendo mantenibles cuando el producto crece.',
 ctaProjects: 'Ver proyectos',
 ctaGithub: 'GitHub',
 ctaLinkedin: 'LinkedIn',
 ctaEmail: 'Email',
 ctaCv: 'Descargar CV',
-structureEyebrow: 'Estructura activa',
-structureTitle: 'ecosistema dminguela.es',
-structureStatus: 'listo para desplegar',
-structureRootLabel: 'root',
-structureRootDescription: 'Punto de entrada principal para el portfolio, el contexto de producto y las apps que ya están publicadas.',
-contactEyebrow: 'contacto'
+previewLabel: 'Prueba de producto',
+previewTitle: 'Trabajo vivo entre planificación, OCR y sistemas frontend'
 },
 sections: {
 projects: {
 eyebrow: 'Proyectos seleccionados',
-title: 'Productos con criterio de producto y profundidad técnica real',
-description: 'Una selección corta de productos que deja ver cómo se refuerzan entre sí el oficio frontend, el criterio de producto y una infraestructura práctica.'
+title: 'Productos donde claridad de producto y profundidad técnica se refuerzan',
+description: 'Una selección corta que deja visibles el problema, el rol y las decisiones antes de desplegar un inventario de stack.'
+},
+work: {
+eyebrow: 'Cómo trabajo',
+title: 'Frontend con criterio de producto y cabeza de sistema',
+description: 'No me quedo en implementar pantallas. Trabajo para que la interfaz sea legible, la arquitectura aguante el cambio y la entrega sea fiable.'
 },
 stack: {
 eyebrow: 'Stack técnico',
-title: 'Frontend Nuxt-first con una capa de sistemas bien pensada detrás',
-description: 'El frontend es la parte visible, pero el trabajo también refleja criterio sobre despliegue, automatización y cómo se comporta el producto cuando ya está vivo.'
-},
-apps: {
-eyebrow: 'Apps y enlaces',
-title: 'Un hub limpio para las aplicaciones que ya son públicas',
-description: 'Aquí solo aparecen los productos que están realmente activos, junto con los enlaces profesionales principales.'
+title: 'Tecnología agrupada por el trabajo que habilita',
+description: 'El stack se mantiene compacto: suficiente detalle para enseñar profundidad y contexto sobre para qué sirve cada capacidad.'
 },
 focus: {
 eyebrow: 'Foco actual',
-title: 'Trabajo actual alrededor de IA, OCR y sistemas frontend que envejecen bien',
-description: 'El trabajo frontend se cruza aquí con automatización, pipelines documentales y decisiones de producto que tienen que seguir teniendo sentido después del prototipo.'
+title: 'Ahora: IA aplicada, OCR y automatización útil',
+description: 'El trabajo actual se sitúa donde se cruzan flujos frontend, flujos documentales y decisiones de producto.'
 }
 },
 projectCard: {
 label: 'Proyecto',
-footer: 'Parte de un ecosistema más amplio construido alrededor de claridad, fiabilidad y ejecución.',
-viewDestination: 'Ver destino'
+problem: 'Problema',
+role: 'Qué hizo David',
+decision: 'Decisión',
+stack: 'Tecnologías clave',
+preview: 'Vista de producto'
 },
 links: {
 label: 'enlace',
@@ -395,15 +478,21 @@ emailDescription: 'Contacto directo para hablar de producto, frontend o colabora
 cvDescription: 'Descarga el CV de David Minguela en formato PDF.'
 },
 focusLabel: 'foco actual',
+credibilityLabel: 'Señales de experiencia',
+finalCta: {
+title: '¿Estás construyendo un producto complejo que necesita claridad frontend y ejecución fiable?',
+description: 'Hablemos de producto, arquitectura y de la interfaz que hace el trabajo más fácil de usar.',
+contact: 'Contactar',
+cv: 'Descargar CV'
+},
 footer: {
 builtWith: 'Hecho con Nuxt + Tailwind',
 email: 'Email'
 },
 seo: {
-title: 'Portfolio · Senior Frontend Developer',
-description: 'Portfolio y hub técnico de David Minguela: senior frontend developer especializado en Vue/Nuxt, arquitectura de producto, pipelines OCR, automatización y self-hosting.'
+title: 'David Minguela · Senior Frontend Developer para productos complejos',
+description: 'Portfolio senior frontend de David Minguela: arquitectura Vue y Nuxt, interfaces con criterio de producto, OCR, IA aplicada y automatización.'
 }
 }
 }
 }
-

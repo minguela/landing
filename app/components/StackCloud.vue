@@ -7,18 +7,19 @@ defineProps<{
 </script>
 
 <template>
-  <div class="grid gap-3 sm:gap-4 lg:grid-cols-2 xl:grid-cols-3">
+  <div class="grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 lg:grid-cols-2">
     <div
       v-for="group in groups"
       :key="group.title"
-      class="soft-card p-4 sm:p-5"
+      class="bg-slate-950/75 p-4 sm:p-6"
     >
-      <p class="text-sm font-semibold tracking-[-0.02em] text-white">{{ group.title }}</p>
+      <p class="text-base font-semibold text-white sm:text-lg">{{ group.title }}</p>
+      <p class="mt-2 max-w-lg text-sm leading-6 text-slate-300 sm:text-base">{{ group.description }}</p>
       <div class="mt-4 flex flex-wrap gap-2">
         <span
           v-for="item in group.items"
           :key="item"
-          class="rounded-full border border-white/10 bg-slate-950/55 px-2.5 py-1.5 text-xs font-medium text-slate-200 sm:px-3 sm:py-2 sm:text-sm"
+          class="tech-label"
         >
           {{ item }}
         </span>
