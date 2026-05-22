@@ -3,10 +3,15 @@ import type { ProjectItem } from '~~/data/site'
 
 const props = defineProps<{
   project: ProjectItem
-  featured?: boolean
+  index: number
   projectLabel: string
-  footerLabel: string
-  viewDestinationLabel: string
+  labels: {
+    problem: string
+    role: string
+    decision: string
+    stack: string
+    preview: string
+  }
   locale: 'en' | 'es'
 }>()
 
@@ -19,45 +24,58 @@ const onProjectClick = () => {
 </script>
 
 <template>
-  <article class="group soft-card h-full p-4 sm:p-6" :class="featured ? 'lg:col-span-2' : ''">
-    <div class="flex flex-wrap items-start justify-between gap-3">
-      <div class="min-w-0">
-        <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-slate-500">{{ projectLabel }} {{ project.slug }}</p>
-        <h3 class="mt-2 text-xl font-semibold tracking-[-0.04em] text-white sm:text-2xl lg:text-3xl">
-          {{ project.name }}
-        </h3>
-        <p class="mt-2.5 text-sm font-medium text-slate-200 sm:text-base">{{ project.tagline }}</p>
+  <article class="project-showcase">
+    <div class="grid gap-5 lg:grid-cols-[minmax(0,1.02fr)_minmax(360px,0.98fr)] lg:items-center">
+      <div :class="index % 2 ? 'lg:order-2' : ''">
+        <p class="font-mono text-[11px] uppercase text-slate-500">{{ labels.preview }}</p>
+        <ProjectPreview :project="project" :locale="locale" class="mt-3" />
       </div>
-      <span class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-slate-300 sm:px-3">
-        {{ project.status }}
-      </span>
-    </div>
 
-    <p class="mt-4 text-sm leading-7 text-slate-300 sm:mt-5 sm:text-base">
-      {{ project.description }}
-    </p>
+      <div :class="index % 2 ? 'lg:order-1' : ''">
+        <div class="flex flex-wrap items-center gap-3">
+          <p class="font-mono text-[11px] uppercase text-slate-500">{{ projectLabel }} {{ project.slug }}</p>
+          <span class="status-label">{{ project.status }}</span>
+        </div>
+        <h3 class="mt-3 text-2xl font-semibold leading-tight text-white sm:text-3xl lg:text-4xl">{{ project.name }}</h3>
+        <p class="mt-3 text-base font-medium leading-7 text-slate-100 sm:text-lg">{{ project.tagline }}</p>
+        <p class="mt-3 text-sm leading-7 text-slate-300 sm:text-base">{{ project.description }}</p>
 
-    <div class="mt-5 flex flex-wrap gap-2">
-      <span
-        v-for="highlight in project.highlights"
-        :key="highlight"
-        class="rounded-full border border-white/10 bg-slate-950/60 px-2.5 py-1.5 text-[11px] font-medium text-slate-200 sm:px-3 sm:py-2 sm:text-xs"
-      >
-        {{ highlight }}
-      </span>
-    </div>
+        <dl class="project-notes mt-5">
+          <div>
+            <dt>{{ labels.problem }}</dt>
+            <dd>{{ project.problem }}</dd>
+          </div>
+          <div>
+            <dt>{{ labels.role }}</dt>
+            <dd>{{ project.role }}</dd>
+          </div>
+          <div>
+            <dt>{{ labels.decision }}</dt>
+            <dd>{{ project.decision }}</dd>
+          </div>
+        </dl>
 
-    <div class="mt-6 flex flex-col gap-3 border-t border-white/10 pt-4 sm:mt-7 sm:flex-row sm:items-center sm:justify-between">
-      <p class="text-xs leading-6 text-slate-400 sm:text-sm">{{ footerLabel }}</p>
-      <a
-        :href="project.href"
-        target="_blank"
-        rel="noreferrer"
-        class="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-white/14 bg-white/6 px-4 py-2 text-sm font-semibold text-white hover:border-white/24 hover:bg-white/10"
-        @click="onProjectClick"
-      >
-        {{ viewDestinationLabel }}
-      </a>
+        <div class="mt-5">
+          <p class="font-mono text-[11px] uppercase text-slate-500">{{ labels.stack }}</p>
+          <div class="mt-2.5 flex flex-wrap gap-2">
+            <span v-for="technology in project.technologies" :key="technology" class="tech-label">
+              {{ technology }}
+            </span>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <a
+            :href="project.href"
+            target="_blank"
+            rel="noreferrer"
+            class="button-secondary"
+            @click="onProjectClick"
+          >
+            {{ project.cta }}
+          </a>
+        </div>
+      </div>
     </div>
   </article>
 </template>
