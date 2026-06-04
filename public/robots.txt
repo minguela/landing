@@ -1,4 +1,2 @@
 User-Agent: *
 Disallow:
-
-Sitemap: https://dminguela.es/sitemap.xml

@@ -1,118 +1,151 @@
 <script setup lang="ts">
-import { appEndpoints, currentFocus, heroSignals, projects, stackGroups } from '~/data/site'
+import { siteContent } from '~~/data/site'
 
 const config = useRuntimeConfig()
+const { locale, localeMeta, toggleLocale } = useSiteI18n()
+const analytics = useAnalytics()
+
+const content = computed(() => siteContent[locale.value])
 
 const siteUrl = config.public.siteUrl
 const githubUrl = config.public.githubUrl
 const linkedinUrl = config.public.linkedinUrl
 const email = config.public.email
 const emailHref = `mailto:${email}`
+const cvHref = '/cv/david-minguela-cv.pdf'
 
-const externalLinks = computed(() => [
-  ...appEndpoints,
-  {
-    label: 'GitHub',
-    href: githubUrl,
-    description: 'Code, experiments and published projects from the main GitHub account.',
-    external: true
-  },
-  {
-    label: linkedinUrl ? 'LinkedIn' : 'LinkedIn (configurable)',
-    href: linkedinUrl || emailHref,
-    description: linkedinUrl
-      ? 'Professional profile for network and additional context.'
-      : 'Add your LinkedIn URL in .env if you want to surface it in production.',
-    external: !!linkedinUrl
-  },
-  {
-    label: email,
-    href: emailHref,
-    description: 'Direct channel for professional contact and collaborations.',
-    external: false,
-    monospace: true
-  }
-])
+const onToggleLocale = () => {
+const from = locale.value
+const to = from === 'en' ? 'es' : 'en'
+analytics.trackLocaleSwitch(from, to)
+toggleLocale()
+}
+
+onMounted(() => {
+analytics.trackPageView(locale.value, '/')
+})
+
+useHead(() => ({
+htmlAttrs: {
+lang: localeMeta.value.htmlLang
+}
+}))
 
 useSeoMeta({
-  title: 'Portfolio · Senior Frontend Developer',
-  description: config.public.siteDescription,
-  ogTitle: config.public.siteName,
-  ogDescription: config.public.siteDescription,
-  ogUrl: siteUrl,
-  // NOTE: og-image.svg is a placeholder. Generate a 1200x630 PNG, place it in public/
-  // and update this path (and the one in nuxt.config.ts) for real social previews.
-  ogImage: `${siteUrl}/og-image.svg`,
-  twitterTitle: config.public.siteName,
-  twitterDescription: config.public.siteDescription,
-  twitterImage: `${siteUrl}/og-image.svg`
+title: () => content.value.copy.seo.title,
+description: () => content.value.copy.seo.description,
+ogTitle: config.public.siteName,
+ogDescription: () => content.value.copy.seo.description,
+ogUrl: siteUrl,
+ogImage: `${siteUrl}/og-image.svg`,
+twitterTitle: config.public.siteName,
+twitterDescription: () => content.value.copy.seo.description,
+twitterImage: `${siteUrl}/og-image.svg`
 })
 </script>
 
 <template>
-  <main>
-    <SiteHeader :github-url="githubUrl" :linkedin-url="linkedinUrl" :email-href="emailHref" />
+<main>
+<SiteHeader
+:github-url="githubUrl"
+:linkedin-url="linkedinUrl"
+:email-href="emailHref"
+:nav="content.copy.nav"
+:locale-flag="localeMeta.flag"
+:locale-label="localeMeta.code"
+:locale-switch-label="localeMeta.switchLabel"
+@toggle-locale="onToggleLocale"
+/>
 
-    <HeroSection
-      :github-url="githubUrl"
-      :linkedin-url="linkedinUrl"
-      :email-href="emailHref"
-      :email-label="email"
-      :hero-signals="heroSignals"
-    />
+<HeroSection
+:github-url="githubUrl"
+:linkedin-url="linkedinUrl"
+:email-href="emailHref"
+:cv-href="cvHref"
+:locale="locale"
+:email-label="email"
+:copy="content.copy.hero"
+:projects="content.projects"
+/>
 
-    <section id="projects" class="shell section-space pt-4">
-      <SectionHeading
-        eyebrow="Selected projects"
-        title="Apps and systems built with product intent and technical depth"
-        description="A focused selection of projects that show how product thinking, frontend craft and practical infrastructure can live in the same ecosystem."
-      />
+<CredibilityStrip
+:label="content.copy.credibilityLabel"
+:items="content.credibility"
+/>
 
-      <div class="mt-10 grid gap-4 lg:grid-cols-3">
-        <ProjectCard
-          v-for="project in projects"
-          :key="project.name"
-          :project="project"
-        />
-      </div>
-    </section>
+<section id="projects" class="shell section-space pb-10 pt-14 sm:pb-14 sm:pt-20">
+<SectionHeading
+:eyebrow="content.copy.sections.projects.eyebrow"
+:title="content.copy.sections.projects.title"
+:description="content.copy.sections.projects.description"
+/>
 
-    <section id="stack" class="shell section-space pt-0">
-      <SectionHeading
-        eyebrow="Technical stack"
-        title="Nuxt-first frontend, automation-aware infrastructure"
-        description="The site makes a frontend-first impression, while still signalling platform judgment around deployment, automation, observability and developer experience."
-      />
+<div class="mt-8 grid gap-5 sm:mt-11 sm:gap-7">
+<ProjectCard
+v-for="(project, index) in content.projects"
+:key="project.name"
+:project="project"
+:index="index"
+:project-label="content.copy.projectCard.label"
+:labels="content.copy.projectCard"
+:locale="locale"
+/>
+</div>
+</section>
 
-      <div class="mt-10">
-        <StackCloud :groups="stackGroups" />
-      </div>
-    </section>
+<section id="work" class="work-section">
+<div class="shell py-14 sm:py-20 lg:py-24">
+<SectionHeading
+:eyebrow="content.copy.sections.work.eyebrow"
+:title="content.copy.sections.work.title"
+:description="content.copy.sections.work.description"
+/>
 
-    <section id="apps" class="shell section-space pt-0">
-      <SectionHeading
-        eyebrow="Apps and links"
-        title="A central entry point for portfolio, products and future subdomains"
-        description="Structured as a clean hub for current apps, planned endpoints and professional links, without feeling overloaded or generic."
-      />
+<div class="mt-8 sm:mt-11">
+<WorkValuePanel :items="content.workValues" />
+</div>
+</div>
+</section>
 
-      <div class="mt-10">
-        <LinksGrid :items="externalLinks" />
-      </div>
-    </section>
+<section id="stack" class="shell section-space pb-10 pt-14 sm:pb-14">
+<SectionHeading
+:eyebrow="content.copy.sections.stack.eyebrow"
+:title="content.copy.sections.stack.title"
+:description="content.copy.sections.stack.description"
+/>
 
-    <section id="focus" class="shell section-space pt-0">
-      <SectionHeading
-        eyebrow="Current focus"
-        title="Building practical systems around AI, OCR and maintainable frontend architecture"
-        description="Frontend work here is connected to automation, document pipelines, modern deployment and product decisions that need to hold up in the real world."
-      />
+<div class="mt-7 sm:mt-9">
+<StackCloud :groups="content.stackGroups" />
+</div>
+</section>
 
-      <div class="mt-10">
-        <FocusPanel :items="currentFocus" />
-      </div>
-    </section>
+<section id="focus" class="shell py-8 sm:py-12">
+<SectionHeading
+:eyebrow="content.copy.sections.focus.eyebrow"
+:title="content.copy.sections.focus.title"
+:description="content.copy.sections.focus.description"
+/>
 
-    <SiteFooter :github-url="githubUrl" :linkedin-url="linkedinUrl" :email-href="emailHref" />
-  </main>
+<div class="mt-7 sm:mt-9">
+<FocusPanel :items="content.currentFocus" :label="content.copy.focusLabel" />
+</div>
+</section>
+
+<FinalCta
+:email-href="emailHref"
+:cv-href="cvHref"
+:locale="locale"
+:copy="content.copy.finalCta"
+/>
+
+<SiteFooter
+:github-url="githubUrl"
+:linkedin-url="linkedinUrl"
+:email-href="emailHref"
+:cv-href="cvHref"
+:nav="{ projects: content.copy.nav.projects, work: content.copy.nav.work, stack: content.copy.nav.stack }"
+:built-with-label="content.copy.footer.builtWith"
+:email-label="content.copy.footer.email"
+/>
+</main>
 </template>

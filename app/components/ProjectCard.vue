@@ -1,54 +1,81 @@
 <script setup lang="ts">
-import type { ProjectItem } from '~/data/site'
+import type { ProjectItem } from '~~/data/site'
 
-defineProps<{
+const props = defineProps<{
   project: ProjectItem
-  featured?: boolean
+  index: number
+  projectLabel: string
+  labels: {
+    problem: string
+    role: string
+    decision: string
+    stack: string
+    preview: string
+  }
+  locale: 'en' | 'es'
 }>()
+
+const analytics = useAnalytics()
+
+const onProjectClick = () => {
+  const appId = props.project.href.includes('menu-planner') ? 'menu_planner' : 'renovaciones'
+  analytics.trackAppClick(appId, props.project.href, props.locale, 'projects')
+}
 </script>
 
 <template>
-  <article
-    class="group soft-card h-full p-6 sm:p-7"
-    :class="featured ? 'lg:col-span-2' : ''"
-  >
-    <div class="flex items-start justify-between gap-4">
-      <div>
-        <p class="font-mono text-xs uppercase tracking-[0.28em] text-slate-500">Project {{ project.slug }}</p>
-        <h3 class="mt-3 text-2xl font-semibold tracking-[-0.05em] text-white sm:text-3xl">
-          {{ project.name }}
-        </h3>
-        <p class="mt-3 text-base font-medium text-slate-200">{{ project.tagline }}</p>
+  <article class="project-showcase">
+    <div class="grid gap-5 lg:grid-cols-[minmax(0,1.02fr)_minmax(360px,0.98fr)] lg:items-center">
+      <div :class="index % 2 ? 'lg:order-2' : ''">
+        <p class="font-mono text-[11px] uppercase text-slate-500">{{ labels.preview }}</p>
+        <ProjectPreview :project="project" :locale="locale" class="mt-3" />
       </div>
-      <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">
-        {{ project.status }}
-      </span>
-    </div>
 
-    <p class="mt-6 max-w-2xl text-base leading-7 text-slate-300">
-      {{ project.description }}
-    </p>
+      <div :class="index % 2 ? 'lg:order-1' : ''">
+        <div class="flex flex-wrap items-center gap-3">
+          <p class="font-mono text-[11px] uppercase text-slate-500">{{ projectLabel }} {{ project.slug }}</p>
+          <span class="status-label">{{ project.status }}</span>
+        </div>
+        <h3 class="mt-3 text-2xl font-semibold leading-tight text-white sm:text-3xl lg:text-4xl">{{ project.name }}</h3>
+        <p class="mt-3 text-base font-medium leading-7 text-slate-100 sm:text-lg">{{ project.tagline }}</p>
+        <p class="mt-3 text-sm leading-7 text-slate-300 sm:text-base">{{ project.description }}</p>
 
-    <div class="mt-7 flex flex-wrap gap-2">
-      <span
-        v-for="highlight in project.highlights"
-        :key="highlight"
-        class="rounded-full border border-white/8 bg-slate-950/60 px-3 py-2 text-xs font-medium text-slate-200"
-      >
-        {{ highlight }}
-      </span>
-    </div>
+        <dl class="project-notes mt-5">
+          <div>
+            <dt>{{ labels.problem }}</dt>
+            <dd>{{ project.problem }}</dd>
+          </div>
+          <div>
+            <dt>{{ labels.role }}</dt>
+            <dd>{{ project.role }}</dd>
+          </div>
+          <div>
+            <dt>{{ labels.decision }}</dt>
+            <dd>{{ project.decision }}</dd>
+          </div>
+        </dl>
 
-    <div class="mt-8 flex items-center justify-between gap-4 border-t border-white/8 pt-5">
-      <p class="text-sm text-slate-400">Part of a broader ecosystem across product, frontend and infrastructure.</p>
-      <a
-        :href="project.href"
-        target="_blank"
-        rel="noreferrer"
-        class="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-2 text-sm font-semibold text-white hover:border-white/20 hover:bg-white/8"
-      >
-        View destination
-      </a>
+        <div class="mt-5">
+          <p class="font-mono text-[11px] uppercase text-slate-500">{{ labels.stack }}</p>
+          <div class="mt-2.5 flex flex-wrap gap-2">
+            <span v-for="technology in project.technologies" :key="technology" class="tech-label">
+              {{ technology }}
+            </span>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <a
+            :href="project.href"
+            target="_blank"
+            rel="noreferrer"
+            class="button-secondary"
+            @click="onProjectClick"
+          >
+            {{ project.cta }}
+          </a>
+        </div>
+      </div>
     </div>
   </article>
 </template>

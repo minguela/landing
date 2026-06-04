@@ -1,25 +1,16 @@
-# Nuxt dev/build outputs
-.output
-.data
-.nuxt
-.nitro
-.cache
-dist
+# Ignore dot-prefixed files/directories everywhere by default
+.*
+*/.*
 
-# Node dependencies
+# Keep only the repo ignore file versioned; all other dotfiles stay local-only
+!/.gitignore
+!**/.gitkeep
+
+# Canonical non-dot env template to share required defaults
+!/env.example
+
+# Build outputs and dependencies
 node_modules
-
-# Logs
+dist
 logs
 *.log
-
-# Misc
-.DS_Store
-.fleet
-.idea
-
-# Local env files
-.env
-.env.*
-!.env.example
-.vercel
