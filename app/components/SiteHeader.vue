@@ -25,6 +25,11 @@ const links = computed<HeaderLink[]>(() => [
   { label: props.nav.contact, href: '#contact' }
 ])
 
+const secondaryLinks = computed<HeaderLink[]>(() => [
+  { label: 'Now', href: '/now' },
+  { label: 'Blog', href: '/blog' },
+])
+
 const profileLinks = computed<HeaderLink[]>(() => [
   { label: 'GitHub', href: props.githubUrl, external: true },
   ...(props.linkedinUrl ? [{ label: 'LinkedIn', href: props.linkedinUrl, external: true }] : [])
@@ -68,7 +73,7 @@ const profileLinks = computed<HeaderLink[]>(() => [
 
       <div class="mt-3 flex items-center gap-2 overflow-x-auto pb-1 lg:hidden">
         <a
-          v-for="link in links"
+          v-for="link in [...links, ...secondaryLinks]"
           :key="link.label"
           :href="link.href"
           class="shrink-0 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-slate-200"
@@ -79,7 +84,7 @@ const profileLinks = computed<HeaderLink[]>(() => [
 
       <nav class="mt-3 hidden items-center gap-1 lg:flex">
         <a
-          v-for="link in [...links, ...profileLinks]"
+          v-for="link in [...links, ...secondaryLinks, ...profileLinks]"
           :key="link.label"
           :href="link.href"
           :target="link.external ? '_blank' : undefined"
