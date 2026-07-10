@@ -131,6 +131,10 @@ v-for="(project, index) in content.projects"
 </div>
 </section>
 
+<LiveTerminal />
+
+<WallOfLove />
+
 <FinalCta
 :email-href="emailHref"
 :cv-href="cvHref"
