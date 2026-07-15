@@ -29,9 +29,9 @@ const year = new Date().getFullYear()
           <a href="#projects" class="footer-link">{{ nav.projects }}</a>
           <a href="#work" class="footer-link">{{ nav.work }}</a>
           <a href="#stack" class="footer-link">{{ nav.stack }}</a>
-          <a :href="githubUrl" target="_blank" rel="noreferrer" class="footer-link">GitHub</a>
-          <a v-if="linkedinUrl" :href="linkedinUrl" target="_blank" rel="noreferrer" class="footer-link">LinkedIn</a>
-          <a :href="cvHref" target="_blank" rel="noreferrer" class="footer-link">CV</a>
+          <a :href="githubUrl" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
+          <a v-if="linkedinUrl" :href="linkedinUrl" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+          <a :href="cvHref" target="_blank" rel="noopener noreferrer" class="footer-link">CV</a>
           <a :href="emailHref" class="footer-link">{{ emailLabel }}</a>
         </div>
       </div>

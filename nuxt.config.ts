@@ -8,6 +8,17 @@ const siteDescription = 'Portfolio y hub técnico de David Minguela: senior fron
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
+  routeRules: {
+    '/**': {
+      headers: {
+        'Content-Security-Policy': "base-uri 'self'; object-src 'none'; frame-ancestors 'none'",
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'X-Content-Type-Options': 'nosniff',
+        'X-Frame-Options': 'DENY'
+      }
+    }
+  },
   css: ['~/assets/css/main.css'],
   vite: {
     plugins: [tailwindcss()]

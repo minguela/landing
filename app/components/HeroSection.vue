@@ -83,7 +83,7 @@ const onHeroCv = () => {
             <a
               :href="cvHref"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               class="button-tertiary"
               @click="onHeroCv"
             >
@@ -92,13 +92,13 @@ const onHeroCv = () => {
           </div>
 
           <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-300">
-            <a :href="githubUrl" target="_blank" rel="noreferrer" class="profile-link" @click="onHeroGithub">
+            <a :href="githubUrl" target="_blank" rel="noopener noreferrer" class="profile-link" @click="onHeroGithub">
               {{ copy.ctaGithub }}
             </a>
             <a
               :href="linkedinUrl || emailHref"
               :target="linkedinUrl ? '_blank' : undefined"
-              :rel="linkedinUrl ? 'noreferrer' : undefined"
+              :rel="linkedinUrl ? 'noopener noreferrer' : undefined"
               class="profile-link"
               @click="onHeroLinkedinOrEmail"
             >

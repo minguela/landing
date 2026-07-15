@@ -32,7 +32,7 @@ const analytics = useAnalytics()
         <a
           :href="cvHref"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           class="button-secondary cta-secondary"
           @click="analytics.trackCvDownload(locale, 'final_cta')"
         >
