@@ -68,7 +68,7 @@ const onProjectClick = () => {
           <a
             :href="project.href"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noreferrer"
             class="button-secondary"
             @click="onProjectClick"
           >

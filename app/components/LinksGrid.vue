@@ -44,7 +44,7 @@ const onLinkClick = (item: LinkItem) => {
       :key="item.label"
       :href="item.href"
       :target="item.external ? '_blank' : undefined"
-      :rel="item.external ? 'noopener noreferrer' : undefined"
+      :rel="item.external ? 'noreferrer' : undefined"
       class="soft-card group flex h-full flex-col justify-between p-4 sm:p-5 hover:border-white/22 hover:bg-white/[0.05]"
       @click="onLinkClick(item)"
     >
