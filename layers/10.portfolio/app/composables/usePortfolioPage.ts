@@ -6,6 +6,7 @@ export function usePortfolioPage() {
 
   const content = computed(() => getPortfolioContentUseCase(locale.value))
   const siteUrl = config.public.siteUrl as string
+  const siteName = config.public.siteName as string
   const githubUrl = config.public.githubUrl as string
   const linkedinUrl = config.public.linkedinUrl as string
   const email = config.public.email as string
@@ -18,6 +19,7 @@ export function usePortfolioPage() {
     toggleLocale,
     content,
     siteUrl,
+    siteName,
     githubUrl,
     linkedinUrl,
     email,

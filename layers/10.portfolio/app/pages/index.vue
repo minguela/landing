@@ -6,9 +6,11 @@ const {
   content,
   githubUrl,
   linkedinUrl,
+  email,
   emailHref,
   cvHref,
   siteUrl,
+  siteName,
 } = usePortfolioPage()
 
 const analytics = useAnalytics()
@@ -33,11 +35,11 @@ useHead(() => ({
 useSeoMeta({
   title: () => content.value.copy.seo.title,
   description: () => content.value.copy.seo.description,
-  ogTitle: siteUrl,
+  ogTitle: siteName,
   ogDescription: () => content.value.copy.seo.description,
   ogUrl: siteUrl,
   ogImage: `${siteUrl}/og-image.svg`,
-  twitterTitle: siteUrl,
+  twitterTitle: siteName,
   twitterDescription: () => content.value.copy.seo.description,
   twitterImage: `${siteUrl}/og-image.svg`
 })
