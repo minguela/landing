@@ -5,8 +5,10 @@ export type {
   WorkValue,
   FocusItem,
   CredibilityItem,
-  Testimonial,
   LinkItem,
+  ProjectAvailability,
+  ProjectAccent,
+  ProjectArtifact,
   PortfolioContent,
   PortfolioContentCopy
 } from './domain/portfolio'

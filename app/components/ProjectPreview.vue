@@ -1,110 +1,97 @@
 <script setup lang="ts">
-import type { ProjectItem } from '~~/data/site'
+import type { Project } from '#layers/10.portfolio/app/domain/portfolio'
 
-const props = withDefaults(defineProps<{
-  project: ProjectItem
+defineProps<{
+  project: Project
   locale?: 'en' | 'es'
-  compact?: boolean
-  raised?: boolean
-}>(), {
-  locale: 'en',
-  compact: false,
-  raised: false
-})
-
-const previewCopy = computed(() => props.locale === 'es'
-  ? {
-      documentFlow: 'Entrada documental',
-      planning: 'Planificación',
-      fallback: 'respaldo',
-      scope: 'Alcance',
-      execution: 'Ejecución'
-    }
-  : {
-      documentFlow: 'Document flow',
-      planning: 'Planning',
-      fallback: 'fallback',
-      scope: 'Scope',
-      execution: 'Execution'
-    })
+}>()
 </script>
 
 <template>
-  <div
-    class="product-preview"
-    :class="[
-      props.project.href.includes('menu-planner') ? 'product-preview-menu' : 'product-preview-renovation',
-      props.compact ? 'product-preview-compact' : '',
-      props.raised ? 'lg:ml-10' : ''
-    ]"
-  >
-    <div class="flex items-center justify-between gap-3 border-b border-white/10 px-3 py-2.5 sm:px-4">
-      <div class="flex min-w-0 items-center gap-2">
-        <span class="h-2 w-2 rounded-full bg-current opacity-80" />
-        <p class="truncate font-mono text-[11px] text-slate-300">{{ project.name }}</p>
-      </div>
-      <p class="text-[11px] text-slate-400">{{ project.status }}</p>
+  <div class="project-artifact" :class="'artifact-' + project.artifact" aria-hidden="true">
+    <div class="artifact-toolbar">
+      <span />
+      <p>{{ project.name }}</p>
+      <b>{{ project.slug }}</b>
     </div>
 
-    <div v-if="project.href.includes('menu-planner')" class="grid gap-3 p-3 sm:grid-cols-[0.74fr_1fr] sm:p-4">
-      <div class="preview-pane space-y-2">
-        <p class="font-mono text-[10px] uppercase text-cyan-200/70">{{ previewCopy.documentFlow }}</p>
-        <div class="rounded-lg border border-cyan-200/10 bg-black/20 p-2.5">
-          <div class="h-2 w-16 rounded bg-cyan-100/70" />
-          <div class="mt-2 h-1.5 w-full rounded bg-white/12" />
-          <div class="mt-1.5 h-1.5 w-4/5 rounded bg-white/10" />
-        </div>
-        <div class="flex items-center gap-2 rounded-lg border border-white/8 bg-white/[0.035] p-2">
-          <span class="h-6 w-6 rounded-md border border-emerald-200/20 bg-emerald-200/12" />
-          <div class="min-w-0 flex-1">
-            <div class="h-1.5 w-14 rounded bg-emerald-100/55" />
-            <div class="mt-1.5 h-1.5 w-full rounded bg-white/10" />
-          </div>
-        </div>
+    <div v-if="project.artifact === 'journey'" class="journey-artifact">
+      <div class="journey-map">
+        <svg viewBox="0 0 320 210" role="presentation">
+          <path d="M18 172 C74 132 72 54 132 76 S211 170 302 35" />
+          <circle cx="18" cy="172" r="7" />
+          <circle cx="132" cy="76" r="7" />
+          <circle cx="220" cy="133" r="7" />
+          <circle cx="302" cy="35" r="7" />
+        </svg>
+        <span class="map-tag map-tag-a">DAY 01</span>
+        <span class="map-tag map-tag-b">DAY 04</span>
       </div>
-      <div class="preview-pane">
-        <div class="flex items-center justify-between gap-2">
-          <p class="font-mono text-[10px] uppercase text-cyan-200/70">{{ previewCopy.planning }}</p>
-          <span class="rounded-md border border-emerald-200/15 bg-emerald-200/10 px-1.5 py-0.5 text-[10px] text-emerald-100">{{ previewCopy.fallback }}</span>
-        </div>
-        <div class="mt-3 grid grid-cols-3 gap-1.5">
-          <span v-for="slot in 6" :key="slot" class="min-h-9 rounded-md border border-white/8 bg-white/[0.045] p-1">
-            <span class="block h-1.5 rounded bg-white/18" :class="slot % 2 ? 'w-4/5' : 'w-3/5'" />
-            <span class="mt-1.5 block h-3 rounded bg-cyan-100/12" />
-          </span>
+      <div class="journey-agenda">
+        <div v-for="step in 4" :key="step">
+          <b>0{{ step }}</b>
+          <span><i /><i /></span>
         </div>
       </div>
     </div>
 
-    <div v-else class="grid gap-3 p-3 sm:grid-cols-[0.9fr_1fr] sm:p-4">
-      <div class="preview-pane">
-        <p class="font-mono text-[10px] uppercase text-amber-100/70">{{ previewCopy.scope }}</p>
-        <div class="mt-3 space-y-2">
-          <div v-for="row in 3" :key="row" class="rounded-lg border border-white/8 bg-white/[0.035] p-2">
-            <div class="h-1.5 rounded bg-white/16" :class="row === 1 ? 'w-4/5' : 'w-3/5'" />
-            <div class="mt-2 flex gap-1.5">
-              <span class="h-4 flex-1 rounded bg-amber-100/12" />
-              <span class="h-4 w-8 rounded bg-white/8" />
-            </div>
-          </div>
-        </div>
+    <div v-else-if="project.artifact === 'handoff'" class="handoff-artifact">
+      <div class="handoff-list">
+        <span v-for="row in 4" :key="row"><i /><b /></span>
       </div>
-      <div class="preview-pane">
-        <div class="flex items-center justify-between">
-          <p class="font-mono text-[10px] uppercase text-amber-100/70">{{ previewCopy.execution }}</p>
-          <span class="h-2 w-10 rounded bg-amber-100/35" />
-        </div>
-        <div class="mt-3 grid grid-cols-[0.6fr_1fr] gap-1.5">
-          <div class="space-y-1.5">
-            <span v-for="step in 4" :key="step" class="block h-6 rounded-md bg-white/[0.045]" />
-          </div>
-          <div class="space-y-1.5">
-            <span class="block h-6 w-3/4 rounded-md bg-amber-100/14" />
-            <span class="ml-4 block h-6 w-2/3 rounded-md bg-emerald-100/12" />
-            <span class="block h-6 w-5/6 rounded-md bg-amber-100/10" />
-            <span class="ml-8 block h-6 w-1/2 rounded-md bg-white/8" />
-          </div>
-        </div>
+      <div class="handoff-route"><span>LIST</span><b>→</b><span>REVIEW</span><b>→</b><span>CART</span></div>
+      <div class="handoff-cart">
+        <span v-for="row in 3" :key="row"><i /><b /></span>
+      </div>
+    </div>
+
+    <div v-else-if="project.artifact === 'pipeline'" class="pipeline-artifact">
+      <div class="pipeline-node"><span>01</span><b>DOC</b></div>
+      <i />
+      <div class="pipeline-node"><span>02</span><b>OCR</b></div>
+      <i />
+      <div class="pipeline-node"><span>03</span><b>PLAN</b></div>
+      <div class="pipeline-output">
+        <span v-for="row in 5" :key="row" :style="{ width: (100 - row * 7) + '%' }" />
+      </div>
+    </div>
+
+    <div v-else-if="project.artifact === 'evidence'" class="evidence-artifact">
+      <div class="evidence-source">
+        <b>SOURCE / 04</b>
+        <span v-for="row in 4" :key="row" />
+      </div>
+      <div class="evidence-score">
+        <b>82</b>
+        <span>VERDICT</span>
+      </div>
+      <div class="evidence-bars">
+        <span v-for="(width, row) in [88, 72, 94, 61]" :key="row"><i :style="{ width: width + '%' }" /></span>
+      </div>
+    </div>
+
+    <div v-else-if="project.artifact === 'filesystem'" class="filesystem-artifact">
+      <div class="filesystem-tree">
+        <p>/ archive</p>
+        <p>↳ / projects</p>
+        <p>↳ ↳ field-notes.md</p>
+        <p>↳ ↳ sources</p>
+        <p>↳ / exports</p>
+      </div>
+      <div class="filesystem-meta">
+        <span>INDEXED</span>
+        <b>FILESYSTEM</b>
+        <i />
+        <i />
+        <i />
+      </div>
+    </div>
+
+    <div v-else class="timeline-artifact">
+      <div v-for="(month, row) in ['JAN', 'APR', 'JUL', 'OCT']" :key="month">
+        <b>{{ month }}</b>
+        <span><i :style="{ width: (42 + row * 14) + '%' }" /></span>
+        <em>{{ row % 2 ? 'ACTIVE' : 'NEXT' }}</em>
       </div>
     </div>
   </div>

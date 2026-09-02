@@ -1,80 +1,87 @@
 <script setup lang="ts">
-import type { ProjectItem } from '~~/data/site'
+import type { Project } from '#layers/10.portfolio/app/domain/portfolio'
 
 const props = defineProps<{
-  project: ProjectItem
+  project: Project
   index: number
   projectLabel: string
   labels: {
-    problem: string
-    role: string
-    decision: string
-    stack: string
+    challenge: string
+    response: string
+    evidence: string
+    public: string
     preview: string
+    private: string
+    local: string
   }
   locale: 'en' | 'es'
 }>()
 
 const analytics = useAnalytics()
+const actionLabel = computed(() => props.labels[props.project.availability])
 
 const onProjectClick = () => {
-  const appId = props.project.href.includes('menu-planner') ? 'menu_planner' : 'renovaciones'
-  analytics.trackAppClick(appId, props.project.href, props.locale, 'projects')
+  if (!props.project.href) return
+  analytics.trackAppClick(props.project.name.toLowerCase().replaceAll(' ', '_'), props.project.href, props.locale, 'projects')
 }
 </script>
 
 <template>
-  <article class="project-showcase">
-    <div class="grid gap-5 lg:grid-cols-[minmax(0,1.02fr)_minmax(360px,0.98fr)] lg:items-center">
-      <div :class="index % 2 ? 'lg:order-2' : ''">
-        <p class="font-mono text-[11px] uppercase text-slate-500">{{ labels.preview }}</p>
-        <ProjectPreview :project="project" :locale="locale" class="mt-3" />
-      </div>
+  <article
+    class="project-sheet"
+    :class="[
+      'project-accent-' + project.accent,
+      { 'project-sheet-featured': project.featured }
+    ]"
+  >
+    <header class="project-sheet-head">
+      <p>{{ projectLabel }} {{ project.slug }}</p>
+      <p>{{ project.domain }}</p>
+      <span>{{ project.status }}</span>
+    </header>
 
-      <div :class="index % 2 ? 'lg:order-1' : ''">
-        <div class="flex flex-wrap items-center gap-3">
-          <p class="font-mono text-[11px] uppercase text-slate-500">{{ projectLabel }} {{ project.slug }}</p>
-          <span class="status-label">{{ project.status }}</span>
-        </div>
-        <h3 class="mt-3 text-2xl font-semibold leading-tight text-white sm:text-3xl lg:text-4xl">{{ project.name }}</h3>
-        <p class="mt-3 text-base font-medium leading-7 text-slate-100 sm:text-lg">{{ project.tagline }}</p>
-        <p class="mt-3 text-sm leading-7 text-slate-300 sm:text-base">{{ project.description }}</p>
+    <div class="project-sheet-grid">
+      <div class="project-story">
+        <h3>{{ project.name }}</h3>
+        <p class="project-tagline">{{ project.tagline }}</p>
+        <p class="project-description">{{ project.description }}</p>
 
-        <dl class="project-notes mt-5">
+        <dl class="project-decisions">
           <div>
-            <dt>{{ labels.problem }}</dt>
-            <dd>{{ project.problem }}</dd>
+            <dt>{{ labels.challenge }}</dt>
+            <dd>{{ project.challenge }}</dd>
           </div>
           <div>
-            <dt>{{ labels.role }}</dt>
-            <dd>{{ project.role }}</dd>
-          </div>
-          <div>
-            <dt>{{ labels.decision }}</dt>
-            <dd>{{ project.decision }}</dd>
+            <dt>{{ labels.response }}</dt>
+            <dd>{{ project.response }}</dd>
           </div>
         </dl>
 
-        <div class="mt-5">
-          <p class="font-mono text-[11px] uppercase text-slate-500">{{ labels.stack }}</p>
-          <div class="mt-2.5 flex flex-wrap gap-2">
-            <span v-for="technology in project.technologies" :key="technology" class="tech-label">
-              {{ technology }}
-            </span>
-          </div>
-        </div>
-
-        <div class="mt-6">
+        <div class="project-action-row">
           <a
+            v-if="project.href"
             :href="project.href"
             target="_blank"
             rel="noreferrer"
-            class="button-secondary"
+            class="project-action"
             @click="onProjectClick"
           >
-            {{ project.cta }}
+            {{ actionLabel }} <span aria-hidden="true">↗</span>
           </a>
+          <span v-else class="project-availability">{{ actionLabel }}</span>
+
+          <ul class="project-tech" aria-label="Technology">
+            <li v-for="technology in project.technologies" :key="technology">{{ technology }}</li>
+          </ul>
         </div>
+      </div>
+
+      <div class="project-evidence">
+        <p class="evidence-label">{{ labels.evidence }}</p>
+        <ProjectPreview :project="project" :locale="locale" />
+        <ul class="proof-list">
+          <li v-for="proof in project.proof" :key="proof">{{ proof }}</li>
+        </ul>
       </div>
     </div>
   </article>

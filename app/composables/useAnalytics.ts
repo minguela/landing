@@ -37,7 +37,7 @@ export function useAnalytics() {
     trackLocaleSwitch: (fromLocale: string, toLocale: string) => send('locale_switch', { from_locale: fromLocale, to_locale: toLocale, location: 'header' }),
     trackHeroCta: (ctaId: string, ctaLabel: string, destination: string, locale: string) =>
       send('cta_click', { cta_id: ctaId, cta_label: ctaLabel, location: 'hero', destination, locale, external: true }),
-    trackAppClick: (appId: 'menu_planner' | 'renovaciones', destination: string, locale: string, location: 'projects' | 'apps') =>
+    trackAppClick: (appId: string, destination: string, locale: string, location: 'projects' | 'apps') =>
       send('app_link_click', { app_id: appId, destination, locale, location }),
     trackProfileClick: (linkType: 'github' | 'linkedin' | 'email', destination: string, locale: string, location: string) =>
       send('profile_link_click', { link_type: linkType, destination, locale, location }),

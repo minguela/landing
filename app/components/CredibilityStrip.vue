@@ -1,17 +1,21 @@
 <script setup lang="ts">
+import type { CredibilityItem } from '#layers/10.portfolio/app/domain/portfolio'
+import { formatCredibilityItem } from '#layers/10.portfolio/app/presentation/portfolio-display'
+
 defineProps<{
   label: string
-  items: string[]
+  items: CredibilityItem[]
+  locale: 'en' | 'es'
 }>()
 </script>
 
 <template>
-  <section class="shell" aria-label="Experience">
-    <div class="credibility-strip">
-      <p class="font-mono text-[11px] uppercase text-slate-500">{{ label }}</p>
-      <ul class="grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-5">
-        <li v-for="item in items" :key="item" class="bg-slate-950/72 px-4 py-3.5 text-sm font-medium text-slate-100">
-          {{ item }}
+  <section class="capability-rail" aria-label="Capabilities">
+    <div class="shell capability-grid">
+      <p class="capability-label">{{ label }}</p>
+      <ul>
+        <li v-for="item in items" :key="item.value">
+          {{ formatCredibilityItem(item, locale) }}
         </li>
       </ul>
     </div>

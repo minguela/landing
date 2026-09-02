@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProjectItem } from '~~/data/site'
+import type { Project } from '#layers/10.portfolio/app/domain/portfolio'
 
 const props = defineProps<{
   githubUrl: string
@@ -9,119 +9,107 @@ const props = defineProps<{
   locale: 'en' | 'es'
   emailLabel: string
   copy: {
+    eyebrow: string
+    greeting: string
     title: string
-    lead: string
-    body: string
-    ctaProjects: string
-    ctaGithub: string
-    ctaLinkedin: string
-    ctaEmail: string
-    ctaCv: string
-    previewLabel: string
-    previewTitle: string
+    titleAccent: string
+    role: string
+    subtitle: string
+    cta: string
+    cv: string
+    github: string
+    linkedin: string
+    email: string
+    indexLabel: string
+    indexHint: string
   }
-  projects: ProjectItem[]
+  projects: Project[]
 }>()
 
 const analytics = useAnalytics()
 
 const onHeroProjects = () => {
-  analytics.trackHeroCta('hero_projects', props.copy.ctaProjects, '#projects', props.locale)
-}
-
-const onHeroGithub = () => {
-  analytics.trackProfileClick('github', props.githubUrl, props.locale, 'hero')
-}
-
-const onHeroContact = () => {
-  analytics.trackProfileClick('email', props.emailHref, props.locale, 'hero')
-}
-
-const onHeroLinkedinOrEmail = () => {
-  if (props.linkedinUrl) {
-    analytics.trackProfileClick('linkedin', props.linkedinUrl, props.locale, 'hero')
-    return
-  }
-  analytics.trackProfileClick('email', props.emailHref, props.locale, 'hero')
-}
-
-const onHeroCv = () => {
-  analytics.trackCvDownload(props.locale, 'hero')
+  analytics.trackHeroCta('hero_projects', props.copy.cta, '#projects', props.locale)
 }
 </script>
 
 <template>
-  <section id="top" class="shell pb-8 pt-8 sm:pb-12 sm:pt-12 lg:pb-0 lg:pt-6">
-    <div class="hero-surface relative overflow-hidden px-4 py-6 sm:px-7 sm:py-9 lg:px-12 lg:py-8">
-      <div class="relative grid gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.92fr)] lg:items-center">
-        <div>
-          <p class="hero-name">David Minguela</p>
-
-          <h1 class="mt-4 max-w-4xl text-4xl font-semibold leading-[1.02] text-white sm:text-6xl lg:text-[3.2rem]">
-            {{ copy.title }}
-          </h1>
-
-          <p class="mt-5 max-w-3xl text-base font-medium leading-7 text-slate-100 sm:text-xl sm:leading-8">
-            {{ copy.lead }}
-          </p>
-
-          <div class="mt-6 grid gap-2.5 sm:mt-7 sm:flex sm:flex-wrap">
-            <a
-              href="#projects"
-              class="button-primary"
-              @click="onHeroProjects"
-            >
-              {{ copy.ctaProjects }}
-            </a>
-            <a
-              :href="emailHref"
-              class="button-secondary"
-              @click="onHeroContact"
-            >
-              {{ copy.ctaEmail }}
-            </a>
-            <a
-              :href="cvHref"
-              target="_blank"
-              rel="noreferrer"
-              class="button-tertiary"
-              @click="onHeroCv"
-            >
-              {{ copy.ctaCv }}
-            </a>
-          </div>
-
-          <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-300">
-            <a :href="githubUrl" target="_blank" rel="noreferrer" class="profile-link" @click="onHeroGithub">
-              {{ copy.ctaGithub }}
-            </a>
-            <a
-              :href="linkedinUrl || emailHref"
-              :target="linkedinUrl ? '_blank' : undefined"
-              :rel="linkedinUrl ? 'noreferrer' : undefined"
-              class="profile-link"
-              @click="onHeroLinkedinOrEmail"
-            >
-              {{ linkedinUrl ? copy.ctaLinkedin : emailLabel }}
-            </a>
-          </div>
+  <section id="top" class="hero">
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <div class="hero-meta">
+          <p>{{ copy.eyebrow }}</p>
+          <span aria-hidden="true">MAD / REMOTE</span>
         </div>
 
-        <div class="evidence-stage">
-          <p class="section-kicker mb-2">{{ copy.previewLabel }}</p>
-          <p class="max-w-md text-lg font-semibold leading-7 text-white sm:text-xl">{{ copy.previewTitle }}</p>
-          <div class="mt-5 grid gap-3 xl:grid-cols-2 xl:items-start">
-            <ProjectPreview
-              v-for="(project, index) in projects"
-              :key="project.name"
-              :project="project"
-              :locale="locale"
-              :compact="true"
-              :raised="index === 1"
-              :class="index > 0 ? 'hidden sm:block' : ''"
-            />
-          </div>
+        <p class="hero-greeting">{{ copy.greeting }}</p>
+        <h1 class="hero-title">
+          {{ copy.title }}
+          <em>{{ copy.titleAccent }}</em>
+        </h1>
+
+        <div class="hero-support">
+          <p class="hero-role">{{ copy.role }}</p>
+          <p class="hero-summary">{{ copy.subtitle }}</p>
         </div>
+
+        <div class="hero-actions">
+          <a href="#projects" class="button-primary" @click="onHeroProjects">
+            {{ copy.cta }} <span aria-hidden="true">↓</span>
+          </a>
+          <a
+            :href="emailHref"
+            class="button-secondary"
+            @click="analytics.trackProfileClick('email', emailHref, locale, 'hero')"
+          >
+            {{ copy.email }} <span aria-hidden="true">↗</span>
+          </a>
+          <a
+            :href="cvHref"
+            target="_blank"
+            rel="noreferrer"
+            class="text-link"
+            @click="analytics.trackCvDownload(locale, 'hero')"
+          >
+            {{ copy.cv }}
+          </a>
+        </div>
+      </div>
+
+      <aside class="build-index" aria-label="Selected project index">
+        <div class="build-index-head">
+          <p>{{ copy.indexLabel }}</p>
+          <span>{{ copy.indexHint }}</span>
+        </div>
+        <ol>
+          <li v-for="project in projects" :key="project.slug">
+            <span class="build-index-number">{{ project.slug }}</span>
+            <span class="build-index-name">{{ project.name }}</span>
+            <span class="build-index-domain">{{ project.domain }}</span>
+          </li>
+        </ol>
+        <div class="build-index-links">
+          <a
+            :href="githubUrl"
+            target="_blank"
+            rel="noreferrer"
+            @click="analytics.trackProfileClick('github', githubUrl, locale, 'hero')"
+          >{{ copy.github }} ↗</a>
+          <a
+            :href="linkedinUrl || emailHref"
+            :target="linkedinUrl ? '_blank' : undefined"
+            :rel="linkedinUrl ? 'noreferrer' : undefined"
+            @click="analytics.trackProfileClick(linkedinUrl ? 'linkedin' : 'email', linkedinUrl || emailHref, locale, 'hero')"
+          >{{ linkedinUrl ? copy.linkedin : emailLabel }} ↗</a>
+        </div>
+      </aside>
+    </div>
+
+    <div class="project-ticker" aria-hidden="true">
+      <div>
+        <span v-for="(project, index) in [...projects, ...projects]" :key="project.slug + '-' + index">
+          {{ project.name }} <b>✦</b>
+        </span>
       </div>
     </div>
   </section>

@@ -38,7 +38,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <main>
+  <main class="secondary-page">
     <SiteHeader
       :github-url="githubUrl"
       :linkedin-url="githubUrl"

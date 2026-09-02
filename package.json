@@ -7,6 +7,7 @@
     "dev": "nuxt dev --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview --host",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
     "typecheck": "nuxt typecheck",
     "postinstall": "nuxt prepare"
   },
@@ -22,7 +23,7 @@
     "@tailwindcss/vite": "^4.3.0",
     "@types/node": "^25.9.1",
     "tailwindcss": "^4.3.0",
-    "typescript": "^7.0.2",
+    "typescript": "6.0.2",
     "vue-tsc": "^3.3.9"
   }
 }

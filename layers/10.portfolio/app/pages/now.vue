@@ -39,7 +39,7 @@ const typeLabels: Record<string, string> = {
 </script>
 
 <template>
-  <main>
+  <main class="secondary-page">
     <SiteHeader
       :github-url="githubUrl"
       :linkedin-url="githubUrl"
@@ -48,6 +48,7 @@ const typeLabels: Record<string, string> = {
         projects: locale === 'en' ? 'Projects' : 'Proyectos',
         work: locale === 'en' ? 'How I work' : 'Cómo trabajo',
         stack: locale === 'en' ? 'Stack' : 'Tecnología',
+        contact: locale === 'en' ? 'Contact' : 'Contacto',
       }"
       :locale-flag="localeMeta.flag"
       :locale-label="localeMeta.code"

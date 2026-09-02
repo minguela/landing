@@ -7,12 +7,12 @@ defineProps<{
 </script>
 
 <template>
-  <div class="max-w-3xl">
+  <div class="section-heading">
     <p class="section-kicker">{{ eyebrow }}</p>
-    <h2 class="text-2xl font-semibold leading-tight text-white sm:text-3xl lg:text-5xl">
+    <h2 class="section-title">
       {{ title }}
     </h2>
-    <p class="mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:mt-5 sm:text-base sm:leading-8 lg:text-lg">
+    <p class="section-description">
       {{ description }}
     </p>
   </div>
