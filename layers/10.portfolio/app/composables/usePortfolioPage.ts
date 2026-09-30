@@ -11,7 +11,9 @@ export function usePortfolioPage() {
   const linkedinUrl = config.public.linkedinUrl as string
   const email = config.public.email as string
   const emailHref = `mailto:${email}`
-  const cvHref = '/cv/david-minguela-cv.pdf'
+  const cvHref = computed(() => locale.value === 'en'
+    ? '/cv/david-minguela-cv-en.pdf'
+    : '/cv/david-minguela-cv.pdf')
 
   return {
     locale,

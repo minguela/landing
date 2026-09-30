@@ -26,7 +26,7 @@ const projectsEn: Project[] = [
     challenge: 'Product matching is ambiguous, retailer pages are volatile and checkout must remain explicitly human.',
     response: 'A layered review workflow with safe fallbacks, remembered choices and a deliberate extension handoff before purchase.',
     proof: ['Nuxt Layers', 'MV3 extension bridge', 'Human-in-the-loop'],
-    technologies: ['Nuxt', 'Vue', 'PGlite / Neon', 'Chromium MV3'],
+    technologies: ['Nuxt 4', 'Vue 3', 'PGlite / Neon', 'Chromium MV3'],
     status: 'Preview available',
     availability: 'preview',
     href: 'https://cesta-carrefour-preview.vercel.app',
@@ -170,17 +170,17 @@ const sharedCredibility = [
 const portfolioDataEn: PortfolioContent = {
   copy: {
     seo: {
-      title: 'David Minguela — Product-minded frontend engineer',
-      description: 'Selected product systems by David Minguela: frontend architecture, AI workflows and owned infrastructure for real operational problems.'
+      title: 'David Minguela — Frontend Architect',
+      description: 'Frontend architecture with Vue 3, Nuxt 4 and TypeScript, hexagonal design, AI-assisted engineering and product systems.'
     },
     nav: { projects: 'Selected work', work: 'Approach', stack: 'Toolkit', notes: 'Notes', contact: 'Start a conversation' },
     hero: {
-      eyebrow: 'Independent builder · Senior frontend engineer',
+      eyebrow: 'Independent builder · Frontend Architect',
       greeting: "Hey, I'm David Minguela.",
       title: 'I turn difficult workflows into',
       titleAccent: 'useful software.',
-      role: 'Frontend architecture, product systems and the infrastructure needed to ship them.',
-      subtitle: 'I work where product ambiguity meets technical complexity — designing the interface, the system behind it and the path to production.',
+      role: 'Frontend architecture with Vue 3, Nuxt 4 and TypeScript.',
+      subtitle: 'I design maintainable systems with hexagonal boundaries and use AI throughout daily development, from analysis to implementation and review.',
       cta: 'Explore selected work',
       cv: 'Read my CV',
       github: 'GitHub',
@@ -206,12 +206,12 @@ const portfolioDataEn: PortfolioContent = {
   credibility: sharedCredibility,
   workValues: [
     { title: 'Reduce ambiguity first', text: 'Before choosing components, make the decisions, actors and failure states of the workflow visible.' },
-    { title: 'Design the boundary', text: 'Keep product rules, infrastructure and interface concerns separate enough to evolve without theatre.' },
+    { title: 'Design the boundary', text: 'Use hexagonal boundaries to separate domain rules, application flow, infrastructure and interface concerns so each can evolve clearly.' },
     { title: 'Ship the whole path', text: 'A good screen is not delivery. Auth, data, fallbacks, mobile use and deployment belong to the same problem.' },
-    { title: 'Own the operation', text: 'Observe the system, document the decisions and make recovery a product capability rather than an afterthought.' }
+    { title: 'Use AI with engineering judgment', text: 'AI speeds up analysis, implementation and review; I retain technical ownership, validate changes and design systems that can recover.' }
   ],
   stackGroups: [
-    { title: 'Shape', description: 'Product language and interface systems.', items: ['Vue', 'Nuxt', 'React', 'Next.js', 'TypeScript', 'Tailwind'] },
+    { title: 'Shape', description: 'Product language and interface systems.', items: ['Vue 3', 'Nuxt 4', 'TypeScript', 'React', 'Next.js', 'Tailwind'] },
     { title: 'Persist', description: 'Data that survives the happy path.', items: ['Postgres', 'Neon', 'Supabase', 'SQLite', 'Drizzle'] },
     { title: 'Connect', description: 'Automation, maps and intelligent inputs.', items: ['OpenAI', 'OCR', 'n8n', 'Mapbox', 'Browser extensions'] },
     { title: 'Operate', description: 'The path from repository to a running system.', items: ['Vercel', 'Docker', 'Traefik', 'Cloudflare', 'GitHub Actions'] }
@@ -221,7 +221,7 @@ const portfolioDataEn: PortfolioContent = {
     { marker: 'NOW.02', title: 'Evidence-aware products', text: 'Turning documents, pages and changing sources into claims users can inspect and correct.' },
     { marker: 'NOW.03', title: 'Small systems with real operations', text: 'Taking focused tools all the way through access, persistence, observability and recovery.' }
   ],
-  heroSignals: ['Product systems', 'Frontend architecture', 'AI workflows', 'Owned infrastructure'],
+  heroSignals: ['Frontend architecture', 'Vue 3 · Nuxt 4 · TypeScript', 'Hexagonal design', 'AI-assisted development'],
   appEndpoints: [
     { label: 'menu-planner.dminguela.es', href: 'https://menu-planner.dminguela.es', description: 'Public nutrition planning product.', external: true, monospace: true },
     { label: 'renovaciones.dminguela.es', href: 'https://renovaciones.dminguela.es', description: 'Renewal planning product.', external: true, monospace: true }
@@ -231,17 +231,17 @@ const portfolioDataEn: PortfolioContent = {
 const portfolioDataEs: PortfolioContent = {
   copy: {
     seo: {
-      title: 'David Minguela — Ingeniería frontend con mirada de producto',
-      description: 'Sistemas de producto de David Minguela: arquitectura frontend, flujos con IA e infraestructura propia para problemas operativos reales.'
+      title: 'David Minguela — Arquitecto Frontend',
+      description: 'Arquitectura frontend con Vue 3, Nuxt 4 y TypeScript, diseño hexagonal, desarrollo asistido por IA y sistemas de producto.'
     },
     nav: { projects: 'Proyectos', work: 'Enfoque', stack: 'Herramientas', notes: 'Notas', contact: 'Hablemos' },
     hero: {
-      eyebrow: 'Builder independiente · Senior frontend engineer',
+      eyebrow: 'Builder independiente · Arquitecto Frontend',
       greeting: 'Hola, soy David Minguela.',
       title: 'Convierto flujos difíciles en',
       titleAccent: 'software útil.',
-      role: 'Arquitectura frontend, sistemas de producto y la infraestructura necesaria para publicarlos.',
-      subtitle: 'Trabajo donde la ambigüedad de producto se cruza con la complejidad técnica: diseño la interfaz, el sistema que la sostiene y el camino hasta producción.',
+      role: 'Arquitectura frontend con Vue 3, Nuxt 4 y TypeScript.',
+      subtitle: 'Diseño sistemas mantenibles con límites hexagonales e integro IA en el desarrollo diario, desde el análisis hasta la implementación y la revisión.',
       cta: 'Explorar proyectos',
       cv: 'Ver mi CV',
       github: 'GitHub',
@@ -267,12 +267,12 @@ const portfolioDataEs: PortfolioContent = {
   credibility: sharedCredibility,
   workValues: [
     { title: 'Reducir primero la ambigüedad', text: 'Antes de elegir componentes, hago visibles las decisiones, actores y estados de fallo del flujo.' },
-    { title: 'Diseñar el límite', text: 'Separo reglas de producto, infraestructura e interfaz lo suficiente para que puedan evolucionar sin teatro.' },
+    { title: 'Diseñar el límite', text: 'Aplico límites hexagonales para separar dominio, flujo de aplicación, infraestructura e interfaz y permitir que cada parte evolucione con claridad.' },
     { title: 'Entregar el camino completo', text: 'Una buena pantalla no es una entrega. Auth, datos, fallbacks, móvil y despliegue son parte del mismo problema.' },
-    { title: 'Hacerse cargo de la operación', text: 'Observar el sistema, documentar decisiones y convertir la recuperación en capacidad de producto.' }
+    { title: 'Usar IA con criterio de ingeniería', text: 'La IA acelera análisis, implementación y revisión; mantengo la responsabilidad técnica, valido los cambios y diseño sistemas recuperables.' }
   ],
   stackGroups: [
-    { title: 'Dar forma', description: 'Lenguaje de producto y sistemas de interfaz.', items: ['Vue', 'Nuxt', 'React', 'Next.js', 'TypeScript', 'Tailwind'] },
+    { title: 'Dar forma', description: 'Lenguaje de producto y sistemas de interfaz.', items: ['Vue 3', 'Nuxt 4', 'TypeScript', 'React', 'Next.js', 'Tailwind'] },
     { title: 'Persistir', description: 'Datos que sobreviven al camino feliz.', items: ['Postgres', 'Neon', 'Supabase', 'SQLite', 'Drizzle'] },
     { title: 'Conectar', description: 'Automatización, mapas y entradas inteligentes.', items: ['OpenAI', 'OCR', 'n8n', 'Mapbox', 'Extensiones de navegador'] },
     { title: 'Operar', description: 'El camino del repositorio a un sistema en marcha.', items: ['Vercel', 'Docker', 'Traefik', 'Cloudflare', 'GitHub Actions'] }
@@ -282,7 +282,7 @@ const portfolioDataEs: PortfolioContent = {
     { marker: 'AHORA.02', title: 'Productos conscientes de la evidencia', text: 'Convertir documentos, páginas y fuentes cambiantes en afirmaciones que se pueden revisar y corregir.' },
     { marker: 'AHORA.03', title: 'Sistemas pequeños con operación real', text: 'Llevar herramientas concretas hasta acceso, persistencia, observabilidad y recuperación.' }
   ],
-  heroSignals: ['Sistemas de producto', 'Arquitectura frontend', 'Flujos con IA', 'Infraestructura propia'],
+  heroSignals: ['Arquitectura frontend', 'Vue 3 · Nuxt 4 · TypeScript', 'Diseño hexagonal', 'Desarrollo asistido por IA'],
   appEndpoints: portfolioDataEn.appEndpoints
 }
 

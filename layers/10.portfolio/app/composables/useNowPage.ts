@@ -7,7 +7,9 @@ export function useNowPage() {
   const siteUrl = config.public.siteUrl as string
   const githubUrl = config.public.githubUrl as string
   const emailHref = `mailto:${config.public.email}`
-  const cvHref = '/cv/david-minguela-cv.pdf'
+  const cvHref = computed(() => locale.value === 'en'
+    ? '/cv/david-minguela-cv-en.pdf'
+    : '/cv/david-minguela-cv.pdf')
 
   const nowProjectItems = computed(() => [
     {
