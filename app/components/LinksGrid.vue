@@ -8,33 +8,6 @@ const props = defineProps<{
   locale: 'en' | 'es'
 }>()
 
-const analytics = useAnalytics()
-
-const onLinkClick = (item: LinkItem) => {
-  if (item.href.includes('menu-planner')) {
-    analytics.trackAppClick('menu_planner', item.href, props.locale, 'apps')
-    return
-  }
-  if (item.href.includes('renovaciones')) {
-    analytics.trackAppClick('renovaciones', item.href, props.locale, 'apps')
-    return
-  }
-  if (item.href.includes('/cv/david-minguela-cv.pdf')) {
-    analytics.trackCvDownload(props.locale, 'apps')
-    return
-  }
-  if (item.href.startsWith('mailto:')) {
-    analytics.trackProfileClick('email', item.href, props.locale, 'apps')
-    return
-  }
-  if (item.label.toLowerCase().includes('github')) {
-    analytics.trackProfileClick('github', item.href, props.locale, 'apps')
-    return
-  }
-  if (item.label.toLowerCase().includes('linkedin')) {
-    analytics.trackProfileClick('linkedin', item.href, props.locale, 'apps')
-  }
-}
 </script>
 
 <template>
@@ -46,7 +19,6 @@ const onLinkClick = (item: LinkItem) => {
       :target="item.external ? '_blank' : undefined"
       :rel="item.external ? 'noreferrer' : undefined"
       class="soft-card group flex h-full flex-col justify-between p-4 sm:p-5 hover:border-white/22 hover:bg-white/[0.05]"
-      @click="onLinkClick(item)"
     >
       <div>
         <p class="text-[11px] uppercase text-slate-500">{{ linkLabel }}</p>

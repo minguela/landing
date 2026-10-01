@@ -10,18 +10,9 @@ const {
   siteUrl,
 } = useBlogPage()
 
-const analytics = useAnalytics()
-
 const onToggleLocale = () => {
-  const from = locale.value
-  const to = from === 'en' ? 'es' : 'en'
-  analytics.trackLocaleSwitch(from, to)
   toggleLocale()
 }
-
-onMounted(() => {
-  analytics.trackPageView(locale.value, '/blog')
-})
 
 useHead(() => ({
   htmlAttrs: { lang: localeMeta.value.htmlLang },

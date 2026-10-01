@@ -13,18 +13,9 @@ const {
   siteName,
 } = usePortfolioPage()
 
-const analytics = useAnalytics()
-
 const onToggleLocale = () => {
-  const from = locale.value
-  const to = from === 'en' ? 'es' : 'en'
-  analytics.trackLocaleSwitch(from, to)
   toggleLocale()
 }
-
-onMounted(() => {
-  analytics.trackPageView(locale.value, '/')
-})
 
 useHead(() => ({
   htmlAttrs: {

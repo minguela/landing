@@ -14,7 +14,6 @@ defineProps<{
   }
 }>()
 
-const analytics = useAnalytics()
 </script>
 
 <template>
@@ -35,14 +34,12 @@ const analytics = useAnalytics()
           <a
             :href="emailHref"
             class="button-primary"
-            @click="analytics.trackProfileClick('email', emailHref, locale, 'final_cta')"
           >{{ copy.email }} <span aria-hidden="true">↗</span></a>
           <a
             :href="cvHref"
             target="_blank"
             rel="noreferrer"
             class="button-secondary"
-            @click="analytics.trackCvDownload(locale, 'final_cta')"
           >{{ copy.cv }}</a>
         </div>
       </div>

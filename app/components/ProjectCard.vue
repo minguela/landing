@@ -17,13 +17,7 @@ const props = defineProps<{
   locale: 'en' | 'es'
 }>()
 
-const analytics = useAnalytics()
 const actionLabel = computed(() => props.labels[props.project.availability])
-
-const onProjectClick = () => {
-  if (!props.project.href) return
-  analytics.trackAppClick(props.project.name.toLowerCase().replaceAll(' ', '_'), props.project.href, props.locale, 'projects')
-}
 </script>
 
 <template>
@@ -64,7 +58,6 @@ const onProjectClick = () => {
             target="_blank"
             rel="noreferrer"
             class="project-action"
-            @click="onProjectClick"
           >
             {{ actionLabel }} <span aria-hidden="true">↗</span>
           </a>

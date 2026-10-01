@@ -56,32 +56,19 @@ pnpm preview
 
 Vercel es la opción principal. También queda documentado un handoff para correrlo en servidor propio con PM2 o Docker.
 
-## Analytics (Fase 1)
+## Analytics
 
-Se ha activado instrumentación base con Vercel Analytics:
+La integración oficial de Vercel Analytics registra visitas y páginas en el panel
+del proyecto. Solo acepta el dominio canónico `dminguela.es`; omite rutas fuera
+del sitio público, quita query strings y fragmentos, y normaliza los slugs del
+blog para no enviar valores arbitrarios. No se envían eventos personalizados.
 
-- Tráfico/páginas en dashboard de Vercel.
-- Eventos custom para:
-  - `page_view`
-  - `locale_switch`
-  - `cta_click` (hero)
-  - `app_link_click` (Menu Planner / Renovaciones)
-  - `profile_link_click` (GitHub / LinkedIn / Email)
-  - `cv_download_click`
+Para excluir tus propias visitas en este navegador, ejecuta en la consola del
+navegador:
 
-No requiere variables extra para Fase 1 (usa integración de Vercel).
+```js
+localStorage.setItem('vercel-analytics-opt-out', 'true')
+```
 
-## Analytics (Fase 2)
-
-Añadido sobre Fase 1:
-
-- `section_view` con `IntersectionObserver` para medir alcance real por secciones (`projects`, `stack`, `apps`, `focus`).
-- `page_view` enriquecido con adquisición:
-  - `referrer_domain`
-  - `utm_source`
-  - `utm_medium`
-  - `utm_campaign`
-
-Con esto ya puedes montar en Vercel Analytics:
-- funnel básico: `page_view` -> `cta_click(hero_projects)` -> `app_link_click`
-- cortes por idioma (`locale`) y por campaña UTM.
+Para volver a incluirlas, ejecuta
+`localStorage.removeItem('vercel-analytics-opt-out')` y recarga la página.

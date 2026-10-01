@@ -4,18 +4,9 @@ const {
   nowProjectItems, nowReadingItems, statusClasses,
 } = useNowPage()
 
-const analytics = useAnalytics()
-
 const onToggleLocale = () => {
-  const from = locale.value
-  const to = from === 'en' ? 'es' : 'en'
-  analytics.trackLocaleSwitch(from, to)
   toggleLocale()
 }
-
-onMounted(() => {
-  analytics.trackPageView(locale.value, '/now')
-})
 
 useHead(() => ({ htmlAttrs: { lang: localeMeta.value.htmlLang } }))
 

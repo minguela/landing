@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Project } from '#layers/10.portfolio/app/domain/portfolio'
 
-const props = defineProps<{
+defineProps<{
   githubUrl: string
   linkedinUrl: string
   emailHref: string
@@ -26,11 +26,6 @@ const props = defineProps<{
   projects: Project[]
 }>()
 
-const analytics = useAnalytics()
-
-const onHeroProjects = () => {
-  analytics.trackHeroCta('hero_projects', props.copy.cta, '#projects', props.locale)
-}
 </script>
 
 <template>
@@ -54,13 +49,12 @@ const onHeroProjects = () => {
         </div>
 
         <div class="hero-actions">
-          <a href="#projects" class="button-primary" @click="onHeroProjects">
+          <a href="#projects" class="button-primary">
             {{ copy.cta }} <span aria-hidden="true">↓</span>
           </a>
           <a
             :href="emailHref"
             class="button-secondary"
-            @click="analytics.trackProfileClick('email', emailHref, locale, 'hero')"
           >
             {{ copy.email }} <span aria-hidden="true">↗</span>
           </a>
@@ -69,7 +63,6 @@ const onHeroProjects = () => {
             target="_blank"
             rel="noreferrer"
             class="text-link"
-            @click="analytics.trackCvDownload(locale, 'hero')"
           >
             {{ copy.cv }}
           </a>
@@ -93,13 +86,11 @@ const onHeroProjects = () => {
             :href="githubUrl"
             target="_blank"
             rel="noreferrer"
-            @click="analytics.trackProfileClick('github', githubUrl, locale, 'hero')"
           >{{ copy.github }} ↗</a>
           <a
             :href="linkedinUrl || emailHref"
             :target="linkedinUrl ? '_blank' : undefined"
             :rel="linkedinUrl ? 'noreferrer' : undefined"
-            @click="analytics.trackProfileClick(linkedinUrl ? 'linkedin' : 'email', linkedinUrl || emailHref, locale, 'hero')"
           >{{ linkedinUrl ? copy.linkedin : emailLabel }} ↗</a>
         </div>
       </aside>
