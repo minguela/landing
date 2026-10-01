@@ -13,7 +13,6 @@ export default defineNuxtPlugin(() => {
       }
 
       return filterVercelAnalyticsEvent(event, {
-        canonicalHost: 'dminguela.es',
         excludedLocally
       })
     }

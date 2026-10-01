@@ -59,7 +59,7 @@ Vercel es la opción principal. También queda documentado un handoff para corre
 ## Analytics
 
 La integración oficial de Vercel Analytics registra visitas y páginas en el panel
-del proyecto. Solo acepta el dominio canónico `dminguela.es`; omite rutas fuera
+del proyecto. Solo acepta el dominio canónico `www.dminguela.es`; omite rutas fuera
 del sitio público, quita query strings y fragmentos, y normaliza los slugs del
 blog para no enviar valores arbitrarios. No se envían eventos personalizados.
 
