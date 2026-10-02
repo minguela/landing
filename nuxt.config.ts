@@ -1,11 +1,16 @@
 import process from 'node:process'
 import tailwindcss from '@tailwindcss/vite'
+import clerk from '@clerk/nuxt'
 
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://dminguela.es'
 const siteName = 'David Minguela — Senior Frontend Developer'
 const siteDescription = 'Portfolio y hub técnico de David Minguela: senior frontend developer especializado en Vue/Nuxt, arquitectura de producto, OCR pipelines, automatización y self-hosting.'
 
 export default defineNuxtConfig({
+  modules: [[clerk, {
+    publishableKey: process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    skipServerMiddleware: true,
+  }]],
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
   css: ['~/assets/css/main.css'],
@@ -13,8 +18,14 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()]
   },
   runtimeConfig: {
+    contentSource: process.env.NUXT_CONTENT_SOURCE || 'local',
+    databaseUrl: '',
+    contentAdminUserIds: process.env.NUXT_CONTENT_ADMIN_USER_IDS || '',
+    clerkAuthorizedParties: process.env.NUXT_CLERK_AUTHORIZED_PARTIES || siteUrl,
+    clerk: { secretKey: process.env.CLERK_SECRET_KEY || '' },
     public: {
       siteUrl,
+      clerkPublishableKey: process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY || '',
       siteName,
       siteDescription,
       githubUrl: process.env.NUXT_PUBLIC_GITHUB_URL || 'https://github.com/minguela',

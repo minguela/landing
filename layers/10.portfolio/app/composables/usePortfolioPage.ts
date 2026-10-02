@@ -1,10 +1,14 @@
-import { getPortfolioContentUseCase } from '../application/get-portfolio-content'
-
-export function usePortfolioPage() {
+export async function usePortfolioPage() {
   const config = useRuntimeConfig()
   const { locale, localeMeta, toggleLocale } = useSiteI18n()
 
-  const content = computed(() => getPortfolioContentUseCase(locale.value))
+  const contentKey = computed(() => `public-portfolio-${locale.value}`)
+  const { data: storedContent, error } = await useAsyncData(
+    contentKey,
+    () => $fetch('/api/content/portfolio', { query: { locale: locale.value } }),
+  )
+  if (error.value) throw createError({ statusCode: 503, statusMessage: 'Portfolio content is temporarily unavailable' })
+  const content = computed(() => storedContent.value!)
   const siteUrl = config.public.siteUrl as string
   const siteName = config.public.siteName as string
   const githubUrl = config.public.githubUrl as string

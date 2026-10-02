@@ -16,7 +16,7 @@ const {
   emailHref,
   cvHref,
   siteUrl,
-} = useBlogPostPage()
+} = await useBlogPostPage()
 
 const onToggleLocale = () => {
   toggleLocale()
@@ -131,7 +131,7 @@ useSeoMeta({
               ← {{ locale === 'en' ? 'Previous' : 'Anterior' }}
             </span>
             <p class="mt-1 text-sm font-medium text-slate-200 group-hover:text-cyan-200 transition">
-              {{ locale === 'en' ? prevPost.title : prevPost.titleEs }}
+              {{ prevPost.title }}
             </p>
           </NuxtLink>
 
@@ -144,7 +144,7 @@ useSeoMeta({
               {{ locale === 'en' ? 'Next' : 'Siguiente' }} →
             </span>
             <p class="mt-1 text-sm font-medium text-slate-200 group-hover:text-cyan-200 transition">
-              {{ locale === 'en' ? nextPost.title : nextPost.titleEs }}
+              {{ nextPost.title }}
             </p>
           </NuxtLink>
         </nav>

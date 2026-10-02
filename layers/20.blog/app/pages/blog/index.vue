@@ -9,7 +9,7 @@ const {
   emailHref,
   cvHref,
   siteUrl,
-} = useBlogPage()
+} = await useBlogPage()
 
 const onToggleLocale = () => {
   toggleLocale()
