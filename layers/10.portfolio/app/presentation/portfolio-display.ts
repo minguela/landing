@@ -1,5 +1,10 @@
 import type { Locale } from '#layers/00.core/app/domain/locale'
-import type { CredibilityItem } from '../domain/portfolio'
+import type { CredibilityItem, Project } from '../domain/portfolio'
+
+export function toProjectCardContent(project: Project): Project {
+  const { href: _href, ...publicProject } = project
+  return publicProject
+}
 
 export function formatCredibilityItem(item: CredibilityItem, locale: Locale): string {
   return `${item.value} · ${item.label[locale]}`

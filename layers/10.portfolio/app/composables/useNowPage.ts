@@ -6,6 +6,7 @@ export function useNowPage() {
 
   const siteUrl = config.public.siteUrl as string
   const githubUrl = config.public.githubUrl as string
+  const linkedinUrl = config.public.linkedinUrl as string
   const emailHref = `mailto:${config.public.email}`
   const cvHref = computed(() => locale.value === 'en'
     ? '/cv/david-minguela-cv-en.pdf'
@@ -16,35 +17,35 @@ export function useNowPage() {
       emoji: '🧠',
       title: locale.value === 'en' ? 'AI-assisted interface design' : 'Diseño de interfaces asistido por IA',
       description: locale.value === 'en'
-        ? 'Exploring where AI meaningfully improves product UX without adding noise — working on smart input systems, contextual suggestions and adaptive layouts that respect user intent.'
-        : 'Explorando dónde la IA mejora de forma real la UX de producto sin añadir ruido — trabajando en sistemas de entrada inteligente, sugerencias contextuales y layouts adaptativos que respetan la intención del usuario.',
+        ? 'Exploring where AI makes a real difference to product experience, through smarter inputs, contextual suggestions and adaptive layouts that respect user intent.'
+        : 'Investigo dónde la IA mejora de verdad la experiencia de un producto: entradas más inteligentes, sugerencias útiles y diseños que respetan la intención de cada persona.',
       status: 'active' as const,
       statusLabel: locale.value === 'en' ? 'Active' : 'Activo',
     },
     {
       emoji: '📄',
-      title: locale.value === 'en' ? 'OCR document pipelines v2' : 'Pipelines OCR documentales v2',
+      title: locale.value === 'en' ? 'OCR document pipelines v2' : 'Procesamiento de documentos con OCR',
       description: locale.value === 'en'
-        ? 'Rebuilding the OCR ingestion stack with better fallback strategies, multi-engine routing (Tesseract + Surya + Azure) and real-time progress feedback. Goal: 99% uptime and <2s median processing for standard docs.'
-        : 'Reconstruyendo el stack de ingesta OCR con mejores estrategias de fallback, enrutamiento multi-motor (Tesseract + Surya + Azure) y feedback de progreso en tiempo real. Objetivo: 99% uptime y <2s de procesamiento medio para documentos estándar.',
+        ? 'Rebuilding document intake with better recovery paths, routing across Tesseract, Surya and Azure, and live progress updates. Goal: 99% availability and under 2 seconds median processing for standard documents.'
+        : 'Estoy reconstruyendo la lectura de documentos con mejores alternativas cuando falla un motor, enrutamiento entre Tesseract, Surya y Azure e indicadores de progreso en tiempo real. Objetivo: 99 % de disponibilidad y menos de 2 s de media para documentos estándar.',
       status: 'active' as const,
       statusLabel: locale.value === 'en' ? 'Active' : 'Activo',
     },
     {
       emoji: '🏠',
-      title: locale.value === 'en' ? 'Homelab resilience hardening' : 'Refuerzo de resiliencia del homelab',
+      title: locale.value === 'en' ? 'Homelab resilience hardening' : 'Mejoras de resiliencia del servidor doméstico',
       description: locale.value === 'en'
-        ? 'Adding automatic health checks, zero-downtime deploy rollouts for Docker containers, and a proper off-site backup strategy.'
-        : 'Añadiendo health checks automáticos, despliegues sin downtime para contenedores Docker y una estrategia de backup off-site.',
+        ? 'Adding automated health checks, zero-downtime Docker deployments and a reliable off-site backup strategy.'
+        : 'Estoy añadiendo comprobaciones automáticas, despliegues de Docker sin interrupciones y una estrategia fiable de copias de seguridad externas.',
       status: 'active' as const,
       statusLabel: locale.value === 'en' ? 'Active' : 'Activo',
     },
     {
       emoji: '💰',
-      title: locale.value === 'en' ? 'Product monetisation experiments' : 'Experimentos de monetización de producto',
+      title: locale.value === 'en' ? 'Product monetisation experiments' : 'Pruebas de modelos de ingresos',
       description: locale.value === 'en'
-        ? 'Testing pricing models for Menu Planner and exploring revenue streams beyond consulting.'
-        : 'Probando modelos de precio para Menu Planner y explorando fuentes de ingresos más allá de consultoría.',
+        ? 'Testing pricing models for Menu Planner and exploring ways to earn beyond consulting.'
+        : 'Estoy probando modelos de precios para Menu Planner y explorando otras vías de ingresos además de la consultoría.',
       status: 'experiment' as const,
       statusLabel: locale.value === 'en' ? 'Experiment' : 'Experimento',
     },
@@ -52,17 +53,17 @@ export function useNowPage() {
       emoji: '📝',
       title: locale.value === 'en' ? 'Writing & knowledge sharing' : 'Escritura y divulgación',
       description: locale.value === 'en'
-        ? 'Drafting a series on frontend architecture decisions, self-hosted infrastructure patterns, and the intersection of product thinking and engineering.'
-        : 'Redactando una serie sobre decisiones de arquitectura frontend, patrones de infraestructura self-hosted y la intersección entre pensamiento de producto e ingeniería.',
+        ? 'Writing about frontend architecture, self-managed infrastructure and the connection between product thinking and engineering.'
+        : 'Estoy preparando una serie sobre arquitectura frontend, infraestructura autogestionada y el punto de encuentro entre producto e ingeniería.',
       status: 'ongoing' as const,
       statusLabel: locale.value === 'en' ? 'Ongoing' : 'En curso',
     },
     {
       emoji: '🛠️',
-      title: locale.value === 'en' ? 'Renovaciones App v2 planning' : 'Planificación de Renovaciones App v2',
+      title: locale.value === 'en' ? 'Renovaciones 2.0 planning' : 'Planificación de Renovaciones 2.0',
       description: locale.value === 'en'
-        ? 'Mapping out the next iteration of the renovation planning tool — better calendar integration, budget tracking, and contractor coordination.'
-        : 'Mapeando la siguiente iteración de la herramienta de planificación de reformas — mejor integración con calendario, seguimiento de presupuesto y coordinación de contratistas.',
+        ? 'Planning the next version of Renovaciones, with better calendar integration, budget tracking and contractor coordination.'
+        : 'Estoy planificando la próxima versión de Renovaciones: mejor integración con el calendario, control del presupuesto y coordinación de profesionales.',
       status: 'planning' as const,
       statusLabel: locale.value === 'en' ? 'Planning' : 'Planificando',
     },
@@ -70,9 +71,14 @@ export function useNowPage() {
 
   const nowReadingItems = computed(() => [
     { title: 'The Pragmatic Engineer', author: 'Gergely Orosz', type: 'newsletter' as const },
-    { title: locale.value === 'en' ? 'Staff Engineer: Leadership beyond the management track' : 'Staff Engineer: Leadership beyond the management track', author: 'Will Larson', type: 'book' as const },
+    { title: 'Staff Engineer: Leadership beyond the management track', author: 'Will Larson', type: 'book' as const },
     { title: locale.value === 'en' ? 'Designing Data-Intensive Applications' : 'Designing Data-Intensive Applications', author: 'Martin Kleppmann', type: 'book' as const },
   ])
+
+  const typeLabels = computed(() => ({
+    newsletter: locale.value === 'en' ? 'Newsletter' : 'Boletín',
+    book: locale.value === 'en' ? 'Book' : 'Libro',
+  }))
 
   const statusClasses: Record<string, string> = {
     active: 'bg-emerald-400/10 text-emerald-300 border-emerald-400/20',
@@ -82,7 +88,7 @@ export function useNowPage() {
   }
 
   return {
-    locale, localeMeta, toggleLocale, siteUrl, githubUrl, emailHref, cvHref,
-    nowProjectItems, nowReadingItems, statusClasses,
+    locale, localeMeta, toggleLocale, siteUrl, githubUrl, linkedinUrl, emailHref, cvHref,
+    nowProjectItems, nowReadingItems, statusClasses, typeLabels,
   }
 }

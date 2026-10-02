@@ -23,6 +23,10 @@ export function useBlogPostPage() {
     post.value ? (locale.value === 'en' ? post.value.excerpt : post.value.excerptEs) : ''
   )
 
+  const tags = computed(() => post.value
+    ? (locale.value === 'en' ? post.value.tags : (post.value.tagsEs ?? post.value.tags))
+    : [])
+
   const renderedContent = computed(() => renderMarkdown(content.value))
 
   const allPosts = getAllBlogPosts()
@@ -32,8 +36,11 @@ export function useBlogPostPage() {
 
   const siteUrl = config.public.siteUrl as string
   const githubUrl = config.public.githubUrl as string
+  const linkedinUrl = config.public.linkedinUrl as string
   const emailHref = `mailto:${config.public.email}`
-  const cvHref = '/cv/david-minguela-cv.pdf'
+  const cvHref = computed(() => locale.value === 'en'
+    ? '/cv/david-minguela-cv-en.pdf'
+    : '/cv/david-minguela-cv.pdf')
 
   return {
     locale,
@@ -43,11 +50,13 @@ export function useBlogPostPage() {
     post,
     title,
     excerpt,
+    tags,
     renderedContent,
     prevPost,
     nextPost,
     siteUrl,
     githubUrl,
+    linkedinUrl,
     emailHref,
     cvHref,
   }

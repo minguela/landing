@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Project } from '#layers/10.portfolio/app/domain/portfolio'
+import { toProjectCardContent } from '#layers/10.portfolio/app/presentation/portfolio-display'
 
 const props = defineProps<{
   project: Project
@@ -17,63 +18,52 @@ const props = defineProps<{
   locale: 'en' | 'es'
 }>()
 
-const actionLabel = computed(() => props.labels[props.project.availability])
+const displayProject = computed(() => toProjectCardContent(props.project))
 </script>
 
 <template>
   <article
     class="project-sheet"
     :class="[
-      'project-accent-' + project.accent,
-      { 'project-sheet-featured': project.featured }
+      'project-accent-' + displayProject.accent,
+      { 'project-sheet-featured': displayProject.featured }
     ]"
   >
     <header class="project-sheet-head">
-      <p>{{ projectLabel }} {{ project.slug }}</p>
-      <p>{{ project.domain }}</p>
-      <span>{{ project.status }}</span>
+      <p>{{ projectLabel }} {{ displayProject.slug }}</p>
+      <p>{{ displayProject.domain }}</p>
+      <span>{{ displayProject.status }}</span>
     </header>
 
     <div class="project-sheet-grid">
       <div class="project-story">
-        <h3>{{ project.name }}</h3>
-        <p class="project-tagline">{{ project.tagline }}</p>
-        <p class="project-description">{{ project.description }}</p>
+        <h3>{{ displayProject.name }}</h3>
+        <p class="project-tagline">{{ displayProject.tagline }}</p>
+        <p class="project-description">{{ displayProject.description }}</p>
 
         <dl class="project-decisions">
           <div>
             <dt>{{ labels.challenge }}</dt>
-            <dd>{{ project.challenge }}</dd>
+            <dd>{{ displayProject.challenge }}</dd>
           </div>
           <div>
             <dt>{{ labels.response }}</dt>
-            <dd>{{ project.response }}</dd>
+            <dd>{{ displayProject.response }}</dd>
           </div>
         </dl>
 
-        <div class="project-action-row">
-          <a
-            v-if="project.href"
-            :href="project.href"
-            target="_blank"
-            rel="noreferrer"
-            class="project-action"
-          >
-            {{ actionLabel }} <span aria-hidden="true">↗</span>
-          </a>
-          <span v-else class="project-availability">{{ actionLabel }}</span>
-
+        <div class="project-meta-row">
           <ul class="project-tech" aria-label="Technology">
-            <li v-for="technology in project.technologies" :key="technology">{{ technology }}</li>
+            <li v-for="technology in displayProject.technologies" :key="technology">{{ technology }}</li>
           </ul>
         </div>
       </div>
 
       <div class="project-evidence">
         <p class="evidence-label">{{ labels.evidence }}</p>
-        <ProjectPreview :project="project" :locale="locale" />
+        <ProjectPreview :project="displayProject" :locale="locale" />
         <ul class="proof-list">
-          <li v-for="proof in project.proof" :key="proof">{{ proof }}</li>
+          <li v-for="proof in displayProject.proof" :key="proof">{{ proof }}</li>
         </ul>
       </div>
     </div>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { getSectionHref } from '~/utils/section-links'
+
 defineProps<{
   githubUrl: string
   linkedinUrl: string
@@ -16,6 +18,7 @@ defineProps<{
 }>()
 
 const year = new Date().getFullYear()
+const route = useRoute()
 </script>
 
 <template>
@@ -27,10 +30,10 @@ const year = new Date().getFullYear()
       </div>
 
       <nav aria-label="Footer navigation">
-        <a href="#projects">{{ nav.projects }}</a>
-        <a href="#work">{{ nav.work }}</a>
-        <a href="#stack">{{ nav.stack }}</a>
-        <a v-if="nav.notes" href="#notes">{{ nav.notes }}</a>
+        <a :href="getSectionHref(route.path, 'projects')">{{ nav.projects }}</a>
+        <a :href="getSectionHref(route.path, 'work')">{{ nav.work }}</a>
+        <a :href="getSectionHref(route.path, 'stack')">{{ nav.stack }}</a>
+        <a v-if="nav.notes" :href="getSectionHref(route.path, 'notes')">{{ nav.notes }}</a>
         <a :href="githubUrl" target="_blank" rel="noreferrer">GitHub ↗</a>
         <a v-if="linkedinUrl" :href="linkedinUrl" target="_blank" rel="noreferrer">LinkedIn ↗</a>
         <a :href="cvHref" target="_blank" rel="noreferrer">CV ↗</a>

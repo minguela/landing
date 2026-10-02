@@ -7,10 +7,12 @@ const {
   post,
   title,
   excerpt,
+  tags,
   renderedContent,
   prevPost,
   nextPost,
   githubUrl,
+  linkedinUrl,
   emailHref,
   cvHref,
   siteUrl,
@@ -22,7 +24,7 @@ const onToggleLocale = () => {
 
 useHead(() => ({
   htmlAttrs: { lang: localeMeta.value.htmlLang },
-  title: post.value ? title.value : 'Blog — David Minguela',
+  title: post.value ? title.value : (locale.value === 'en' ? 'Blog — David Minguela' : 'Blog — David Minguela'),
 }))
 
 useSeoMeta({
@@ -40,7 +42,7 @@ useSeoMeta({
   <main class="secondary-page">
     <SiteHeader
       :github-url="githubUrl"
-      :linkedin-url="githubUrl"
+      :linkedin-url="linkedinUrl"
       :email-href="emailHref"
       :nav="{
         projects: locale === 'en' ? 'Projects' : 'Proyectos',
@@ -76,9 +78,9 @@ useSeoMeta({
         <header class="mb-10">
           <div class="flex flex-wrap items-center gap-3">
             <time :datetime="post.date" class="font-mono text-xs text-slate-500">
-              {{ new Date(post.date).toLocaleDateString(locale === 'en' ? 'en-US' : 'es-ES', {
-                year: 'numeric', month: 'long', day: 'numeric',
-              }) }}
+              {{ new Intl.DateTimeFormat(locale === 'en' ? 'en-US' : 'es-ES', {
+                year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC',
+              }).format(new Date(`${post.date}T00:00:00Z`)) }}
             </time>
             <span class="font-mono text-xs text-slate-600">·</span>
             <span class="font-mono text-xs text-slate-500">{{ post.readTime }}</span>
@@ -94,7 +96,7 @@ useSeoMeta({
 
           <div class="mt-5 flex flex-wrap gap-2">
             <span
-              v-for="tag in post.tags"
+              v-for="tag in tags"
               :key="tag"
               class="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 font-mono text-[11px] text-slate-400"
             >
@@ -113,7 +115,7 @@ useSeoMeta({
             <div>
               <p class="text-sm font-semibold text-white">David Minguela</p>
               <p class="text-xs text-slate-400">
-                {{ locale === 'en' ? 'Senior Frontend Developer. Writing about architecture, TypeScript, and self-hosted infrastructure.' : 'Senior Frontend Developer. Escribiendo sobre arquitectura, TypeScript e infraestructura self-hosted.' }}
+                {{ locale === 'en' ? 'Frontend architect. Writing about product systems, TypeScript, and self-managed infrastructure.' : 'Arquitecto frontend. Escribo sobre sistemas de producto, TypeScript e infraestructura autogestionada.' }}
               </p>
             </div>
           </div>
@@ -151,7 +153,7 @@ useSeoMeta({
 
     <SiteFooter
       :github-url="githubUrl"
-      :linkedin-url="githubUrl"
+      :linkedin-url="linkedinUrl"
       :email-href="emailHref"
       :cv-href="cvHref"
       :nav="{

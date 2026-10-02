@@ -7,6 +7,8 @@ export interface BlogPost {
   date: string
   readTime: string
   tags: string[]
+  tagsEs?: string[]
   content: string
   contentEs: string
+  published?: boolean
 }

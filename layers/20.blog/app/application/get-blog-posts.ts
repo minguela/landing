@@ -18,7 +18,7 @@ function toView(post: BlogPost, locale: Locale): BlogPostView {
     excerpt: locale === 'es' ? post.excerptEs : post.excerpt,
     date: post.date,
     readTime: post.readTime,
-    tags: post.tags,
+    tags: locale === 'es' ? (post.tagsEs ?? post.tags) : post.tags,
   }
 }
 

@@ -4,12 +4,13 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'frontend-architecture-decisions-nuxt-4',
     title: 'Frontend architecture decisions that survive product evolution',
-    titleEs: 'Decisiones de arquitectura frontend que sobreviven a la evolución del producto',
+    titleEs: 'Decisiones de arquitectura frontend que resisten la evolución del producto',
     excerpt: 'How to design Nuxt 4 component systems that stay maintainable as the product grows, the team scales and requirements shift. Real patterns from real migrations.',
-    excerptEs: 'Cómo diseñar sistemas de componentes en Nuxt 4 que se mantienen mantenibles cuando el producto crece, el equipo escala y los requisitos cambian. Patrones reales de migraciones reales.',
+    excerptEs: 'Cómo diseñar sistemas de componentes en Nuxt 4 que sigan siendo fáciles de mantener cuando crecen el producto y el equipo y cambian los requisitos. Patrones probados durante migraciones.',
     date: '2026-07-02',
     readTime: '8 min',
     tags: ['Architecture', 'Nuxt', 'Vue', 'TypeScript'],
+    tagsEs: ['Arquitectura', 'Nuxt', 'Vue', 'TypeScript'],
     content: [
       "When you start a greenfield project, every architectural decision feels reversible. You pick Vue 3, add Nuxt on top, wire up Tailwind, and ship. Clean, fast, satisfying.",
       "",
@@ -33,7 +34,7 @@ export const blogPosts: BlogPost[] = [
       "",
       "## Component contracts, not props drilling",
       "",
-      "Props are documentation. But documentation that nobody reads — especially when your `UserCard` accepts fourteen props and three of them are only used in one edge-case slot.",
+      "Props can document a component, but that documentation stops helping when nobody can make sense of it — especially when `UserCard` accepts fourteen props and three are only used in one edge case.",
       "",
       "Instead of a flat prop list, group related concerns:",
       "",
@@ -64,15 +65,15 @@ export const blogPosts: BlogPost[] = [
       "Architecture isn't about picking the right library. It's about making decisions that give your future self options. The best architecture decision is the one you don't have to undo."
     ].join('\n'),
     contentEs: [
-      "Cuando empiezas un proyecto nuevo, cada decisión arquitectónica parece reversible. Escoges Vue 3, añades Nuxt, conectas Tailwind y lanzas. Limpio, rápido, satisfactorio.",
+      "Al empezar un proyecto desde cero, cada decisión arquitectónica parece reversible. Eliges Vue 3, añades Nuxt, configuras Tailwind y publicas. Todo encaja; el resultado es rápido y satisfactorio.",
       "",
-      "Pero seis meses después — tras dos pivotes, un equipo más grande y una acumulación de casos extremos — esas primeras decisiones se convierten en muros de carga. Cambiarlas cuesta semanas. Ignorarlas cuesta confianza.",
+      "Pero seis meses después —tras un par de cambios de rumbo, un equipo más grande y nuevos casos límite— esas primeras decisiones ya sostienen partes importantes del sistema. Cambiarlas cuesta semanas; ignorarlas, la confianza del equipo.",
       "",
-      "**Este artículo trata sobre las decisiones que importan.** No las que te hacen sentir listo el primer día, sino las que siguen sintiéndose acertadas en el mes doce.",
+      "**Este artículo trata de las decisiones que importan:** las que siguen teniendo sentido un año después, no solo las que parecen brillantes el primer día.",
       "",
       "## Organizar los composables por capas",
       "",
-      "El directorio `composables/` en Nuxt tiende a convertirse en un cajón de sastre. Un día tienes `useAuth.ts` y `useApi.ts` limpios. Seis sprints después tienes `useAuth.ts`, `useAuthV2.ts`, `useAuthLegacy.ts`, `useAuthWithRefreshToken.ts` y un `utils/auth-helpers.ts` que importa de tres de ellos.",
+      "En Nuxt, el directorio `composables/` puede acabar convertido en un cajón de sastre. Al principio tienes `useAuth.ts` y `useApi.ts`; seis sprints después, también `useAuthV2.ts`, `useAuthLegacy.ts`, `useAuthWithRefreshToken.ts` y un `utils/auth-helpers.ts` que importa de varios.",
       "",
       "La solución es organizar por capas de forma intencionada:",
       "",
@@ -82,13 +83,13 @@ export const blogPosts: BlogPost[] = [
       "// composables/core/internal/useSessionStore.ts — gestión de estado",
       "```",
       "",
-      "La convención de carpeta internal le dice al equipo: \"importa desde aquí bajo tu propio riesgo.\" No detendrá a nadie decidido, pero establece un límite claro. Y en arquitectura, los límites claros son la mitad del trabajo.",
+      "Llamar `internal` a esa carpeta indica al equipo que esos módulos son detalles de implementación. No impedirá que alguien los importe, pero deja claro dónde está el límite. En arquitectura, establecer límites claros ya es una parte importante del trabajo.",
       "",
       "## Contratos de componentes, no props planas",
       "",
-      "Las props son documentación. Pero documentación que nadie lee — especialmente cuando tu `UserCard` acepta catorce props y tres de ellas solo se usan en un slot de caso extremo.",
+      "Las props también documentan un componente, pero esa documentación deja de ayudar cuando nadie la entiende; por ejemplo, si `UserCard` acepta catorce props y tres solo se usan en un caso muy concreto.",
       "",
-      "En lugar de una lista plana de props, agrupa conceptos relacionados:",
+      "En vez de una lista extensa, agrupa las propiedades que representan conceptos relacionados:",
       "",
       "```vue",
       "<script setup lang=\"ts\">",
@@ -100,22 +101,23 @@ export const blogPosts: BlogPost[] = [
       "</script>",
       "```",
       "",
-      "Esto es un contrato. Cuando un nuevo desarrollador abre el archivo, ve exactamente lo que necesita el componente — no una pared de props individuales que pueden o no estar relacionadas.",
+      "Este contrato permite que quien abra el archivo entienda qué necesita el componente, sin tener que descifrar una lista de props que quizá no guarden relación entre sí.",
       "",
       "## Estrategias de migración que no congelan al equipo",
       "",
-      "Las migraciones no son opcionales. Vue 2 a 3, Nuxt 2 a 4, Options API a Composition API — este es el tipo de trabajo que los product managers odian planificar y los ingenieros temen ejecutar.",
+      "Las migraciones llegan tarde o temprano: de Vue 2 a 3, de Nuxt 2 a 4 o de Options API a Composition API. A los equipos de producto les cuesta encontrarles hueco en el calendario y los equipos de ingeniería saben el trabajo que implican.",
       "",
-      "El patrón que funciona: **strangler fig con enrutamiento paralelo.**",
+      "Una estrategia útil es el patrón **Strangler Fig con enrutamiento en paralelo.**",
       "",
-      "Ejecuta ambas aplicaciones lado a lado. Dirige las páginas nuevas a Nuxt 4. Mantén las rutas heredadas en Nuxt 2. Usa un proxy inverso para unirlas. Migra página por página, no todo de golpe.",
+      "Mantén ambas aplicaciones en marcha: dirige las páginas nuevas a Nuxt 4 y conserva las rutas existentes en Nuxt 2. Un proxy inverso puede unirlas mientras migras página a página.",
       "",
-      "Esto cuesta más infraestructura al principio pero ahorra meses de despliegues bloqueados y el golpe anímico de una migración \"big bang\" mal ejecutada.",
+      "Requiere más infraestructura al principio, pero evita meses de despliegues bloqueados y reduce el impacto de intentar migrarlo todo de una vez.",
       "",
       "---",
       "",
-      "La arquitectura no consiste en elegir la librería correcta. Consiste en tomar decisiones que le den opciones a tu yo del futuro. La mejor decisión arquitectónica es la que no tienes que deshacer."
+      "La arquitectura no consiste en elegir la librería perfecta, sino en tomar decisiones que dejen margen para el futuro. Una buena decisión es aquella que no necesitas deshacer."
     ].join('\n'),
+    published: true,
   },
   {
     slug: 'self-hosted-ocr-pipeline-docker',
@@ -128,6 +130,7 @@ export const blogPosts: BlogPost[] = [
     tags: ['Docker', 'OCR', 'Self-hosting', 'Automation'],
     content: 'Full OCR pipeline article content...',
     contentEs: 'Contenido completo del artículo del pipeline OCR...',
+    published: false,
   },
   {
     slug: 'typescript-patterns-vue-composables',
@@ -140,6 +143,7 @@ export const blogPosts: BlogPost[] = [
     tags: ['TypeScript', 'Vue', 'Patterns', 'DX'],
     content: 'Full TypeScript patterns article content...',
     contentEs: 'Contenido completo del artículo de patrones TypeScript...',
+    published: false,
   },
   {
     slug: 'homelab-monitoring-grafana-prometheus',
@@ -152,13 +156,14 @@ export const blogPosts: BlogPost[] = [
     tags: ['Homelab', 'Monitoring', 'Docker', 'DevOps'],
     content: 'Full monitoring article content...',
     contentEs: 'Contenido completo del artículo de monitorización...',
+    published: false,
   },
 ]
 
 export function getAllBlogPosts(): BlogPost[] {
-  return blogPosts
+  return blogPosts.filter(post => post.published !== false)
 }
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
-  return blogPosts.find(post => post.slug === slug)
+  return blogPosts.find(post => post.slug === slug && post.published !== false)
 }

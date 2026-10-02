@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const {
-  locale, localeMeta, toggleLocale, githubUrl, emailHref, cvHref, siteUrl,
-  nowProjectItems, nowReadingItems, statusClasses,
+  locale, localeMeta, toggleLocale, githubUrl, linkedinUrl, emailHref, cvHref, siteUrl,
+  nowProjectItems, nowReadingItems, statusClasses, typeLabels,
 } = useNowPage()
 
 const onToggleLocale = () => {
@@ -13,8 +13,8 @@ useHead(() => ({ htmlAttrs: { lang: localeMeta.value.htmlLang } }))
 useSeoMeta({
   title: () => locale.value === 'en' ? 'Now — David Minguela' : 'Ahora — David Minguela',
   description: () => locale.value === 'en'
-    ? 'What David Minguela is focused on right now: AI-assisted interfaces, OCR pipelines, homelab infrastructure, product monetisation and writing.'
-    : 'En qué está enfocado David Minguela ahora mismo: interfaces con IA, pipelines OCR, infraestructura homelab, monetización de producto y escritura.',
+    ? 'What David Minguela is focused on right now: AI-assisted interfaces, document processing, home infrastructure, product and writing.'
+    : 'En qué trabaja David Minguela ahora: interfaces con IA, lectura de documentos, infraestructura doméstica, producto y escritura.',
   ogTitle: () => locale.value === 'en' ? 'Now — David Minguela' : 'Ahora — David Minguela',
   ogDescription: () => locale.value === 'en'
     ? "Current projects, focus areas and what I'm reading."
@@ -23,17 +23,13 @@ useSeoMeta({
   twitterTitle: () => locale.value === 'en' ? 'Now — David Minguela' : 'Ahora — David Minguela',
 })
 
-const typeLabels: Record<string, string> = {
-  newsletter: 'Newsletter',
-  book: locale.value === 'en' ? 'Book' : 'Libro',
-}
 </script>
 
 <template>
   <main class="secondary-page">
     <SiteHeader
       :github-url="githubUrl"
-      :linkedin-url="githubUrl"
+      :linkedin-url="linkedinUrl"
       :email-href="emailHref"
       :nav="{
         projects: locale === 'en' ? 'Projects' : 'Proyectos',
@@ -52,7 +48,7 @@ const typeLabels: Record<string, string> = {
         <div class="mb-10">
           <div class="flex items-center gap-3">
             <span class="rounded-full bg-emerald-400/10 px-3 py-1 font-mono text-[11px] font-semibold uppercase text-emerald-300">
-              {{ locale === 'en' ? 'Updated July 2026' : 'Actualizado julio 2026' }}
+              {{ locale === 'en' ? 'Updated October 2026' : 'Actualizado en octubre de 2026' }}
             </span>
           </div>
           <h1 class="mt-5 text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
@@ -60,8 +56,8 @@ const typeLabels: Record<string, string> = {
           </h1>
           <p class="mt-4 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
             {{ locale === 'en'
-              ? "A snapshot of my current focus, inspired by Derek Sivers' now page movement. This is what occupies my time, attention and curiosity right now."
-              : 'Una instantánea de mi foco actual, inspirado por el movimiento de páginas /now de Derek Sivers. Esto es lo que ocupa mi tiempo, atención y curiosidad ahora mismo.'
+              ? "A snapshot of what has my attention right now, inspired by Derek Sivers' /now page movement."
+              : 'Un resumen de los temas que ocupan mi tiempo y mi atención en esta etapa, inspirado en las páginas /now de Derek Sivers.'
             }}
           </p>
         </div>
@@ -109,8 +105,8 @@ const typeLabels: Record<string, string> = {
           <p class="text-sm leading-6 text-slate-400">
             <span class="font-semibold text-slate-300">{{ locale === 'en' ? 'About this page:' : 'Sobre esta página:' }}</span>
             {{ locale === 'en'
-              ? "This is a /now page. It's not a bio or a CV — just what I'm focused on at this point in my life. I update it every few months. If you have your own site, you should make one too."
-              : 'Esto es una página /now. No es una bio ni un CV — solo en qué estoy enfocado en este momento de mi vida. La actualizo cada pocos meses. Si tienes tu propio sitio, deberías hacer una también.'
+              ? "This is a /now page: a short update on what I'm focused on at this stage of my life. I refresh it every few months."
+              : 'Esta página resume en qué estoy centrado en esta etapa. No es una biografía ni un currículum; la actualizo cada pocos meses.'
             }}
           </p>
         </div>
@@ -119,7 +115,7 @@ const typeLabels: Record<string, string> = {
 
     <SiteFooter
       :github-url="githubUrl"
-      :linkedin-url="githubUrl"
+      :linkedin-url="linkedinUrl"
       :email-href="emailHref"
       :cv-href="cvHref"
       :nav="{ projects: locale === 'en' ? 'Projects' : 'Proyectos', work: locale === 'en' ? 'How I work' : 'Cómo trabajo', stack: locale === 'en' ? 'Stack' : 'Tecnología' }"

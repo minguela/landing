@@ -27,9 +27,8 @@ const projectsEn: Project[] = [
     response: 'A layered review workflow with safe fallbacks, remembered choices and a deliberate extension handoff before purchase.',
     proof: ['Nuxt Layers', 'MV3 extension bridge', 'Human-in-the-loop'],
     technologies: ['Nuxt 4', 'Vue 3', 'PGlite / Neon', 'Chromium MV3'],
-    status: 'Preview available',
+    status: 'Case study',
     availability: 'preview',
-    href: 'https://cesta-carrefour-preview.vercel.app',
     accent: 'orange',
     artifact: 'handoff'
   },
@@ -43,9 +42,8 @@ const projectsEn: Project[] = [
     response: 'A product flow that turns document input into editable planning data and degrades safely when automation is unavailable.',
     proof: ['OCR ingestion', 'AI-assisted planning', 'Resilient delivery'],
     technologies: ['Nuxt', 'Supabase', 'OpenAI', 'Docker'],
-    status: 'Public product',
+    status: 'Case study',
     availability: 'public',
-    href: 'https://menu-planner.dminguela.es',
     accent: 'lime',
     artifact: 'pipeline'
   },
@@ -59,7 +57,7 @@ const projectsEn: Project[] = [
     response: 'A source-aware catalogue with duplicate review, cautious evidence states and public Markdown and JSON views.',
     proof: ['Source preservation', 'Duplicate review', 'AI-readable exports'],
     technologies: ['Node.js', 'SQLite / Neon', 'HTML extraction', 'JSON-LD'],
-    status: 'Local-first tool',
+    status: 'Local tool',
     availability: 'local',
     accent: 'red',
     artifact: 'evidence'
@@ -89,9 +87,8 @@ const projectsEn: Project[] = [
     response: 'A single operational timeline with cost views, cloud sync and configurable notification paths.',
     proof: ['Web + mobile', 'Cost overview', 'Notification workflows'],
     technologies: ['Expo', 'React Native', 'Supabase', 'Vercel'],
-    status: 'Product in evolution',
+    status: 'Case study',
     availability: 'public',
-    href: 'https://renovaciones.dminguela.es',
     accent: 'aqua',
     artifact: 'timeline'
   }
@@ -101,10 +98,10 @@ const projectsEs: Project[] = [
   {
     ...projectsEn[0]!,
     domain: 'Operaciones de viaje',
-    tagline: 'Un espacio de viaje construido alrededor de todo lo que ocurre entre una idea y la salida.',
-    description: 'Roam reúne itinerarios, ubicaciones y decisiones en un espacio operativo que sigue siendo útil en escritorio y móvil.',
+    tagline: 'Un espacio de viaje para organizar todo lo que ocurre entre la idea y la salida.',
+    description: 'Roam reúne itinerarios, lugares y decisiones en un único espacio, accesible desde el ordenador y el móvil.',
     challenge: 'Los viajes se reparten entre notas, mapas y mensajes hasta que deja de existir una versión fiable del plan.',
-    response: 'Un producto de mapa y agenda con acciones estructuradas, propiedad clara y datos de viaje resistentes.',
+    response: 'Un mapa y una agenda con acciones claras, responsables definidos y datos de viaje fiables.',
     proof: ['Mapa + agenda', 'Itinerario estructurado', 'Uso móvil sobre el terreno'],
     status: 'Producto privado'
   },
@@ -114,49 +111,49 @@ const projectsEs: Project[] = [
     tagline: 'De una lista cualquiera a una cesta que una persona puede revisar de verdad.',
     description: 'Una aplicación Nuxt y una extensión Chromium que resuelven candidatos, recuerdan decisiones y entregan la lista revisada a una sesión existente de Carrefour.',
     challenge: 'La selección de productos es ambigua, las páginas del retailer cambian y la compra debe seguir siendo explícitamente humana.',
-    response: 'Un flujo por capas con revisión, fallbacks seguros, elecciones recordadas y entrega deliberada a la extensión antes de comprar.',
+    response: 'Un flujo por capas con revisión, alternativas seguras, elecciones recordadas y entrega deliberada a la extensión antes de comprar.',
     proof: ['Nuxt Layers', 'Puente de extensión MV3', 'Humano en el circuito'],
-    status: 'Preview disponible'
+    status: 'Caso de estudio'
   },
   {
     ...projectsEn[2]!,
     domain: 'Flujo nutricional',
-    tagline: 'Planificación nutricional que hace útiles los documentos y la IA sin convertirlos en la interfaz.',
-    description: 'Un producto que conecta OCR, flujos con IA, Supabase y Vercel, manteniendo visibles y utilizables las rutas de respaldo.',
-    challenge: 'Los documentos sin estructura y los servicios externos poco fiables añaden fricción justo cuando hace falta un plan claro.',
-    response: 'Un flujo que convierte documentos en datos editables y se degrada con seguridad cuando la automatización no está disponible.',
-    proof: ['Entrada OCR', 'Planificación asistida por IA', 'Entrega resiliente'],
-    status: 'Producto público'
+    tagline: 'Planificación nutricional que aprovecha documentos e IA sin convertirlos en la interfaz.',
+    description: 'Un producto que conecta OCR, flujos con IA, Supabase y Vercel, con alternativas claras cuando falla un servicio.',
+    challenge: 'Los documentos desestructurados y los servicios externos inestables dificultan crear un plan claro.',
+    response: 'Un flujo que convierte documentos en datos editables y sigue siendo útil cuando falla la automatización.',
+    proof: ['Lectura de documentos con OCR', 'Planificación asistida por IA', 'Alternativas ante fallos'],
+    status: 'Caso de estudio'
   },
   {
     ...projectsEn[3]!,
     domain: 'Soporte a decisiones',
-    tagline: 'Un espacio de evidencias para comparar coches sin perder la fuente detrás de cada afirmación.',
-    description: 'Una herramienta local-first para importar anuncios, curar evidencias técnicas y publicar comparativas estructuradas para personas y asistentes de IA.',
-    challenge: 'Los anuncios desaparecen, el equipamiento se contradice y una compra importante acaba dependiendo de pestañas frágiles.',
-    response: 'Un catálogo consciente de sus fuentes, con revisión de duplicados, estados prudentes y vistas públicas en Markdown y JSON.',
-    proof: ['Fuentes preservadas', 'Revisión de duplicados', 'Exportaciones legibles por IA'],
-    status: 'Herramienta local-first'
+    tagline: 'Un espacio de investigación para comparar coches sin perder de vista las fuentes.',
+    description: 'Una herramienta local para importar anuncios, reunir pruebas técnicas y publicar comparativas estructuradas para personas y asistentes de IA.',
+    challenge: 'Los anuncios desaparecen, los datos de equipamiento se contradicen y las decisiones de compra dependen de pestañas difíciles de recuperar.',
+    response: 'Un catálogo que conserva las fuentes, permite revisar duplicados y distingue los datos confirmados de los dudosos.',
+    proof: ['Conservación de las fuentes', 'Revisión de duplicados', 'Exportaciones en Markdown y JSON'],
+    status: 'Herramienta local'
   },
   {
     ...projectsEn[4]!,
     domain: 'Infraestructura privada',
-    tagline: 'Un espacio privado de archivos donde el sistema de ficheros conserva la autoridad.',
-    description: 'Una interfaz Nuxt sobre almacenamiento NAS con identidades estables, metadatos de búsqueda, favoritos, papelera e historial de actividad.',
-    challenge: 'Una interfaz útil necesita metadatos de producto sin fingir que la base de datos posee los archivos reales.',
-    response: 'Una arquitectura de responsabilidades separadas: los bytes siguen en disco y SQLite mantiene el estado recuperable y buscable.',
-    proof: ['Autoridad del filesystem', 'Metadatos estables', 'Acceso OIDC'],
+    tagline: 'Un espacio privado para archivos que conserva el sistema de ficheros como fuente principal.',
+    description: 'Una interfaz Nuxt para el almacenamiento NAS, con identidades estables, búsqueda, favoritos, papelera e historial de actividad.',
+    challenge: 'La interfaz necesita metadatos útiles sin tratar la base de datos como propietaria de los archivos.',
+    response: 'Los archivos permanecen en disco; SQLite guarda los metadatos necesarios para buscarlos y recuperar cambios.',
+    proof: ['El disco conserva los archivos', 'Metadatos estables', 'Acceso mediante OIDC'],
     status: 'Sistema privado'
   },
   {
     ...projectsEn[5]!,
     domain: 'Operaciones personales',
-    tagline: 'Renovaciones y suscripciones organizadas como una línea temporal, no como otra hoja olvidada.',
-    description: 'Un producto multiplataforma para controlar renovaciones, costes recurrentes y canales de aviso en web y móvil.',
+    tagline: 'Renovaciones y suscripciones organizadas en un calendario fácil de consultar.',
+    description: 'Una aplicación para controlar renovaciones, gastos periódicos y avisos desde la web o el móvil.',
     challenge: 'Seguros, suscripciones y licencias viven en ciclos distintos y suelen hacerse visibles únicamente cuando cobran.',
-    response: 'Una sola línea temporal operativa con vistas de coste, sincronización cloud y canales de notificación configurables.',
+    response: 'Un calendario único con previsión de gastos, sincronización y avisos configurables.',
     proof: ['Web + móvil', 'Vista de costes', 'Flujos de notificación'],
-    status: 'Producto en evolución'
+    status: 'Caso de estudio'
   }
 ]
 
@@ -195,7 +192,7 @@ const portfolioDataEn: PortfolioContent = {
       stack: { eyebrow: 'Working toolkit', title: 'Tools organised by responsibility.', description: 'Technology choices follow the system. These are the pieces I currently reach for to design, ship and operate it.' },
       focus: { eyebrow: 'Current field notes', title: 'Questions I am pushing on now.', description: 'The recurring ideas connecting current builds, experiments and technical writing.' }
     },
-    projectCard: { label: 'Case', challenge: 'The friction', response: 'The system response', evidence: 'What makes it real', public: 'Open product', preview: 'Open preview', private: 'Private system', local: 'Local tool' },
+    projectCard: { label: 'Case study', challenge: 'The problem', response: 'The solution', evidence: 'System details', public: 'Case study', preview: 'Case study', private: 'Private system', local: 'Local tool' },
     credibilityLabel: 'Working across',
     focusLabel: 'Field note',
     buildNotes: { eyebrow: 'Build log', title: 'No fake telemetry. Just the work.', description: 'Short notes on what I am building, changing and learning — including the awkward parts that polished case studies usually remove.', now: 'What I am doing now', blog: 'Read the technical notes' },
@@ -207,7 +204,7 @@ const portfolioDataEn: PortfolioContent = {
   workValues: [
     { title: 'Reduce ambiguity first', text: 'Before choosing components, make the decisions, actors and failure states of the workflow visible.' },
     { title: 'Design the boundary', text: 'Use hexagonal boundaries to separate domain rules, application flow, infrastructure and interface concerns so each can evolve clearly.' },
-    { title: 'Ship the whole path', text: 'A good screen is not delivery. Auth, data, fallbacks, mobile use and deployment belong to the same problem.' },
+    { title: 'Design the whole journey', text: 'A well-designed screen is only part of the delivery. Authentication, data, recovery paths, mobile use and deployment all matter.' },
     { title: 'Use AI with engineering judgment', text: 'AI speeds up analysis, implementation and review; I retain technical ownership, validate changes and design systems that can recover.' }
   ],
   stackGroups: [
@@ -222,10 +219,7 @@ const portfolioDataEn: PortfolioContent = {
     { marker: 'NOW.03', title: 'Small systems with real operations', text: 'Taking focused tools all the way through access, persistence, observability and recovery.' }
   ],
   heroSignals: ['Frontend architecture', 'Vue 3 · Nuxt 4 · TypeScript', 'Hexagonal design', 'AI-assisted development'],
-  appEndpoints: [
-    { label: 'menu-planner.dminguela.es', href: 'https://menu-planner.dminguela.es', description: 'Public nutrition planning product.', external: true, monospace: true },
-    { label: 'renovaciones.dminguela.es', href: 'https://renovaciones.dminguela.es', description: 'Renewal planning product.', external: true, monospace: true }
-  ]
+  appEndpoints: []
 }
 
 const portfolioDataEs: PortfolioContent = {
@@ -234,14 +228,14 @@ const portfolioDataEs: PortfolioContent = {
       title: 'David Minguela — Arquitecto Frontend',
       description: 'Arquitectura frontend con Vue 3, Nuxt 4 y TypeScript, diseño hexagonal, desarrollo asistido por IA y sistemas de producto.'
     },
-    nav: { projects: 'Proyectos', work: 'Enfoque', stack: 'Herramientas', notes: 'Notas', contact: 'Hablemos' },
+    nav: { projects: 'Proyectos', work: 'Cómo trabajo', stack: 'Tecnologías', notes: 'Notas', contact: 'Hablemos' },
     hero: {
-      eyebrow: 'Builder independiente · Arquitecto Frontend',
+      eyebrow: 'Arquitecto frontend independiente',
       greeting: 'Hola, soy David Minguela.',
       title: 'Convierto flujos difíciles en',
       titleAccent: 'software útil.',
       role: 'Arquitectura frontend con Vue 3, Nuxt 4 y TypeScript.',
-      subtitle: 'Diseño sistemas mantenibles con límites hexagonales e integro IA en el desarrollo diario, desde el análisis hasta la implementación y la revisión.',
+      subtitle: 'Diseño sistemas mantenibles con arquitectura hexagonal e integro la IA en mi trabajo diario, desde el análisis hasta la implementación y la revisión.',
       cta: 'Explorar proyectos',
       cv: 'Ver mi CV',
       github: 'GitHub',
@@ -251,30 +245,30 @@ const portfolioDataEs: PortfolioContent = {
       indexHint: 'Seis sistemas · un punto de vista'
     },
     sections: {
-      projects: { eyebrow: 'Proyectos seleccionados / 01—06', title: 'Software con un trabajo que hacer.', description: 'Sistemas reales: herramientas privadas, productos públicos e infraestructura construidos alrededor de decisiones, no de demos.' },
-      work: { eyebrow: 'Principios de trabajo / 04', title: 'Cómo consigo que el trabajo se sostenga.', description: 'La interfaz es solo una capa. Diseño a su alrededor el límite del producto, los datos y el camino operativo.' },
-      stack: { eyebrow: 'Herramientas de trabajo', title: 'Tecnología ordenada por responsabilidad.', description: 'Las herramientas siguen al sistema. Estas son las piezas que utilizo hoy para diseñarlo, publicarlo y operarlo.' },
+      projects: { eyebrow: 'Casos seleccionados / 01—06', title: 'Software pensado para resolver problemas reales.', description: 'Herramientas, productos e infraestructura que nacen de necesidades concretas y decisiones de diseño.' },
+      work: { eyebrow: 'Principios de trabajo / 04', title: 'Diseñar para que el sistema funcione de principio a fin', description: 'La interfaz es solo una parte. También diseño la lógica del producto, sus datos y la forma de mantenerlo en marcha.' },
+      stack: { eyebrow: 'Tecnologías de trabajo', title: 'Tecnología organizada por responsabilidades.', description: 'Elijo las herramientas según lo que necesita cada sistema y las utilizo para diseñarlo, publicarlo y mantenerlo.' },
       focus: { eyebrow: 'Notas de campo actuales', title: 'Preguntas en las que estoy profundizando.', description: 'Las ideas recurrentes que conectan los productos, experimentos y notas técnicas actuales.' }
     },
-    projectCard: { label: 'Caso', challenge: 'La fricción', response: 'La respuesta del sistema', evidence: 'Lo que lo hace real', public: 'Abrir producto', preview: 'Abrir preview', private: 'Sistema privado', local: 'Herramienta local' },
-    credibilityLabel: 'Trabajo entre',
+    projectCard: { label: 'Caso de estudio', challenge: 'El problema', response: 'La solución', evidence: 'Detalles del sistema', public: 'Caso de estudio', preview: 'Caso de estudio', private: 'Sistema privado', local: 'Herramienta local' },
+    credibilityLabel: 'Ámbitos de trabajo',
     focusLabel: 'Nota de campo',
-    buildNotes: { eyebrow: 'Diario de construcción', title: 'Sin telemetría falsa. Solo el trabajo.', description: 'Notas breves sobre lo que construyo, cambio y aprendo, incluidas las partes incómodas que los casos de estudio suelen borrar.', now: 'Qué estoy haciendo ahora', blog: 'Leer las notas técnicas' },
-    finalCta: { eyebrow: 'Canal abierto', title: '¿Tienes un flujo difícil?', subtitle: 'Puedo incorporarme a un equipo de producto o ayudarte a convertir un problema operativo en software del que se pueda depender.', team: 'Para equipos de producto', client: 'Para proyectos concretos', email: 'Empezar una conversación', cv: 'Ver mi CV' },
-    footer: { builtWith: 'Diseñado y construido con Nuxt', email: 'minguela9109@gmail.com', note: 'Sin testimonios generados. Sin métricas ficticias.' }
+    buildNotes: { eyebrow: 'Cuaderno de trabajo', title: 'Lo que construyo, con sus aciertos y dificultades.', description: 'Notas sobre lo que desarrollo, cambio y aprendo, incluidos los problemas que suelen quedar fuera de un caso de estudio.', now: 'En qué estoy trabajando', blog: 'Leer los artículos técnicos' },
+    finalCta: { eyebrow: 'Contacto abierto', title: '¿Tienes un flujo de trabajo complejo?', subtitle: 'Puedo sumarme a un equipo de producto o ayudarte a convertir un problema operativo en un sistema fiable.', team: 'Para equipos de producto', client: 'Para proyectos concretos', email: 'Escríbeme', cv: 'Ver mi CV' },
+    footer: { builtWith: 'Diseñado y desarrollado con Nuxt', email: 'minguela9109@gmail.com', note: 'Sin testimonios inventados ni métricas sin verificar.' }
   },
   projects: projectsEs,
   credibility: sharedCredibility,
   workValues: [
-    { title: 'Reducir primero la ambigüedad', text: 'Antes de elegir componentes, hago visibles las decisiones, actores y estados de fallo del flujo.' },
-    { title: 'Diseñar el límite', text: 'Aplico límites hexagonales para separar dominio, flujo de aplicación, infraestructura e interfaz y permitir que cada parte evolucione con claridad.' },
-    { title: 'Entregar el camino completo', text: 'Una buena pantalla no es una entrega. Auth, datos, fallbacks, móvil y despliegue son parte del mismo problema.' },
-    { title: 'Usar IA con criterio de ingeniería', text: 'La IA acelera análisis, implementación y revisión; mantengo la responsabilidad técnica, valido los cambios y diseño sistemas recuperables.' }
+    { title: 'Reducir primero la ambigüedad', text: 'Antes de elegir componentes, aclaro las decisiones, las personas implicadas y lo que puede fallar en cada flujo.' },
+    { title: 'Diseñar límites claros', text: 'Aplico arquitectura hexagonal para separar las reglas de negocio, los flujos de aplicación, la infraestructura y la interfaz.' },
+    { title: 'Diseñar el recorrido completo', text: 'Una buena pantalla no basta: autenticación, datos, alternativas ante fallos, uso en móvil y despliegue forman parte de la entrega.' },
+    { title: 'Usar IA con criterio técnico', text: 'La IA acelera el análisis, la implementación y la revisión. Mantengo la responsabilidad técnica y compruebo que el sistema pueda recuperarse de un fallo.' }
   ],
   stackGroups: [
     { title: 'Dar forma', description: 'Lenguaje de producto y sistemas de interfaz.', items: ['Vue 3', 'Nuxt 4', 'TypeScript', 'React', 'Next.js', 'Tailwind'] },
     { title: 'Persistir', description: 'Datos que sobreviven al camino feliz.', items: ['Postgres', 'Neon', 'Supabase', 'SQLite', 'Drizzle'] },
-    { title: 'Conectar', description: 'Automatización, mapas y entradas inteligentes.', items: ['OpenAI', 'OCR', 'n8n', 'Mapbox', 'Extensiones de navegador'] },
+    { title: 'Conectar', description: 'Automatización, mapas y lectura inteligente de documentos.', items: ['OpenAI', 'OCR', 'n8n', 'Mapbox', 'Extensiones de navegador'] },
     { title: 'Operar', description: 'El camino del repositorio a un sistema en marcha.', items: ['Vercel', 'Docker', 'Traefik', 'Cloudflare', 'GitHub Actions'] }
   ],
   currentFocus: [
@@ -283,7 +277,7 @@ const portfolioDataEs: PortfolioContent = {
     { marker: 'AHORA.03', title: 'Sistemas pequeños con operación real', text: 'Llevar herramientas concretas hasta acceso, persistencia, observabilidad y recuperación.' }
   ],
   heroSignals: ['Arquitectura frontend', 'Vue 3 · Nuxt 4 · TypeScript', 'Diseño hexagonal', 'Desarrollo asistido por IA'],
-  appEndpoints: portfolioDataEn.appEndpoints
+  appEndpoints: []
 }
 
 const portfolioContentMap: Record<'en' | 'es', PortfolioContent> = {
