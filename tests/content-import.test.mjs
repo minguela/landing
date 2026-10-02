@@ -81,7 +81,7 @@ test('keeps public content use cases on the local adapter until a Neon reader is
   const posts = await listPublishedBlogPostsUseCase(repository, 'es')
 
   assert.equal(portfolio.projects.length, 6)
-  assert.equal(portfolio.projects[0].tagline, 'Un espacio de viaje para organizar todo lo que ocurre entre la idea y la salida.')
+  assert.equal(portfolio.projects[0].tagline, 'Un espacio para organizar cada viaje, desde la primera idea hasta la salida.')
   assert.equal(posts.length, 1)
   assert.equal(posts[0].title, 'Decisiones de arquitectura frontend que resisten la evolución del producto')
 })
