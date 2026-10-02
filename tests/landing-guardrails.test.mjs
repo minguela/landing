@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 
 import { getSectionHref } from '../app/utils/section-links.ts'
 import { getPortfolioContent } from '../layers/10.portfolio/app/infrastructure/portfolio-data.ts'
-import { toProjectCardContent } from '../layers/10.portfolio/app/presentation/portfolio-display.ts'
+import { formatCredibilityItem, toProjectCardContent } from '../layers/10.portfolio/app/presentation/portfolio-display.ts'
 import {
   blogPosts,
   getAllBlogPosts,
@@ -42,6 +42,11 @@ test('Spanish portfolio copy uses natural architecture and UI terminology', () =
     .flatMap(project => [project.tagline, project.description, project.challenge, project.response, ...project.proof])
     .join(' ')
   assert.ok(!projectNarratives.match(/\b(fallbacks|preview|cloud|local-first)\b/i))
+  assert.ok(!projectNarratives.match(/\b(retailer|desestructurados|humano en el circuito)\b/i))
+  assert.deepEqual(
+    content.credibility.map(item => formatCredibilityItem(item, 'es')),
+    ['Sistemas de producto', 'Arquitectura frontend', 'Flujos con IA', 'Infraestructura autogestionada'],
+  )
 })
 
 test('blog lists and detail routes exclude placeholder articles', () => {

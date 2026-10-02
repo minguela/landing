@@ -40,8 +40,7 @@ export interface FocusItem {
 }
 
 export interface CredibilityItem {
-  value: string
-  label: Record<'en' | 'es', string>
+  text: Record<'en' | 'es', string>
 }
 
 export interface LinkItem {

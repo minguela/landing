@@ -35,18 +35,18 @@ const links = computed(() => [
 <template>
   <header class="site-header">
     <div class="shell masthead">
-      <a :href="getSectionHref(route.path, 'top')" class="brand-mark" aria-label="David Minguela — home">
+      <NuxtLink :to="getSectionHref(route.path, 'top')" class="brand-mark" aria-label="David Minguela — home">
         <span class="brand-monogram">DM</span>
         <span class="brand-copy">
           <strong>David Minguela</strong>
           <small>{{ brandRole }}</small>
         </span>
-      </a>
+      </NuxtLink>
 
       <nav class="desktop-nav" aria-label="Primary navigation">
-        <a v-for="link in links" :key="link.href" :href="link.href">{{ link.label }}</a>
-        <a href="/now">{{ localeLabel.toLowerCase() === 'es' ? 'Ahora' : 'Now' }}</a>
-        <a href="/blog">Blog</a>
+        <NuxtLink v-for="link in links" :key="link.href" :to="link.href">{{ link.label }}</NuxtLink>
+        <NuxtLink to="/now">{{ localeLabel.toLowerCase() === 'es' ? 'Ahora' : 'Now' }}</NuxtLink>
+        <NuxtLink to="/blog">Blog</NuxtLink>
       </nav>
 
       <div class="header-actions">
@@ -65,9 +65,9 @@ const links = computed(() => [
     </div>
 
     <nav class="shell mobile-nav" aria-label="Mobile navigation">
-      <a v-for="link in links" :key="link.href" :href="link.href">{{ link.label }}</a>
-      <a href="/now">{{ localeLabel.toLowerCase() === 'es' ? 'Ahora' : 'Now' }}</a>
-      <a href="/blog">Blog</a>
+      <NuxtLink v-for="link in links" :key="link.href" :to="link.href">{{ link.label }}</NuxtLink>
+      <NuxtLink to="/now">{{ localeLabel.toLowerCase() === 'es' ? 'Ahora' : 'Now' }}</NuxtLink>
+      <NuxtLink to="/blog">Blog</NuxtLink>
     </nav>
   </header>
 </template>

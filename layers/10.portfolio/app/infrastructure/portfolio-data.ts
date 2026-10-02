@@ -109,10 +109,10 @@ const projectsEs: Project[] = [
     ...projectsEn[1]!,
     domain: 'Flujo de compra',
     tagline: 'De una lista cualquiera a una cesta que una persona puede revisar de verdad.',
-    description: 'Una aplicación Nuxt y una extensión Chromium que resuelven candidatos, recuerdan decisiones y entregan la lista revisada a una sesión existente de Carrefour.',
-    challenge: 'La selección de productos es ambigua, las páginas del retailer cambian y la compra debe seguir siendo explícitamente humana.',
+    description: 'Una aplicación Nuxt y una extensión Chromium que identifican productos posibles, conservan tus decisiones y entregan la lista revisada a una sesión de Carrefour ya iniciada.',
+    challenge: 'La selección de productos es ambigua, las páginas de la tienda cambian y la decisión final de compra debe seguir en manos de la persona.',
     response: 'Un flujo por capas con revisión, alternativas seguras, elecciones recordadas y entrega deliberada a la extensión antes de comprar.',
-    proof: ['Nuxt Layers', 'Puente de extensión MV3', 'Humano en el circuito'],
+    proof: ['Nuxt Layers', 'Puente de extensión MV3', 'Revisión humana'],
     status: 'Caso de estudio'
   },
   {
@@ -120,7 +120,7 @@ const projectsEs: Project[] = [
     domain: 'Flujo nutricional',
     tagline: 'Planificación nutricional que aprovecha documentos e IA sin convertirlos en la interfaz.',
     description: 'Un producto que conecta OCR, flujos con IA, Supabase y Vercel, con alternativas claras cuando falla un servicio.',
-    challenge: 'Los documentos desestructurados y los servicios externos inestables dificultan crear un plan claro.',
+    challenge: 'La falta de estructura de los documentos y la inestabilidad de los servicios externos dificultan crear un plan claro.',
     response: 'Un flujo que convierte documentos en datos editables y sigue siendo útil cuando falla la automatización.',
     proof: ['Lectura de documentos con OCR', 'Planificación asistida por IA', 'Alternativas ante fallos'],
     status: 'Caso de estudio'
@@ -158,10 +158,10 @@ const projectsEs: Project[] = [
 ]
 
 const sharedCredibility = [
-  { value: 'Product', label: { en: 'Systems', es: 'Sistemas' } },
-  { value: 'Frontend', label: { en: 'Architecture', es: 'Arquitectura' } },
-  { value: 'AI', label: { en: 'Workflows', es: 'Flujos' } },
-  { value: 'Owned', label: { en: 'Infrastructure', es: 'Infraestructura' } }
+  { text: { en: 'Product systems', es: 'Sistemas de producto' } },
+  { text: { en: 'Frontend architecture', es: 'Arquitectura frontend' } },
+  { text: { en: 'AI workflows', es: 'Flujos con IA' } },
+  { text: { en: 'Self-managed infrastructure', es: 'Infraestructura autogestionada' } }
 ]
 
 const portfolioDataEn: PortfolioContent = {
@@ -273,7 +273,7 @@ const portfolioDataEs: PortfolioContent = {
   ],
   currentFocus: [
     { marker: 'AHORA.01', title: 'IA como participante del flujo', text: 'Interfaces donde la automatización propone, las personas deciden y el sistema conserva el porqué.' },
-    { marker: 'AHORA.02', title: 'Productos conscientes de la evidencia', text: 'Convertir documentos, páginas y fuentes cambiantes en afirmaciones que se pueden revisar y corregir.' },
+    { marker: 'AHORA.02', title: 'Productos que muestran sus fuentes', text: 'Convertir documentos, páginas y fuentes cambiantes en información que las personas puedan revisar y corregir.' },
     { marker: 'AHORA.03', title: 'Sistemas pequeños con operación real', text: 'Llevar herramientas concretas hasta acceso, persistencia, observabilidad y recuperación.' }
   ],
   heroSignals: ['Arquitectura frontend', 'Vue 3 · Nuxt 4 · TypeScript', 'Diseño hexagonal', 'Desarrollo asistido por IA'],

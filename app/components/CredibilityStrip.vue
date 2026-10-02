@@ -14,7 +14,7 @@ defineProps<{
     <div class="shell capability-grid">
       <p class="capability-label">{{ label }}</p>
       <ul>
-        <li v-for="item in items" :key="item.value">
+        <li v-for="item in items" :key="item.text.en">
           {{ formatCredibilityItem(item, locale) }}
         </li>
       </ul>

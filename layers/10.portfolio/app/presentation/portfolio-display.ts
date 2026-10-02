@@ -7,7 +7,7 @@ export function toProjectCardContent(project: Project): Project {
 }
 
 export function formatCredibilityItem(item: CredibilityItem, locale: Locale): string {
-  return `${item.value} · ${item.label[locale]}`
+  return item.text[locale]
 }
 
 export function formatDashboardNumber(value: number): string {

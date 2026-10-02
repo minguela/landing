@@ -30,10 +30,10 @@ const route = useRoute()
       </div>
 
       <nav aria-label="Footer navigation">
-        <a :href="getSectionHref(route.path, 'projects')">{{ nav.projects }}</a>
-        <a :href="getSectionHref(route.path, 'work')">{{ nav.work }}</a>
-        <a :href="getSectionHref(route.path, 'stack')">{{ nav.stack }}</a>
-        <a v-if="nav.notes" :href="getSectionHref(route.path, 'notes')">{{ nav.notes }}</a>
+        <NuxtLink :to="getSectionHref(route.path, 'projects')">{{ nav.projects }}</NuxtLink>
+        <NuxtLink :to="getSectionHref(route.path, 'work')">{{ nav.work }}</NuxtLink>
+        <NuxtLink :to="getSectionHref(route.path, 'stack')">{{ nav.stack }}</NuxtLink>
+        <NuxtLink v-if="nav.notes" :to="getSectionHref(route.path, 'notes')">{{ nav.notes }}</NuxtLink>
         <a :href="githubUrl" target="_blank" rel="noreferrer">GitHub ↗</a>
         <a v-if="linkedinUrl" :href="linkedinUrl" target="_blank" rel="noreferrer">LinkedIn ↗</a>
         <a :href="cvHref" target="_blank" rel="noreferrer">CV ↗</a>

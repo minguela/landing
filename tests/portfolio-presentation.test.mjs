@@ -11,10 +11,10 @@ import { getPortfolioContent } from '../layers/10.portfolio/app/infrastructure/p
 test('formats a credibility item as visible localized text', () => {
   assert.equal(
     formatCredibilityItem(
-      { value: '3+', label: { en: 'Production apps', es: 'Apps en producción' } },
+      { text: { en: 'Production apps', es: 'Aplicaciones en producción' } },
       'es',
     ),
-    '3+ · Apps en producción',
+    'Aplicaciones en producción',
   )
 })
 

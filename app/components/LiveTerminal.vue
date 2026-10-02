@@ -21,8 +21,8 @@ defineProps<{
         <h2>{{ copy.title }}</h2>
         <p>{{ copy.description }}</p>
         <div class="build-notes-links">
-          <a href="/now">{{ copy.now }} <span aria-hidden="true">↗</span></a>
-          <a href="/blog">{{ copy.blog }} <span aria-hidden="true">↗</span></a>
+          <NuxtLink to="/now">{{ copy.now }} <span aria-hidden="true">↗</span></NuxtLink>
+          <NuxtLink to="/blog">{{ copy.blog }} <span aria-hidden="true">↗</span></NuxtLink>
         </div>
       </div>
 
