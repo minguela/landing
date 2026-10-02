@@ -98,7 +98,7 @@ const projectsEs: Project[] = [
   {
     ...projectsEn[0]!,
     domain: 'Operaciones de viaje',
-    tagline: 'Un espacio de viaje para organizar todo lo que ocurre entre la idea y la salida.',
+    tagline: 'Un espacio para organizar cada viaje, desde la primera idea hasta la salida.',
     description: 'Roam reúne itinerarios, lugares y decisiones en un único espacio, accesible desde el ordenador y el móvil.',
     challenge: 'Los viajes se reparten entre notas, mapas y mensajes hasta que deja de existir una versión fiable del plan.',
     response: 'Un mapa y una agenda con acciones claras, responsables definidos y datos de viaje fiables.',
@@ -260,14 +260,14 @@ const portfolioDataEs: PortfolioContent = {
   projects: projectsEs,
   credibility: sharedCredibility,
   workValues: [
-    { title: 'Reducir primero la ambigüedad', text: 'Antes de elegir componentes, aclaro las decisiones, las personas implicadas y lo que puede fallar en cada flujo.' },
+    { title: 'Reducir primero la ambigüedad', text: 'Antes de elegir componentes, aclaro las decisiones, quién participa y lo que puede fallar en cada flujo.' },
     { title: 'Diseñar límites claros', text: 'Aplico arquitectura hexagonal para separar las reglas de negocio, los flujos de aplicación, la infraestructura y la interfaz.' },
     { title: 'Diseñar el recorrido completo', text: 'Una buena pantalla no basta: autenticación, datos, alternativas ante fallos, uso en móvil y despliegue forman parte de la entrega.' },
     { title: 'Usar IA con criterio técnico', text: 'La IA acelera el análisis, la implementación y la revisión. Mantengo la responsabilidad técnica y compruebo que el sistema pueda recuperarse de un fallo.' }
   ],
   stackGroups: [
     { title: 'Dar forma', description: 'Lenguaje de producto y sistemas de interfaz.', items: ['Vue 3', 'Nuxt 4', 'TypeScript', 'React', 'Next.js', 'Tailwind'] },
-    { title: 'Persistir', description: 'Datos que sobreviven al camino feliz.', items: ['Postgres', 'Neon', 'Supabase', 'SQLite', 'Drizzle'] },
+    { title: 'Persistir', description: 'Datos disponibles incluso cuando algo falla.', items: ['Postgres', 'Neon', 'Supabase', 'SQLite', 'Drizzle'] },
     { title: 'Conectar', description: 'Automatización, mapas y lectura inteligente de documentos.', items: ['OpenAI', 'OCR', 'n8n', 'Mapbox', 'Extensiones de navegador'] },
     { title: 'Operar', description: 'El camino del repositorio a un sistema en marcha.', items: ['Vercel', 'Docker', 'Traefik', 'Cloudflare', 'GitHub Actions'] }
   ],

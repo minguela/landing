@@ -38,6 +38,7 @@ test('Spanish portfolio copy uses natural architecture and UI terminology', () =
   assert.equal(content.copy.nav.stack, 'Tecnologías')
   assert.equal(content.copy.sections.projects.title, 'Software pensado para resolver problemas reales.')
   assert.equal(content.workValues[2].title, 'Diseñar el recorrido completo')
+  assert.ok(!content.stackGroups.some(group => group.description.includes('camino feliz')))
   const projectNarratives = content.projects
     .flatMap(project => [project.tagline, project.description, project.challenge, project.response, ...project.proof])
     .join(' ')
