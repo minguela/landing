@@ -1,10 +1,14 @@
-import { getBlogPostsUseCase } from '../application/get-blog-posts'
-
-export function useBlogPage() {
+export async function useBlogPage() {
   const config = useRuntimeConfig()
   const { locale, localeMeta, toggleLocale } = useSiteI18n()
 
-  const sortedPosts = computed(() => getBlogPostsUseCase(locale.value))
+  const postsKey = computed(() => `public-blog-list-${locale.value}`)
+  const { data: storedPosts, error } = await useAsyncData(
+    postsKey,
+    () => $fetch('/api/content/blog', { query: { locale: locale.value } }),
+  )
+  if (error.value) throw createError({ statusCode: 503, statusMessage: 'Blog content is temporarily unavailable' })
+  const sortedPosts = computed(() => storedPosts.value ?? [])
 
   const siteUrl = config.public.siteUrl as string
   const githubUrl = config.public.githubUrl as string

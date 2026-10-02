@@ -11,7 +11,7 @@ const {
   cvHref,
   siteUrl,
   siteName,
-} = usePortfolioPage()
+} = await usePortfolioPage()
 
 const onToggleLocale = () => {
   toggleLocale()
